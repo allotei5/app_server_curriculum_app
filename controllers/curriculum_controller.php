@@ -27,6 +27,41 @@ function select_majors() {
     }
 }
 
+function select_course_type() {
+    $course_type = new curriculum_class;
+
+    $run_query = $course_type->select_course_type();
+
+    if($run_query){
+        return $course_type->db_fetch_all();
+    }else{
+        return false;
+    }
+}
+
+function select_student_level() {
+    $student_level = new curriculum_class;
+
+    $run_query = $student_level->select_student_level();
+
+    if($run_query){
+        return $student_level->db_fetch_all();
+    }else{
+        return false;
+    }
+}
+function select_semesters() {
+    $semester = new curriculum_class;
+
+    $run_query = $semester->select_semesters();
+
+    if($run_query){
+        return $semester->db_fetch_all();
+    }else{
+        return false;
+    }
+}
+
 function select_all_curriculum() {
     $curriculum = new curriculum_class;
 
@@ -77,4 +112,48 @@ function duplicate_curriculum_details($old_curriculum_id, $new_curriculum_id){
     }
 
     
+}
+
+function select_one_curriculum_and_its_details($curriculum_id){
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->select_one_curriculum_by_id($curriculum_id);
+
+    if($run_query){
+        $result = $curriculum->db_fetch_one();
+
+        //new curriculum details object
+        $curriculum_details = new curriculum_class;
+        $run_query_2  = $curriculum_details->select_curriculum_details_by_id($curriculum_id);
+        if($run_query_2){
+            $result["courses"] = $curriculum_details->db_fetch_all();
+            return $result;
+        }
+    }
+    return false;
+}
+
+function edit_curriculum($curriculum_id, $year_group_id, $major_id){
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->edit_curriculum($curriculum_id, $year_group_id, $major_id);
+    if($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
+function edit_curriculum_details($curriculum_detail_id, $level_id, $semester_id, $course_id, $course_type){
+    $curriculum = new curriculum_class;
+
+    for($i=0; $i<count($curriculum_detail_id); $i++){
+        $run_query = $curriculum->edit_curriculum_details($curriculum_detail_id[$i], $level_id[$i], $semester_id[$i], $course_id[$i], $course_type[$i]);
+    }
+
+    if($run_query){
+        return $run_query;
+    }else{
+        return false;
+    }
 }
