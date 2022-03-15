@@ -1,4 +1,8 @@
-<!DOCTYPE html><!--  Last Published: Tue Mar 15 2022 12:21:18 GMT+0000 (Coordinated Universal Time)  -->
+
+<?php 
+require_once("../../functions/curriculum_functions.php");
+?>
+<!DOCTYPE html><!--  Last Published: Tue Mar 15 2022 12:42:42 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="62307f748799dba5e91115e8" data-wf-site="6213c852906b2539311153ea">
 <head>
   <meta charset="utf-8">
@@ -20,16 +24,37 @@
   <div class="w-container">
     <h1>Heading</h1>
     <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-    <h2>Course Name</h2>
-    <div class="div-block-14">
-      <div id="w-node-_6d8314c1-dc78-725d-c2d2-27f33593dde3-e91115e8">Prerequisite 1</div>
-      <a id="w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8" href="#" class="button-4 w-button">Remove</a>
-    </div>
+    <?= display_prerequisites($_GET["course"]) ?>
     <div class="w-form">
-      <form id="email-form" name="email-form" data-name="Email Form" method="get">
-        <div class="div-block-13"><input type="text" class="w-node-_4f54a40e-84ff-a523-3281-61993e9b3d93-e91115e8 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" id="field" required=""><input type="submit" value="Submit" data-wait="Please wait..." id="w-node-ec6bfedb-a443-b166-2fef-2089e7178f08-e91115e8" class="submit-button w-button">
-          <a id="w-node-fe86baa1-9611-1f7f-3e1e-8720cc07cbe9-e91115e8" href="#" class="w-button">Add New Prerequisite</a>
+      <form id="email-form" method="post" action="../../actions/prerequisites/add_new_prerequisite.php">
+        <input type="hidden" name="course_id" value="<?= $_GET["course"] ?>">
+      <div id="testing">  
+        <div class="div-block-13" id="grid-div">
+            <div>
+              <label for="">Choose a Course</label>
+              <select name="prerequisite_course_id[]" data-name="Field 2" class="w-node-c00e8ecf-31a0-2a60-3ebf-2b908046af83-e91115e8 w-select">
+                <option value="" disabled selected>Select one...</option>
+                <?= display_courses() ?>
+              </select>          
+            </div>
+            <div>
+              <label for="">Choose the Minimum Grade</label>
+              <select  name="min_grade_id[]" class="w-node-c00e8ecf-31a0-2a60-3ebf-2b908046af83-e91115e8 w-select">
+                <option value="" disabled selected>Select one...</option>
+                <?= display_grades() ?>
+              </select>
+            </div>
+          </div>
+      </div>
+        <div>
+          <input type="button" value="Add New Prerequisite" style="margin-top:25px" id="add-prereq" class="submit-button w-button"></>
         </div>
+        <div>
+          <input type="submit" name="submit" value="submit" style="margin-top:25px" data-wait="Please wait..." id="w-node-ec6bfedb-a443-b166-2fef-2089e7178f08-e91115e8" class="submit-button w-button"></>
+
+        </div>
+          
+          
       </form>
       <div class="w-form-done">
         <div>Thank you! Your submission has been received!</div>
@@ -38,9 +63,15 @@
         <div>Oops! Something went wrong while submitting the form.</div>
       </div>
     </div>
+    
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6213c852906b2539311153ea" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script>
+    $("#add-prereq").click(()=>{
+      $("#grid-div").clone().appendTo("#testing");
+    })
+  </script>
 </body>
 </html>

@@ -18,6 +18,13 @@ function display_majors() {
     }
 }
 
+function display_grades() {
+  $grades = select_all_grades();
+  foreach($grades as $grade){
+    echo "<option value=".$grade["grade_id"].">".$grade["grade_letter"]."</option>";
+  }
+}
+
 function display_student_level() {
   $levels = select_student_level();
   foreach($levels as $level){
@@ -37,7 +44,7 @@ function display_courses_table() {
   foreach($courses as $course) {
     echo "<tr>
             <td>".$course["course_name"]."</td>
-            <td><a href=''id='w-node-_5b3a671f-fac3-e7ce-d746-be867dd2c9ab-c7d176ae' class='w-button'>Prerequisites</a></td>
+            <td><a href='add-prerequisites.php?course=".$course["course_id"] ."' id='w-node-_5b3a671f-fac3-e7ce-d746-be867dd2c9ab-c7d176ae' class='w-button'>Prerequisites</a></td>
           </tr>";
   }
 }
@@ -170,6 +177,20 @@ function display_curriculum_by_major_and_year_group_id($major_id, $year_group_id
     echo "No Curriculum was found";
   }
   
+}
+
+function display_prerequisites($course_id) {
+  $course = select_one_course($course_id);
+  $prerequisites = $course["prerequisites"];
+  echo "<h2>".$course["course_name"]."</h2>";
+  echo "<h4>Prerequisites</h4>";
+
+  foreach($prerequisites as $prerequisite) {
+    echo "<div class='div-block-14'>
+    <div id='w-node-_6d8314c1-dc78-725d-c2d2-27f33593dde3-e91115e8'>".$prerequisite["course_name"]."</div>
+    <a id='w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8' href='delete_prerequisite?id=".$prerequisite["pre_requisite_id"]."' class='button-4 w-button'>Remove</a>
+  </div>";
+  }
 }
 
 ?>
