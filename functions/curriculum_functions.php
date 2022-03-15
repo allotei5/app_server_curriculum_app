@@ -131,4 +131,35 @@ function display_courses_in_curriculum($courses) {
   }
 }
 
+function display_curriculum_by_major_and_year_group_id($major_id, $year_group_id){
+  // select curriculum by major and year group
+  $curriculum = select_curriculum_by_year_group_and_major($year_group_id, $major_id);
+  $four_year_plan = select_one_curriculum_and_its_details_formatted($curriculum["curriculum_id"]);
+  
+
+  if(!empty($four_year_plan)){
+    echo "<h3>4-year ".$curriculum["major_code"]." Curriculum for the Class of ".$curriculum["year_group_name"]."</h3>";
+    foreach($four_year_plan as $key => $level) {
+      echo "<div>
+      <h5>". $key ." Year</h5>";
+      foreach($level as $j => $semester){
+        echo "<div class='columns-4 w-row'>
+        <div class='column-3 w-col w-col-3'>
+          <div>".$j."</div>
+        </div>
+        <div class='column-2 w-col w-col-9'>";
+          foreach($semester as $course){
+            echo "<div>".$course["course_name"]."</div>";
+          }
+        echo "</div>
+      </div>";
+      }
+        
+    }
+  }else{
+    echo "No Curriculum was found";
+  }
+  
+}
+
 ?>

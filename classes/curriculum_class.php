@@ -7,8 +7,18 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_year_group_by_id($id){
+        $sql = "SELECT * FROM `app_server_year_group` WHERE `year_group_id`='$id'";
+        return $this->db_query($sql);
+    }
+
     public function select_majors(){
         $sql = "SELECT * FROM `app_server_major`";
+        return $this->db_query($sql);
+    }
+
+    public function select_major_by_id($id) {
+        $sql = "SELECT * FROM `app_server_major` WHERE `major_id`='$id'";
         return $this->db_query($sql);
     }
 
@@ -24,6 +34,11 @@ class curriculum_class extends db_connection {
 
     public function select_semesters() {
         $sql = "SELECT * FROM `app_server_semester`";
+        return $this->db_query($sql);
+    }
+
+    public function select_levels(){
+        $sql = "SELECT * FROM `app_server_student_level`";
         return $this->db_query($sql);
     }
 
@@ -53,6 +68,26 @@ class curriculum_class extends db_connection {
         INNER JOIN `app_server_course` ON `curriculum_detail`.`course_id`=`app_server_course`.`course_id`
         INNER JOIN `app_server_course_type` ON `curriculum_detail`.`course_type`=`app_server_course_type`.`course_type_id`
         WHERE `curriculum_id`='$curriculum_id'";
+        return $this->db_query($sql);
+    }
+
+    public function select_curriculum_details_by_level_and_id($level_id, $curriculum_id){
+        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `app_server_student_level`.`student_level_name`, `app_server_semester`.`semester_name`, `app_server_course`.`course_name`, `app_server_course_type`.`course_type_name` 
+        FROM `curriculum_detail`
+        INNER JOIN `app_server_student_level` ON `curriculum_detail`.`student_level`=`app_server_student_level`.`student_level_id`
+        INNER JOIN `app_server_semester` ON `curriculum_detail`.`semester_id`=`app_server_semester`.`semester_id`
+        INNER JOIN `app_server_course` ON `curriculum_detail`.`course_id`=`app_server_course`.`course_id`
+        INNER JOIN `app_server_course_type` ON `curriculum_detail`.`course_type`=`app_server_course_type`.`course_type_id`
+        WHERE `student_level`='$level_id' AND `curriculum_id`='$curriculum_id'";
+        return $this->db_query($sql);
+    }
+
+    public function select_curriculum_by_year_group_and_major($year_group_id, $major_id){
+        $sql = "SELECT `app_server_year_group`.`year_group_name`,`curriculum_curriculum`.`major_id`, `curriculum_curriculum`.`year_group`, `app_server_major`.`major_code`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
+        FROM `curriculum_curriculum`
+        INNER JOIN `app_server_year_group` ON `curriculum_curriculum`.`year_group`=`app_server_year_group`.`year_group_id`
+        INNER JOIN `app_server_major` ON `curriculum_curriculum`.`major_id`=`app_server_major`.`major_id` 
+        WHERE `year_group`='$year_group_id' AND `curriculum_curriculum`.`major_id`='$major_id'";
         return $this->db_query($sql);
     }
 

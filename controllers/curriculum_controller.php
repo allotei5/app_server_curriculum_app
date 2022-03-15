@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 require_once(dirname(__FILE__)."/../classes/curriculum_class.php");
 
 function select_year_groups(){
@@ -86,6 +89,18 @@ function select_curriculum_details_by_id($curriculum_id){
     }
 }
 
+function select_curriculum_by_year_group_and_major($year_group_id, $major_id){
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->select_curriculum_by_year_group_and_major($year_group_id, $major_id);
+
+    if($run_query){
+        return $curriculum->db_fetch_one();
+    }else{
+        return false;
+    }
+}
+
 function duplicate_curriculum($curriculum_id){
     $curriculum = new curriculum_class;
 
@@ -133,6 +148,25 @@ function select_one_curriculum_and_its_details($curriculum_id){
     return false;
 }
 
+function select_one_curriculum_and_its_details_formatted($curriculum_id){
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->select_curriculum_details_by_id($curriculum_id);
+
+    if($run_query) {
+        $courses = $curriculum->db_fetch_all();
+        $result = [];
+        foreach($courses as $course) {
+            $result[$course["student_level_name"]][$course["semester_name"]][] = $course;
+        }
+
+    }
+
+    return $result;
+
+    
+}
+
 function edit_curriculum($curriculum_id, $year_group_id, $major_id){
     $curriculum = new curriculum_class;
 
@@ -154,6 +188,31 @@ function edit_curriculum_details($curriculum_detail_id, $level_id, $semester_id,
     if($run_query){
         return $run_query;
     }else{
+        return false;
+    }
+}
+
+
+function select_major_by_id($id){
+    $major = new curriculum_class;
+
+    $run_query = $major->select_major_by_id($id);
+
+    if($run_query) {
+        return $major->db_fetch_one();
+    }else{
+        return false;
+    }
+}
+
+function select_year_group_by_id($id){
+    $year_group = new curriculum_class;
+
+    $run_query = $year_group->select_year_group_by_id($id);
+
+    if($run_query) {
+        return $year_group->db_fetch_one();
+    }else{ 
         return false;
     }
 }

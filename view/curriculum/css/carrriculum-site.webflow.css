@@ -587,6 +587,7 @@ h4 {
 
 .form_last.tracker_select {
   margin-bottom: 0px;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.57);
 }
 
@@ -738,7 +739,7 @@ h4 {
 
 .list.list_of_courses.list_tracker {
   position: static;
-  max-width: 70%;
+  max-width: 80%;
   margin: 0px auto 25px;
   padding: 0px 32px 30px;
   border-style: solid;
@@ -863,7 +864,7 @@ h4 {
   top: 8%;
   z-index: 1;
   display: block;
-  max-width: 80%;
+  max-width: 90%;
   margin-top: 10px;
   margin-bottom: 15px;
   padding: 19px 20px 29px;
@@ -941,7 +942,7 @@ h4 {
 .list_item.tracker__list_item {
   display: block;
   margin-bottom: 15px;
-  padding: 10px 21px 0px;
+  padding: 15px 21px 0px;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
@@ -1065,6 +1066,7 @@ h4 {
   display: flex;
   margin-top: 0px;
   margin-bottom: 0px;
+  padding-top: 3px;
 }
 
 .checkbox-2 {
@@ -1132,6 +1134,7 @@ h4 {
   max-width: 90%;
   margin-top: 0px;
   margin-bottom: 0px;
+  border-radius: 5px;
 }
 
 .heading-4 {
@@ -1176,11 +1179,12 @@ h4 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 80%;
+  width: 90%;
+  max-width: 90%;
   margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0px;
+  padding: 0px 20px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -1226,7 +1230,7 @@ h4 {
   height: 50px;
   margin-top: 37px;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px 0 #a3a3a3;
+  box-shadow: none;
 }
 
 .search-button {
@@ -1234,7 +1238,7 @@ h4 {
 }
 
 .default_pic {
-  display: block;
+  display: none;
   margin-right: auto;
   margin-bottom: 50px;
   margin-left: auto;
@@ -1246,7 +1250,7 @@ h4 {
 }
 
 .default_search {
-  display: none;
+  display: block;
   max-width: 90%;
   margin-right: auto;
   margin-bottom: 146px;
@@ -1254,6 +1258,7 @@ h4 {
 }
 
 .search_card {
+  display: block;
   max-width: 80%;
   margin-right: auto;
   margin-left: auto;
@@ -1281,7 +1286,7 @@ h4 {
   display: flex;
   width: auto;
   height: auto;
-  margin: 0px;
+  margin: 10px 0px 0px;
   padding: 0px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -1370,6 +1375,8 @@ h4 {
 
 .grid {
   position: relative;
+  display: none;
+  width: 100%;
   -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   -ms-grid-rows: auto;
@@ -1382,17 +1389,17 @@ h4 {
 }
 
 .tab {
-  width: 33.3%;
+  width: 33%;
   background-color: hsla(0, 0%, 86.7%, 0);
-  color: #22369b;
+  color: #d82225;
   text-align: center;
 }
 
 .tab.w--current {
-  width: 33.3%;
-  max-width: 33.3%;
+  width: 33%;
+  max-width: 33%;
   border-radius: 10px;
-  background-color: #22369b;
+  background-color: #d82225;
   color: #fff;
 }
 
@@ -1421,7 +1428,7 @@ h4 {
   margin-left: auto;
   border-style: solid;
   border-width: 1px;
-  border-color: #22369b;
+  border-color: #d82225;
   border-radius: 10px;
   color: #22369b;
 }
@@ -1442,7 +1449,7 @@ h4 {
   position: absolute;
   left: auto;
   top: 8%;
-  right: 9%;
+  right: 0%;
   bottom: auto;
   display: inline-block;
   width: 100px;
@@ -1584,6 +1591,98 @@ h4 {
 
 .button-3 {
   margin-right: 20px;
+}
+
+.columns-4 {
+  margin-bottom: 10px;
+  border: 0.5px solid #000;
+}
+
+.column-2 {
+  border-style: solid;
+  border-width: 0px 0px 0px 0.5px;
+  border-color: #000;
+  border-radius: 0px;
+}
+
+.text-block-3 {
+  color: #d82225;
+}
+
+.text-block-4 {
+  color: #d82225;
+}
+
+.form-block-4 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.div-block-8 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.div-block-9 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.div-block-10 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.div-block-11 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.div-block-12 {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
 }
 
 @media screen and (max-width: 991px) {
@@ -2008,6 +2107,51 @@ h4 {
   .navbar-light-navbutton-2:hover {
     background-color: #fff;
   }
+
+  .column-2 {
+    border-left-width: 0px;
+  }
+
+  .container-2 {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .column-3 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-4 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-5 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-6 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-7 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-8 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-9 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-10 {
+    border-bottom: 0.5px solid #000;
+  }
+
+  .column-11 {
+    border-bottom: 0.5px solid #000;
+  }
 }
 
 #w-node-_8b6b942e-414d-2f05-9acc-4a6e4851240d-544af6ed {
@@ -2029,5 +2173,97 @@ h4 {
   align-self: start;
   -ms-grid-column-align: stretch;
   justify-self: stretch;
+}
+
+#w-node-d63b1fa4-19c0-4d93-2b8c-c835fa952711-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+  -ms-grid-row-align: start;
+  align-self: start;
+}
+
+#w-node-_6ceeb4d6-bdf6-5864-c154-151e2bf8c530-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#field.w-node-_6252aa01-e90a-bb1c-4ceb-7e38900b4a88-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#w-node-_55ecbe72-fb63-fcb4-d084-1c2ee6f2def2-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#field-2.w-node-f63c3155-1a9e-0e6e-3d65-08a2403d5dc1-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#w-node-_8f61b0ff-292c-dfd3-d0e2-01c5dd063a18-6d0f25c9 {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#field.w-node-_52a47b79-87a9-17bb-c514-9a10a71e03f3-c7d176ae {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+}
+
+#w-node-_5b3a671f-fac3-e7ce-d746-be867dd2c9ab-c7d176ae {
+  -ms-grid-column: span 1;
+  grid-column-start: span 1;
+  -ms-grid-column-span: 1;
+  grid-column-end: span 1;
+  -ms-grid-row: span 1;
+  grid-row-start: span 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: span 1;
+  -ms-grid-row-align: start;
+  align-self: start;
 }
 
