@@ -32,6 +32,16 @@ function display_courses() {
   }
 }
 
+function display_courses_table() {
+  $courses = select_all_courses();
+  foreach($courses as $course) {
+    echo "<tr>
+            <td>".$course["course_name"]."</td>
+            <td><a href=''id='w-node-_5b3a671f-fac3-e7ce-d746-be867dd2c9ab-c7d176ae' class='w-button'>Prerequisites</a></td>
+          </tr>";
+  }
+}
+
 function display_course_types() {
   $types = select_course_type();
   foreach($types as $type){
