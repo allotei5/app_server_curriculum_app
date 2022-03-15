@@ -188,7 +188,7 @@ function display_prerequisites($course_id) {
   foreach($prerequisites as $prerequisite) {
     echo "<div class='div-block-14'>
     <div id='w-node-_6d8314c1-dc78-725d-c2d2-27f33593dde3-e91115e8'>".$prerequisite["course_name"]."</div>
-    <a id='w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8' href='delete_prerequisite?id=".$prerequisite["pre_requisite_id"]."' class='button-4 w-button'>Remove</a>
+    <a id='w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8' href='../../actions/prerequisites/delete_prerequisite.php?prereq_id=".$prerequisite["pre_requisite_id"]."' class='button-4 w-button'>Remove</a>
   </div>";
   }
 }

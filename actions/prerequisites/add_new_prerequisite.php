@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__)."/../../controllers/prerequisite_controller.php");
-var_dump($_POST);
+//var_dump($_POST);
 
 if(isset($_POST["submit"])){
     var_dump($_POST);
@@ -15,7 +15,7 @@ if(isset($_POST["submit"])){
 
     
     if($add_prerequisite){
-        header("location: ../../view/curriculum/add-prerequisites.php?course=".$course_id);
+        header("location: ../../view/add-prerequisites.php?course=".$course_id);
     }else {
         echo json_encode(([
             "response" => false

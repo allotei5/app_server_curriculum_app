@@ -1,5 +1,5 @@
 <?php 
-require_once("../../functions/curriculum_functions.php");
+require_once("../functions/curriculum_functions.php");
 ?>
 <!DOCTYPE html><!--  Last Published: Tue Mar 15 2022 08:57:34 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="623050c440486132c7d176ae" data-wf-site="6213c852906b2539311153ea">

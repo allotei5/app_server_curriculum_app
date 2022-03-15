@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
         $edit_details = edit_curriculum_details($curriculum_detail_id, $level, $semester, $course, $course_type);
 
         if($edit_details){
-            header("location: ../../view/curriculum/curriculum.php");
+            header("location: ../../view/curriculum.php");
         }
     }
 

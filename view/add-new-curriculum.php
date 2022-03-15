@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__)."/../../functions/curriculum_functions.php");
+require_once(dirname(__FILE__)."/../functions/curriculum_functions.php");
 $curriculum = select_one_curriculum_and_its_details($_GET["curriculum_id"]);
 //print_r($curriculum);
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__)."/../../functions/curriculum_functions.php");
+require_once(dirname(__FILE__)."/../functions/curriculum_functions.php");
 ?>
 <!DOCTYPE html><!--  Last Published: Thu Mar 10 2022 08:34:59 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="62295b000c135e3b9a567354" data-wf-site="6213c852906b2539311153ea">

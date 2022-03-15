@@ -1,6 +1,6 @@
 
 <?php 
-require_once("../../functions/curriculum_functions.php");
+require_once("../functions/curriculum_functions.php");
 ?>
 <!DOCTYPE html><!--  Last Published: Tue Mar 15 2022 12:42:42 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="62307f748799dba5e91115e8" data-wf-site="6213c852906b2539311153ea">
