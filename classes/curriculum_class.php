@@ -133,4 +133,26 @@ class curriculum_class extends db_connection {
         $sql = "UPDATE `curriculum_detail` SET `student_level`='$level_id',`semester_id`='$semester_id',`course_id`='$course_id',`course_type`='$course_type' WHERE `curriculum_detail_id`='$curriculum_detail_id'";
         return $this->db_query_escape_string($sql);
     }
+
+    // curriculum tracking methods
+    public function select_users_courses_in_curriculum($user_id) {
+        $sql = "SELECT `app_server_course`.`course_name`, `curriculum_track`.`curriculum_track_id`, `curriculum_track`.`curriculum_detail_id`,
+        `curriculum_track`.`completed`, `app_server_grade_breakdown`.`grade_id`, `app_server_grade_breakdown`.`grade_letter`, `curriculum_track`.`user_id`
+        FROM `app_server_course`
+        INNER JOIN `curriculum_detail`
+        ON `curriculum_detail`.`course_id`=`app_server_course`.`course_id`
+        INNER JOIN `curriculum_track`
+        ON `curriculum_track`.`curriculum_detail_id`=`curriculum_detail`.`curriculum_detail_id`
+        INNER JOIN `app_server_grade_breakdown`
+        ON `app_server_grade_breakdown`.`grade_id`=`curriculum_track`.`grade_id`
+        WHERE `curriculum_track`.`user_id`='$user_id'
+        ";
+        return $this->db_query($sql);
+    }
+
+    public function select_student_major_and_year_group($student_id) {
+        $sql = "SELECT * FROM `app_server_student` WHERE `app_server_user_id`='$student_id'";
+        return $this->db_query($sql);
+    }
+
 }

@@ -163,9 +163,9 @@ function select_one_curriculum_and_its_details_formatted($curriculum_id){
     }
 
     return $result;
-
-    
 }
+
+
 
 function edit_curriculum($curriculum_id, $year_group_id, $major_id){
     $curriculum = new curriculum_class;
@@ -214,5 +214,33 @@ function select_year_group_by_id($id){
         return $year_group->db_fetch_one();
     }else{ 
         return false;
+    }
+}
+
+
+function select_student_major_and_year_group($student_id) {
+    $student_object = new curriculum_class;
+
+    $run_query = $student_object->select_student_major_and_year_group($student_id);
+
+    if($run_query){
+        return $student_object->db_fetch_one();
+    }else {
+        return false;
+    }
+}
+
+function select_users_courses_in_curriculum($student_id) {
+    $object = new curriculum_class;
+
+    $run_query = $object->select_users_courses_in_curriculum($student_id);
+
+    if($run_query) {
+        $details = $object->db_fetch_all();
+        if(empty($details)) {
+            return false;
+        }else{
+            return $details;
+        }
     }
 }
