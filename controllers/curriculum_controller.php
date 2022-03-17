@@ -244,3 +244,33 @@ function select_users_courses_in_curriculum($student_id) {
         }
     }
 }
+
+// curriculum tracker functions
+function insert_users_course_in_curriculum($user_id, $curriculum_detail_id, $completed, $grade_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->insert_users_course_in_curriculum($user_id, $curriculum_detail_id, $completed, $grade_id);
+
+    if($run_query) {
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
+function select_student_courses_in_tracker_formatted($user_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->select_student_courses_in_tracker($user_id);
+
+    if($run_query) {
+        $courses = $tracker->db_fetch_all();
+        $result = [];
+        foreach($courses as $course) {
+            $result[$course["student_level_name"]][$course["semester_name"]][] = $course;
+        }
+        return $result;
+    }else{
+        return false;
+    }
+}

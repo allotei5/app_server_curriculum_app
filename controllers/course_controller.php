@@ -47,4 +47,3 @@ function select_one_course($id){
     }
 }
 
-// curriculum tracker functions

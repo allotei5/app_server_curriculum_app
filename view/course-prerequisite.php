@@ -17,22 +17,7 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
 <body class="body_c">
-  <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar-light w-nav">
-    <div class="container-light-nav w-container">
-      <a href="#" class="navbar-light-brand w-nav-brand">
-        <div class="company-name-block">CURRICULUM <span class="text-span">APP</span></div>
-      </a>
-      <nav role="navigation" class="nav-menu w-nav-menu">
-        <a href="index.html" class="navbar-light-bold-link w-nav-link">HOME</a>
-        <a href="courseprerequisit.html" aria-current="page" class="navbar-light-bold-link w-nav-link w--current">COURSE PREREQUISIT</a>
-        <a href="carriculumchecker.html" class="navbar-light-bold-link last_link w-nav-link">CURRICULUM TRACKER</a>
-        <a href="#" class="navbar-light-navbutton w-button">LOGOUT </a>
-      </nav>
-      <div class="menu-button w-nav-button">
-        <div class="navbar-light-icon w-icon-nav-menu"></div>
-      </div>
-    </div>
-  </div>
+  <?php require_once("navbar.php"); ?>
   
   <div class="section wf-section">
     <div class="search_div search">
