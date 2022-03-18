@@ -161,6 +161,11 @@ class curriculum_class extends db_connection {
         
     }
 
+    public function update_users_course_in_curriculum_tracker($user_id, $curriculum_track_id, $curriculum_detail_id, $completed, $grade_id) {
+        $sql = "UPDATE `curriculum_track` SET `curriculum_detail_id`='$curriculum_detail_id',`completed`='$completed',`grade_id`='$grade_id' WHERE `curriculum_track_id`='$curriculum_track_id' AND `user_id`='$user_id'";
+        return $this->db_query($sql);
+    }
+
     public function select_student_courses_in_tracker($user_id){
         $sql = "SELECT `app_server_course`.`course_name`, `app_server_course`.`course_unit`, `app_server_course`.`course_id`, `curriculum_track`.`curriculum_track_id`, `curriculum_track`.`user_id`, `curriculum_track`.`curriculum_detail_id`, `curriculum_track`.`completed`, `curriculum_track`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `app_server_semester`.`semester_name`, `app_server_student_level`.`student_level_name`
         FROM `app_server_course`
@@ -191,6 +196,7 @@ class curriculum_class extends db_connection {
         ";
         return $this->db_query($sql);
     }
+
     public function select_student_courses_in_tracker_uncompleted($user_id){
         $sql = "SELECT `app_server_course`.`course_name`, `app_server_course`.`course_unit`, `app_server_course`.`course_id`, `curriculum_track`.`curriculum_track_id`, `curriculum_track`.`user_id`, `curriculum_track`.`curriculum_detail_id`, `curriculum_track`.`completed`, `curriculum_track`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `app_server_semester`.`semester_name`, `app_server_student_level`.`student_level_name`
         FROM `app_server_course`

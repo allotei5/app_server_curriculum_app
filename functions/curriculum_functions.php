@@ -220,7 +220,7 @@ function display_curriculum_tracker($student_id) {
   if($curriculum_tracker) {
     // TODO change student id from hard code
     $four_year_plan = select_student_courses_in_tracker_formatted($student_id);
-    echo "<form id='tracker' class='form' method='post' action='../actions/tracker/add_courses_to_tracker.php'>";
+    echo "<form id='tracker' class='form' method='post' action='../actions/tracker/update_courses_in_tracker.php'>";
       foreach($four_year_plan as $key => $level) {
         echo "
         <div class='' >
@@ -236,7 +236,7 @@ function display_curriculum_tracker($student_id) {
               
               ";
               foreach($semester as $course){
-                //print_r($course);
+                print_r($course);
                 echo "
               
               <div class='list_item tracker__list_item' style='padding-bottom: 15px;'>
@@ -257,6 +257,7 @@ function display_curriculum_tracker($student_id) {
                           
                           echo " id='completed[]' oninput='return inputCheck(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2 custom-checkbox'>
                           <input type='hidden' name='curriculum_detail_id[]' value=".$course["curriculum_detail_id"]." >
+                          <input type='hidden' name='curriculum_track_id[]' value=".$course["curriculum_track_id"].">
                           <label class='checktext' style='font-size: small;'>Completed</label>
                         </div>                         
                     </div>

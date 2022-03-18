@@ -258,6 +258,18 @@ function insert_users_course_in_curriculum($user_id, $curriculum_detail_id, $com
     }
 }
 
+function update_users_course_in_curriculum($user_id, $curriculum_track_id, $curriculum_detail_id, $completed, $grade_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->update_users_course_in_curriculum_tracker($user_id, $curriculum_track_id, $curriculum_detail_id, $completed, $grade_id);
+
+    if($run_query) {
+        return $run_query;
+    }else{
+        return false;
+    }
+}
+
 function select_student_courses_in_tracker_formatted($user_id) {
     $tracker = new curriculum_class;
 
