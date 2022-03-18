@@ -227,8 +227,8 @@ h4 {
 }
 
 .navbar-light-bold-link.w--current {
-  border-bottom: 1.5px solid #d82225;
-  color: #d82225;
+  border-bottom: 1.5px solid #923d41;
+  color: #923d41;
   font-size: 14px;
 }
 
@@ -259,7 +259,7 @@ h4 {
   -ms-flex: 0 auto;
   flex: 0 auto;
   border-radius: 5px;
-  background-color: #d82225;
+  background-color: #923d41;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -382,7 +382,7 @@ h4 {
   padding: 12px 30px;
   border: 0px solid #000;
   border-radius: 5px;
-  background-color: #d82225;
+  background-color: #923d41;
   color: #fff;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -1171,7 +1171,7 @@ h4 {
 }
 
 .text-span {
-  color: #d82225;
+  color: #923d41;
 }
 
 .div-block-2 {
@@ -1238,7 +1238,7 @@ h4 {
 }
 
 .default_pic {
-  display: none;
+  
   margin-right: auto;
   margin-bottom: 50px;
   margin-left: auto;
@@ -1391,7 +1391,7 @@ h4 {
 .tab {
   width: 33%;
   background-color: hsla(0, 0%, 86.7%, 0);
-  color: #d82225;
+  color: #923d41;
   text-align: center;
 }
 
@@ -1399,7 +1399,7 @@ h4 {
   width: 33%;
   max-width: 33%;
   border-radius: 10px;
-  background-color: #d82225;
+  background-color: #923d41;
   color: #fff;
 }
 
@@ -1428,7 +1428,7 @@ h4 {
   margin-left: auto;
   border-style: solid;
   border-width: 1px;
-  border-color: #d82225;
+  border-color: #923d41;
   border-radius: 10px;
   color: #22369b;
 }
@@ -1606,11 +1606,11 @@ h4 {
 }
 
 .text-block-3 {
-  color: #d82225;
+  color: #923d41;
 }
 
 .text-block-4 {
-  color: #d82225;
+  color: #923d41;
 }
 
 .form-block-4 {

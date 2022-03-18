@@ -20,7 +20,9 @@ require_once(dirname(__FILE__)."/../functions/curriculum_functions.php");
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
 <body>
-  <div class="container-2 w-container">
+<?php require_once("navbar.php"); ?>
+
+  <div class="container-2 w-container" style="margin-top: 90px ;">
     <h1>View Curriculum</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
     <div class="w-form">

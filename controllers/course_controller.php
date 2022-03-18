@@ -30,6 +30,20 @@ function select_all_grades() {
     }
 }
 
+function select_grade_by_id($id) {
+    // create object
+    $grades = new course_class;
+
+    // run query
+    $run_query = $grades->select_grade_by_id($id);
+
+    if($run_query){
+        return $grades->db_fetch_one();
+    }else{
+        return false;
+    }
+}
+
 function select_one_course($id){
     // new instance
     $course = new course_class;

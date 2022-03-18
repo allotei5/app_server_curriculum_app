@@ -59,7 +59,7 @@ require_once(dirname(__FILE__)."/../functions/curriculum_functions.php");
       const duplicate = curriculum_id => {
         $.ajax({
           type:    "POST",
-          url:     "../../actions/curriculum/duplicate_curriculum.php",
+          url:     "../actions/curriculum/duplicate_curriculum.php",
           data:    {
                       "submit": true,
                       "old_curriculum_id": curriculum_id

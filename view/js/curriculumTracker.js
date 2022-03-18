@@ -39,3 +39,25 @@ const inputCheck = (e, id) => {
 
     
 }
+const inputCheckUncomplete = (e, id) => {
+    e.preventDefault();
+    console.log(e.target.checked);
+    console.log(id);
+    $.get("../actions/tracker/display_grades.php", function (data, success) {
+        let gradeId = "uncompleteshow"+id;
+        const gradeSelect = document.getElementById(gradeId);
+        if(e.target.checked){
+            //console.log(gradeSelect);
+            //console.log(data);
+            let grades = displayGrades(data);
+            console.log(selectInput(grades))
+            gradeSelect.innerHTML=selectInput(grades);
+
+
+        }else{
+            gradeSelect.innerHTML="";
+        }
+    })
+
+    
+}

@@ -274,3 +274,35 @@ function select_student_courses_in_tracker_formatted($user_id) {
         return false;
     }
 }
+function select_student_courses_in_tracker_formatted_completed($user_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->select_student_courses_in_tracker_completed($user_id);
+
+    if($run_query) {
+        $courses = $tracker->db_fetch_all();
+        $result = [];
+        foreach($courses as $course) {
+            $result[$course["student_level_name"]][$course["semester_name"]][] = $course;
+        }
+        return $result;
+    }else{
+        return false;
+    }
+}
+function select_student_courses_in_tracker_formatted_uncompleted($user_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->select_student_courses_in_tracker_uncompleted($user_id);
+
+    if($run_query) {
+        $courses = $tracker->db_fetch_all();
+        $result = [];
+        foreach($courses as $course) {
+            $result[$course["student_level_name"]][$course["semester_name"]][] = $course;
+        }
+        return $result;
+    }else{
+        return false;
+    }
+}

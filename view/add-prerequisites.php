@@ -26,7 +26,7 @@ require_once("../functions/curriculum_functions.php");
     <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
     <?= display_prerequisites($_GET["course"]) ?>
     <div class="w-form">
-      <form id="email-form" method="post" action="../../actions/prerequisites/add_new_prerequisite.php">
+      <form id="email-form" method="post" action="../actions/prerequisites/add_new_prerequisite.php">
         <input type="hidden" name="course_id" value="<?= $_GET["course"] ?>">
       <div id="testing">  
         <div class="div-block-13" id="grid-div">

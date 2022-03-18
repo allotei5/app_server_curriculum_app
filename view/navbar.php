@@ -4,8 +4,9 @@
         <div class="company-name-block">CURRICULUM <span class="text-span">APP</span></div>
       </a>
       <nav role="navigation" class="nav-menu w-nav-menu">
-        <a href="index.html" class="navbar-light-bold-link w-nav-link">Home</a>
+        <a href="index.php" class="navbar-light-bold-link w-nav-link" >Home</a>
         <a href="course-prerequisite.php" class="navbar-light-bold-link w-nav-link">COURSE PREREQUISITes</a>
+        <a href="view-curriculum.php" class="navbar-light-bold-link w-nav-link">View Curriculum</a>
         <a href="curriculum-tracker.php" aria-current="page" class="navbar-light-bold-link last_link w-nav-link w--current">CURRICULUM TRACKER</a>
         <a href="#" class="navbar-light-navbutton w-button">App Server </a>
       </nav>

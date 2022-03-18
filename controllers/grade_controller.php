@@ -15,3 +15,17 @@ function select_all_grades() {
         return false;
     }
 }
+
+function select_grade_by_id($id) {
+    // create object
+    $grades = new grade_class;
+
+    // run query
+    $run_query = $grades->select_grade_by_id($id);
+
+    if($run_query){
+        return $grades->db_fetch_one();
+    }else{
+        return false;
+    }
+}

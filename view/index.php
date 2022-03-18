@@ -1,13 +1,8 @@
-<?php 
-require_once("../functions/curriculum_functions.php");
-?>
 <!DOCTYPE html><!--  Last Published: Tue Mar 15 2022 12:42:42 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="62154646299761cf544af6ed" data-wf-site="6213c852906b2539311153ea">
+<html data-wf-page="6213c853906b2595691153ed" data-wf-site="6213c852906b2539311153ea">
 <head>
   <meta charset="utf-8">
-  <title>CarriculumChecker</title>
-  <meta content="CarriculumChecker" property="og:title">
-  <meta content="CarriculumChecker" property="twitter:title">
+  <title>carrriculum site</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -19,54 +14,23 @@ require_once("../functions/curriculum_functions.php");
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
-<body class="body-2">
+<body class="body">
 <?php require_once("navbar.php"); ?>
+
   <a data-w-id="9a146a39-bcc2-86ed-9b24-87ff5f050073" href="#" class="settings fab w-inline-block"><img src="images/filter-6535.png" loading="lazy" width="37" sizes="37px" srcset="images/filter-6535-p-500.png 500w, images/filter-6535-p-800.png 800w, images/filter-6535.png 1024w" alt="">
     <h5 class="settings_text">Profile</h5>
   </a>
-  <div class="hero-section section second_hero tracker wf-section">
-    <div class="search_div search">
-      <h1 class="search_h1">Hello Abena,</h1>
-      <h3 class="search_h">Use this tool to keep track of your curriculum and meet your<br>four year requirements.</h3>
-      <div class="div-block-5">
-        <h3 class="search_h cgpa">CGPA<br>:0.00</h3>
+  <div class="hero-section section wf-section">
+    <div class="centered-container hero"></div>
+    <div class="div_hero">
+      <h1>Heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+      <div class="hero-buttons">
+        <a href="#" class="primary_btn w-button">VIEW PREREQUISITES</a>
+        <a href="#" class="secon_btn w-button">CHECK CURRICULUM </a>
       </div>
     </div>
-    
-    <div class="div_hero"></div>
   </div>
-  <div class="section_top wf-section">
-    <div class="div_for_prereq tracker_c">
-      <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
-        <div class="tabs-menu-2 w-tab-menu" style="margin-bottom: 15px;">
-          <a data-w-tab="Tab 1" class="tab w-inline-block w-tab-link w--current">
-            <div>All Courses</div>
-          </a>
-          <a data-w-tab="Tab 2" class="tab w-inline-block w-tab-link">
-            <div class="text-block-3">Completed Courses</div>
-          </a>
-          <a data-w-tab="Tab 3" class="tab w-inline-block w-tab-link">
-            <div class="text-block-4">Uncompleted Courses</div>
-          </a>
-        </div>
-        <div class=" w-tab-content">
-          <div data-w-tab="Tab 1" class="pane w-tab-pane w--tab-active">
-            <?= display_curriculum_tracker(1) ?>
-          </div>
-          <div data-w-tab="Tab 2" class="pane w-tab-pane">
-            <?= display_curriculum_tracker_completed_courses(1) ?>
-          </div>
-          <div data-w-tab="Tab 3" class="pane w-tab-pane">
-            <?= display_curriculum_tracker_uncompleted_courses(1) ?>
-          </div>
-        </div>
-        
-      </div>
-      
-    </div>
-    
-  </div>
-  
   <div class="modal_outer_wrapper">
     <div class="modal_inner_wrapper">
       <a href="#" class="w-inline-block"><img src="images/icons8-close-512.png" loading="lazy" width="36" data-w-id="359506d1-5868-b5d7-77b2-20239954de07" srcset="images/icons8-close-512-p-500.png 500w, images/icons8-close-512.png 512w" sizes="100vw" alt="" class="image"></a>
@@ -104,7 +68,6 @@ require_once("../functions/curriculum_functions.php");
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6213c852906b2539311153ea" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
-  <script src="./js/curriculumTracker.js"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
 </html>
