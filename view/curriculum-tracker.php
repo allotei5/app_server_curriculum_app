@@ -29,7 +29,7 @@ require_once("../functions/curriculum_functions.php");
       <h1 class="search_h1">Hello Abena,</h1>
       <h3 class="search_h">Use this tool to keep track of your curriculum and meet your<br>four year requirements.</h3>
       <div class="div-block-5">
-        <h3 class="search_h cgpa">CGPA<br>:0.00</h3>
+        <h3 class="search_h cgpa">CGPA<br> <span id='cgpa'></span> </h3>
       </div>
     </div>
     
@@ -39,25 +39,25 @@ require_once("../functions/curriculum_functions.php");
     <div class="div_for_prereq tracker_c">
       <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
         <div class="tabs-menu-2 w-tab-menu" style="margin-bottom: 15px;">
-          <a data-w-tab="Tab 1" class="tab w-inline-block w-tab-link w--current">
+          <a data-w-tab="Tab 1" id="tab-1" class="tab w-inline-block w-tab-link w--current">
             <div>All Courses</div>
           </a>
-          <a data-w-tab="Tab 2" class="tab w-inline-block w-tab-link">
+          <a data-w-tab="Tab 2" class="tab w-inline-block w-tab-link" id="tab-2">
             <div class="text-block-3">Completed Courses</div>
           </a>
-          <a data-w-tab="Tab 3" class="tab w-inline-block w-tab-link">
+          <a data-w-tab="Tab 3" class="tab w-inline-block w-tab-link" id="tab-3">
             <div class="text-block-4">Uncompleted Courses</div>
           </a>
         </div>
         <div class=" w-tab-content">
           <div data-w-tab="Tab 1" class="pane w-tab-pane w--tab-active">
-            <?= display_curriculum_tracker(1) ?>
+            <div id="all-courses"></div>
           </div>
           <div data-w-tab="Tab 2" class="pane w-tab-pane">
-            <?= display_curriculum_tracker_completed_courses(1) ?>
+           <div id="completed-courses"></div>
           </div>
           <div data-w-tab="Tab 3" class="pane w-tab-pane">
-            <?= display_curriculum_tracker_uncompleted_courses(1) ?>
+            <div id="uncompleted-courses"></div>
           </div>
         </div>
         

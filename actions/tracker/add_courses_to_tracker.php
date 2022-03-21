@@ -1,6 +1,7 @@
 <?php
 require_once("../../controllers/curriculum_controller.php");
-//print_r($_POST);
+print_r($_POST);
+return;
 if(isset($_POST["submit"])){
     // grab form data
     $curriculum_detail_id = $_POST["curriculum_detail_id"];

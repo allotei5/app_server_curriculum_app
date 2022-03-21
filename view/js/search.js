@@ -43,7 +43,8 @@ const div = document.getElementById("default_search");
 
 $("#search").keyup(e => {
     $.get("../actions/courses/search_courses.php?course_name="+e.target.value, function(data, status){
-        div.innerHTML="";
+        console.log(data)
+        div.innerHTML=``;
         if(e.target.value !=="") {
             
 

@@ -32,7 +32,8 @@
       <img src="images/search_.png" loading="lazy" width="333" sizes="100vw" srcset="images/search_-p-500.png 500w, images/search_-p-800.png 800w, images/search_.png 1157w" alt="" class="image-2">
     </div> -->
     <div class="default_search" id="default_search">
-      
+      <div class="search_card" style="border: none;">      <img src="images/search_.png" loading="lazy" width="333" sizes="100vw" srcset="images/search_-p-500.png 500w, images/search_-p-800.png 800w, images/search_.png 1157w" alt="" class="image-2">
+</div>
     </div>
   </div>
   

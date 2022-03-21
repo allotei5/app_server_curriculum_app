@@ -17,8 +17,8 @@ class prerequisite_class extends db_connection {
         $sql = "SELECT `app_server_course`.`course_id`, `app_server_course`.`course_code`, `app_server_course`.`course_unit`, `app_server_course`.`course_name`, `app_server_course`.`course_min_grade`
         FROM `app_server_course`
         INNER JOIN `curriculum_pre_requisite`
-        ON `app_server_course`.`course_id` = `curriculum_pre_requisite`.`course_id`
-        WHERE `app_server_course`.`course_id`='$course_id'
+        ON `app_server_course`.`course_id` = `curriculum_pre_requisite`.`pre_requisite_course`
+        WHERE `curriculum_pre_requisite`.`course_id`='$course_id'
         ";
         return $this->db_query($sql);
     }

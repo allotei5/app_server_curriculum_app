@@ -193,7 +193,7 @@ function display_prerequisites($course_id) {
   foreach($prerequisites as $prerequisite) {
     echo "<div class='div-block-14'>
     <div id='w-node-_6d8314c1-dc78-725d-c2d2-27f33593dde3-e91115e8'>".$prerequisite["course_name"]."</div>
-    <a id='w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8' href='../../actions/prerequisites/delete_prerequisite.php?prereq_id=".$prerequisite["pre_requisite_id"]."' class='button-4 w-button'>Remove</a>
+    <a id='w-node-f095f4ce-d5cc-aba0-80cd-9b587cb89bba-e91115e8' href='../actions/prerequisites/delete_prerequisite.php?prereq_id=".$prerequisite["pre_requisite_id"]."' class='button-4 w-button'>Remove</a>
   </div>";
   }
 }
@@ -229,14 +229,14 @@ function display_curriculum_tracker($student_id) {
         ";
         foreach($level as $semester_name => $semester) {
           echo "
-            <div class='list list_of_courses list_tracker' style='border:none';>
+            <div class='list list_of_courses list_tracker custom-courses' style='border:none';>
               <div class='data_heading_box'>
                 <h3 class='heading-4'>".$semester_name."</h3>
               </div>
               
               ";
               foreach($semester as $course){
-                print_r($course);
+                //print_r($course);
                 echo "
               
               <div class='list_item tracker__list_item' style='padding-bottom: 15px;'>
@@ -255,7 +255,7 @@ function display_curriculum_tracker($student_id) {
                             echo "checked";
                           }
                           
-                          echo " id='completed[]' oninput='return inputCheck(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2 custom-checkbox'>
+                          echo " id='".$course["curriculum_detail_id"]."' oninput='return inputCheck(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2 custom-checkbox'>
                           <input type='hidden' name='curriculum_detail_id[]' value=".$course["curriculum_detail_id"]." >
                           <input type='hidden' name='curriculum_track_id[]' value=".$course["curriculum_track_id"].">
                           <label class='checktext' style='font-size: small;'>Completed</label>
@@ -268,7 +268,9 @@ function display_curriculum_tracker($student_id) {
                     echo "<div id=show".$course["curriculum_detail_id"]."></div>";
                   }else{
                     echo "<div id=show".$course["curriculum_detail_id"].">
-                    <select required name='grade[]' data-name='Field 4' class='grade_track_input w-select'>";
+                    <select required name='grade[]' data-name='Field 4' id='grade_id-".$course["curriculum_detail_id"]."' class='grade_track_input w-select'>
+                    
+                    ";
                     ?>
                       <?= display_grade($course["grade_id"]) ?>
                       <?= display_grades() ?>
@@ -399,7 +401,7 @@ function display_curriculum_tracker_completed_courses($student_id){
                             echo "checked";
                           }
                           
-                          echo " id='completed[]' oninput='return inputCheck(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2 custom-checkbox'>
+                          echo " id='completed[]' oninput='return inputCheck(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2'>
                           <input type='hidden' name='curriculum_detail_id[]' value=".$course["curriculum_detail_id"]." >
                           <label class='checktext' style='font-size: small;'>Completed</label>
                         </div>                         
@@ -444,7 +446,7 @@ function display_curriculum_tracker_uncompleted_courses($student_id){
   if($curriculum_tracker) {
     // TODO change student id from hard code
     $four_year_plan = select_student_courses_in_tracker_formatted_uncompleted($student_id);
-    echo "<form id='tracker' class='form' method='post' action='../actions/tracker/add_courses_to_tracker.php'>";
+    echo "<form id='tracker' class='form' method='post' action='../actions/tracker/update_courses_in_tracker.php'>";
       foreach($four_year_plan as $key => $level) {
         echo "
         <div class='' >
@@ -476,6 +478,7 @@ function display_curriculum_tracker_uncompleted_courses($student_id){
                         <div class='w-checkbox checkbox-field'>
                           <input type='checkbox' id='completed[]' oninput='return inputCheckUncomplete(event,".$course['curriculum_detail_id'].")' name='completed[]' class='w-checkbox-input checkbox-2 custom-checkbox'>
                           <input type='hidden' name='curriculum_detail_id[]' value=".$course["curriculum_detail_id"]." >
+                          <input type='hidden' name='curriculum_track_id[]' value=".$course["curriculum_track_id"].">
                           <label class='checktext' style='font-size: small;'>Completed</label>
                         </div>                         
                     </div>
