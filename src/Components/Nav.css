@@ -1,0 +1,33 @@
+.logo{
+    width:80px;
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.link{
+    text-decoration: none;
+    color: #000;
+}
+
+.link:hover {
+    color: #923d41
+}
+
+.active {
+    font-weight: bold;
+}

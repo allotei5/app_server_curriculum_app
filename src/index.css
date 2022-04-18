@@ -1,0 +1,312 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.headline-title {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+  color: #554343;
+
+}
+
+.headline-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #797C7D;
+}
+
+.sub-title {
+  font-weight: 300px;
+  font-size: 30px;
+  line-height: 35px;
+  color: #515354;
+}
+
+.primary-button {
+  color: #fff;
+  text-decoration: none;
+  background: #923d41;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.HomePageHero{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto 5%;
+  height: 80vh;
+  /* border: lawngreen 1px solid; */
+  align-items: center;
+}
+
+.section-one{
+  background-color: #F0F0F0;
+  padding: 100px 400px;
+  text-align: center;  
+}
+
+.section-two-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: flex-start;
+}
+
+.section-two{
+  margin: auto 5%;
+  height: 50vh;
+  /* border: lawngreen 1px solid; */
+  padding: 80px 0;
+}
+
+.section-two-curriculum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px
+  
+}
+
+.section-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto 5%;
+}
+
+.HomeCourseTrackerText{
+  text-align: end;
+}
+
+.section-four {
+  min-height: 15vh;
+  background-color: #BAA392;
+  margin: 20px 5%;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.course-tracker-page {
+  /* margin: 0 5%; */
+}
+
+.course-tracker-grid {
+  margin: 0 5%;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 150px;
+}
+
+.cgpa {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.cgpa h4 {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 600;
+  color: #515354;
+}
+
+.cgpa p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #797C7D;
+}
+
+.tabs-div {
+  background-color: #f0f0f0;
+  padding: 50px 5%;
+  margin-top: 50px;
+}
+
+.tab-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  /* min-width: 100vw; */
+  /* border: #554343 1px solid; */
+  text-align: center;
+  /* height: 52px; */
+  border-radius: 10px;
+  gap: 3px;
+}
+
+.tab-item {
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  /* align-content: center; */
+  /* background-color: #515354; */
+  border: #554343 1px solid;
+  border-radius: 10px;
+  padding-top: 10px;
+  vertical-align: center;
+  cursor: pointer;
+  /* background-color: #923d41; */
+
+}
+
+.react-tabs__tab--selected {
+  background-color: #554343;
+  color: #fff;
+
+}
+
+.react-tabs__tab-panel {
+  margin-left: 40px;
+}
+
+.course-tracker-courses{
+  display: grid;
+  grid-template-columns: 500px 100px 150px 100px;
+  /* width: 75%; */
+  gap: 10px;
+  align-items: center;
+}
+
+.courses {
+  /* background-color: #2196F3; */
+  /* align-content: center; */
+  margin-top: 15px;
+}
+
+
+.checkbox-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.checkbox-label:hover input ~ .checkbox-custom {
+  background-color: #ccc;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom {
+  background-color: #2196F3;
+}
+
+/* Create the check.checkbox-custom/indicator (hidden when not checked) */
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the check.checkbox-custom when checked */
+.checkbox-label input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+/* Style the check.checkbox-custom/indicator */
+.checkbox-label .checkbox-custom:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.select-input {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  font-weight: 400;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.select-change-curriculum {
+  /* width: 150px; */
+  height: 40px;
+  /* text-align: center; */
+  font-weight: 400;
+  border-radius: 10px;
+  font-size: 15px;
+  border: #923d41 2px solid;
+  color: #923d41;
+}
+
+.curriculum-grid {
+  grid-template-columns: 1fr 165px;
+  align-items: end;
+}
+
+.custom-container {
+  margin: 0px 5%;
+}
+
+.curriculum-container{
+  border: #000 1px solid;
+  border-radius: 10px;
+  padding: 5px 50px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.grid {
+  display: grid;
+}
+
+.edit-prerequisite-page {
+  margin: 0 5%;
+}
+
+.grid-course-main {
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-courses {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

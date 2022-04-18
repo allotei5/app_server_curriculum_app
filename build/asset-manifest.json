@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/app_server_curriculum_app/static/css/main.15431eff.css",
+    "main.js": "/app_server_curriculum_app/static/js/main.f6df56e2.js",
+    "static/js/787.d8f35705.chunk.js": "/app_server_curriculum_app/static/js/787.d8f35705.chunk.js",
+    "static/media/hero_image.svg": "/app_server_curriculum_app/static/media/hero_image.6e4f5edc977e1f02e17c6253a4a23045.svg",
+    "static/media/ashesi_logo.png": "/app_server_curriculum_app/static/media/ashesi_logo.06c743f3915737a5be0c.png",
+    "static/media/search_image.svg": "/app_server_curriculum_app/static/media/search_image.654ddf13ca3cd385d49088f39eaac971.svg",
+    "static/media/logo.svg": "/app_server_curriculum_app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/app_server_curriculum_app/index.html",
+    "main.15431eff.css.map": "/app_server_curriculum_app/static/css/main.15431eff.css.map",
+    "main.f6df56e2.js.map": "/app_server_curriculum_app/static/js/main.f6df56e2.js.map",
+    "787.d8f35705.chunk.js.map": "/app_server_curriculum_app/static/js/787.d8f35705.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15431eff.css",
+    "static/js/main.f6df56e2.js"
+  ]
+}
