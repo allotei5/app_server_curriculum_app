@@ -11,6 +11,22 @@ class course_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_all_courses_by_type($course_type) {
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
+        FROM `apps_course`
+        INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
+        INNER JOIN `apps_course_type` ON `apps_course`.`course_type` = `apps_course_type`.`course_type_id`
+        INNER JOIN `apps_grade_breakdown` ON `apps_course`.`course_min_grade` = `apps_grade_breakdown`.`grade_id`
+ 		WHERE `apps_course_type`.`course_type_id`='$course_type'";
+        
+        return $this->db_query($sql);
+    }
+
+    public function select_all_course_types() {
+        $sql = "SELECT * FROM `apps_course_type`";
+        return $this->db_query($sql);
+    }
+    
     public function select_one_course($id){
         $sql = "SELECT * FROM `apps_course` WHERE `course_id`='$id'";
 

@@ -16,18 +16,26 @@ function select_all_courses() {
     }
 }
 
-function select_all_courses_formatted_by_type() {
+function select_all_courses_formatted_by_type($course_type) {
     $course = new course_class;
 
-    $run_query = $course->select_all_courses();
+    $run_query = $course->select_all_courses_by_type($course_type);
 
     if($run_query) {
-        $courses = $course->db_fetch_all();
-        $result = [];
-        foreach($courses as $course) {
-            $result[$course["course_type_name"]][] = $course;
-        }
-        return $result;
+        return $course->db_fetch_all();
+        
+    }else {
+        return false;
+    }
+}
+
+function select_all_course_types() {
+    $course = new course_class;
+    $run_query = $course->select_all_course_types();
+
+    if($run_query) {
+        return $course->db_fetch_all();
+        
     }else {
         return false;
     }
