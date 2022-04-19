@@ -73,6 +73,14 @@ export const AddPrerequisite = ({show, handleClose}) => {
                         options={course}
                         onChange={opt => setPrerequisite(opt.value)}
                     />
+                    <div>
+                        <label>Choose minimum Grade</label>
+                        <div>
+                            <select>
+                                <option>1</option>
+                            </select>
+                        </div>
+                    </div>
                     <button className="btn btn-primary" type="submit">Add Prerequisite</button>
                 </form>
             </ModalBody>

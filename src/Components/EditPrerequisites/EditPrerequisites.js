@@ -6,7 +6,7 @@ import { CourseTypeAccordion } from './CourseTypeAccordion';
 export const EditPrerequisites = () => {
 
     const [courses, setCourses] = useState([]);
-    const [courseType, setCourseType] = useState([{"course_type_id": 1, "course_type_name": "hello"}]);
+    const [courseType, setCourseType] = useState([]);
 
     useEffect(() => {
         const getCourseTypes = async () => {
