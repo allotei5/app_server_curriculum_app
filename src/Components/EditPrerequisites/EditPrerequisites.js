@@ -16,7 +16,7 @@ export const EditPrerequisites = () => {
         getCourseTypes();
     }, []);
 
-    
+    // hi
 
     const fetchCourseTypes = async () => {
         const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/courses/get_all_course_types.php");

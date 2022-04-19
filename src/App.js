@@ -17,6 +17,7 @@ function App() {
           <Route path="/view-curriculum" element={<ViewCurriculum />} />
           <Route path="/profile" element={<Home />} />
           <Route path="/edit-prerequisites" element={ <EditPrerequisites /> } />
+          <Route path="/edit-prerequisite" element={ <EditPrerequisites /> } />
         </Route>
       </Routes>
   );

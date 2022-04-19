@@ -25,7 +25,7 @@ export const CourseTypeAccordion = ({ courseType, key }) => {
         console.log(data)
         return data;
     }
-
+// hi
   return (
     <>
         <Accordion defaultActiveKey="0">

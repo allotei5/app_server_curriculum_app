@@ -3,6 +3,7 @@ import { CourseTypeAccordion } from './CourseTypeAccordion'
 
 export const AccordionContainer = ({courseTypes}) => {
     // console.log(courseTypes);
+    // hi
   return (
     <>
         {

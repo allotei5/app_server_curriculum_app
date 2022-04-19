@@ -21,6 +21,7 @@ export const AddPrerequisite = ({show, handleClose}) => {
     // .then(data => {
     //     console.log(data)
     // })
+    // hi
 
     useEffect(() => {
         const getCourses = async () => {
