@@ -21,12 +21,12 @@ export const EditPrerequisites = () => {
     const fetchCourseTypes = async () => {
         const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/courses/get_all_course_types.php");
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         return data;
     }
 
 
-    console.log(courseType);
+    // console.log(courseType);
 
   return (
     <div className="edit-prerequisite-page">

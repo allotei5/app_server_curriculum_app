@@ -7,11 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  
     <BrowserRouter basename={"/app_server_curriculum_app"}>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
+  
   document.getElementById("root")
 );
 

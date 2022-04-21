@@ -8,7 +8,7 @@ export const AccordionContainer = ({courseTypes}) => {
     <>
         {
            courseTypes.map((value, index) => (
-            <CourseTypeAccordion key={index} courseType={value}  />
+            <CourseTypeAccordion key={index} newKey={index} courseType={value}  />
   ))
         }
     </>
