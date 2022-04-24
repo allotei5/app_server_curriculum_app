@@ -304,9 +304,20 @@ code {
 }
 
 .grid-course-main {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 
 .grid-courses {
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.prerequisite-button {
+  background-color: #8BAAAD;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  padding: 10px 5px;
+  cursor: pointer;
 }

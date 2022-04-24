@@ -1,5 +1,5 @@
 import React from 'react'
-// hi
+import { FiPlus } from "react-icons/fi";
 
 export const Course = () => {
   return (
@@ -9,7 +9,16 @@ export const Course = () => {
                 
             </div>
             <div className='grid grid-courses'>
-                <Button onClick={handleShow} > Add Prerequisite </Button>
+                <Button onClick={handleShow} > Add Prerequiite </Button>
+                <div>
+                  <div style={{
+                    width: "15px",
+                    height: "15px",
+                    borderRadius: "50%"
+                  }}>
+                    <FiPlus />
+                  </div>
+                </div>
                 <AddPrerequisite show={show} handleClose={handleClose} />
             </div>
         </div>

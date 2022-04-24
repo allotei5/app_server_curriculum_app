@@ -60,10 +60,6 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
         return data;
     }
 
-    const addPrerequisiteToServer = () => {
-
-    }
-
     const onSubmit = (e) => {
         e.preventDefault();
         if(prerequisite === '') {

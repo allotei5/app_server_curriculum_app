@@ -20,9 +20,7 @@ if($form_data->submit){
     $add_prerequisite = add_new_prerequisite($course_id, $prerequisite_course_id, $min_grade_id);
 
     if($add_prerequisite){
-        echo json_encode([
-            "response" => true
-        ]);
+        echo json_encode($add_prerequisite);
     }else {
         echo json_encode([
             "response" => false

@@ -10,8 +10,20 @@ function add_new_prerequisite($course_id, $prerequisite_course_id, $min_grade_id
     $run_query = $prequisite->add_new_prerequisite($course_id, $prerequisite_course_id, $min_grade_id);
 
     if($run_query){
-        return $run_query;
+        return select_one_prerequisite($run_query);
     }else{
+        return false;
+    }
+}
+
+function select_one_prerequisite($prerequisite_course_id) {
+    $prequisite = new prerequisite_class;
+
+    $run_query = $prequisite->select_one_prerequisite($prerequisite_course_id);
+
+    if($run_query) {
+        return $prequisite->db_fetch_one();
+    }else {
         return false;
     }
 }

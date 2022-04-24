@@ -42,7 +42,8 @@ const div = document.getElementById("default_search");
 
 
 $("#search").keyup(e => {
-    $.get("../actions/courses/search_courses.php?course_name="+e.target.value, function(data, status){
+    // http://localhost/app_server_curriculum_app/server/view/actions/courses/search_courses
+    $.get("http://localhost/app_server_curriculum_app/server/actions/courses/search_courses.php?course_name="+e.target.value, function(data, status){
         console.log(data)
         div.innerHTML=``;
         if(e.target.value !=="") {
