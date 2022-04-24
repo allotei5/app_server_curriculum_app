@@ -15,6 +15,7 @@ export default function Nav() {
             <li> <Link className="link active" to="/">Home</Link></li>
             <li> <Link className="link" to="/course-tracker">Course Tracker</Link></li>
             <li> <Link className="link" to="/view-curriculum">View Curriculum</Link></li>
+            <li> <Link className="link" to="/edit-curriculum">Edit Curriculum</Link></li>
           </ul>
         </nav>
         <nav>

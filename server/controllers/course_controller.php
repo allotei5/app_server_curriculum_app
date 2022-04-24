@@ -10,7 +10,14 @@ function select_all_courses() {
     $run_query = $courses->select_all_courses();
 
     if($run_query){
-        return $courses->db_fetch_all();
+        $coursesFromDB = $courses->db_fetch_all();
+        $result = [];
+        foreach($coursesFromDB as $course) {
+            $course_prerequisites_query = $courses->select_course_prerequisites($course["course_id"]);
+            $course["prerequisites"] = $courses->db_fetch_all();
+            array_push($result, $course);
+        }
+        return $result;
     }else {
         return false;
     }

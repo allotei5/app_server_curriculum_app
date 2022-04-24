@@ -43,10 +43,10 @@ class course_class extends db_connection {
     }
 
     public function select_course_prerequisites($id) {
-        $sql = "SELECT `curriculum_pre_requisite`.`pre_requisite_id`, `curriculum_pre_requisite`.`pre_requisite_course`, `app_server_grade_breakdown`.`grade_letter`, `curriculum_pre_requisite`.`min_grade`, `apps_course`.`course_name`, `app_server_grade_breakdown`.`grade_letter`
+        $sql = "SELECT `curriculum_pre_requisite`.`pre_requisite_id`, `curriculum_pre_requisite`.`pre_requisite_course`, `apps_grade_breakdown`.`grade_letter`, `curriculum_pre_requisite`.`min_grade`, `apps_course`.`course_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `curriculum_pre_requisite`
         INNER JOIN `apps_course` ON `curriculum_pre_requisite`.`pre_requisite_course`=`apps_course`.`course_id`
-        INNER JOIN `app_server_grade_breakdown` ON `curriculum_pre_requisite`.`min_grade`=`app_server_grade_breakdown`.`grade_id`
+        INNER JOIN `apps_grade_breakdown` ON `curriculum_pre_requisite`.`min_grade`=`apps_grade_breakdown`.`grade_id`
         WHERE `curriculum_pre_requisite`.`course_id`='$id'";
         return $this->db_query($sql);
     }

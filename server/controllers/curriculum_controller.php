@@ -3,12 +3,12 @@
 require_once(dirname(__FILE__)."/../classes/curriculum_class.php");
 require_once(dirname(__FILE__)."/./course_controller.php");
 
-function select_year_groups(){
+function select_academic_years(){
     // new object
     $year_group = new curriculum_class;
 
     // run query
-    $run_query = $year_group->select_year_groups();
+    $run_query = $year_group->select_academic_years();
 
     if($run_query){
         return $year_group->db_fetch_all();

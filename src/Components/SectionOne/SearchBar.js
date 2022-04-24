@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-const SearchBar = ({ keyword, setKeyword }) => {
+const SearchBar = ({ getSearchResults }) => {
   const [search, setSearch] = useState('');
-  useEffect(() => {
-    //call fetch function
-  }, [search]);
+
+  const [ courses, setCourses ] = useState([]);
+    //  const [searchedCourses, setSearchedCourses ] = useState([]);
+
+     useEffect(() => {
+        const getCourses = async () => {
+            const coursesFromServer = await fetchCourses();
+            setCourses(coursesFromServer);
+        }
+
+        getCourses();
+    }, []);
+
+    useEffect(() => {
+      getSearchResults(courses, search);
+    }, [search])
+    
+    const fetchCourses = async () => {
+        const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/courses/get_all_courses.php");
+        const data = await res.json();
+        console.log(data);
+        return data;
+    }
+  
 
   const BarStyling = {
     width: '40rem',
@@ -20,9 +41,8 @@ const SearchBar = ({ keyword, setKeyword }) => {
     <input
       style={BarStyling}
       key='random1'
-      value={keyword}
       placeholder={'search for Courses...'}
-      onChange={(e) => setKeyword(e.target.value)}
+      onChange={(e) => setSearch(e.target.value)}
     />
   );
 };

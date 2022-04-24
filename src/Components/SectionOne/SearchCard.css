@@ -1,0 +1,54 @@
+.search-card-border {
+    text-align: left !important;
+    color: #797C7D;
+    border: #797C7D 1px solid;
+    border-radius: 10px;
+    padding: 40px 30px;
+    margin-bottom: 10px;
+
+}
+
+.main-course-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.main-course-grade {
+    border: #797C7D 1px solid;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    /* height: 50px; */
+    justify-self: end;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.main-course-grade p {
+    margin: 0;
+}
+
+.prerequisite-courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.prerequisite-course {
+    margin-bottom: 10px;
+}
+
+.prerequisite-course p {
+    padding: 0;
+    margin: 0;
+}
+
+.prerequisite-course-name {
+    font-weight: 500;
+}
+
+.prerequisite-course-grade {
+    font-weight: 400;
+}

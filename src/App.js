@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import CourseTracker from "./Components/CourseTracker";
 import { ViewCurriculum } from "./Components/ViewCurriculum";
 import { EditPrerequisites } from "./Components/EditPrerequisites/EditPrerequisites";
+import { EditCurriculum } from "./Components/Curriculum/EditCurriculum/EditCurriculum";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/profile" element={<Home />} />
           <Route path="/edit-prerequisites" element={ <EditPrerequisites /> } />
           <Route path="/edit-prerequisite" element={ <EditPrerequisites /> } />
+          <Route path="/edit-curriculum" element={ <EditCurriculum /> } />
         </Route>
       </Routes>
   );

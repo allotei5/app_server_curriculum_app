@@ -2,8 +2,8 @@
 require_once(dirname(__FILE__)."/../settings/db_class.php");
 
 class curriculum_class extends db_connection {
-    public function select_year_groups(){
-        $sql = "SELECT * FROM `app_server_year_group`";
+    public function select_academic_years(){
+        $sql = "SELECT * FROM `apps_academic_year`";
         return $this->db_query($sql);
     }
 
