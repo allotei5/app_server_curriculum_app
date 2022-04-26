@@ -76,6 +76,35 @@ function select_all_curriculum() {
     }
 }
 
+function add_new_curriculum_detail($curriculum_id, $student_level, $semester_id) {
+    $course = new course_class;
+
+    $run_query = $course->select_all_courses();
+
+    if($run_query) {
+        $result = $course->db_fetch_one();
+        $curriculum = new curriculum_class;
+        $add_new_course = $curriculum->add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $result['course_id'], $result['course_type']);
+        $new_curriculum_detail = $curriculum->select_curriculum_detail($add_new_course);
+        return $curriculum->db_fetch_one();
+    } else{
+        return false;
+    }
+}
+
+function remove_curriculum_detail($id) {
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->remove_curriculum_detail($id);
+
+    if($run_query) {
+        return $run_query;
+    }else {
+        return false;
+    }
+}
+
+
 function select_curriculum_details_by_id($curriculum_id){
     $curriculum = new curriculum_class;
 
@@ -192,13 +221,12 @@ function edit_curriculum($curriculum_id, $year_group_id, $major_id){
 function edit_curriculum_details($curriculum_detail_id, $level_id, $semester_id, $course_id, $course_type){
     $curriculum = new curriculum_class;
 
-    for($i=0; $i<count($curriculum_detail_id); $i++){
-        $run_query = $curriculum->edit_curriculum_details($curriculum_detail_id[$i], $level_id[$i], $semester_id[$i], $course_id[$i], $course_type[$i]);
-    }
+    $run_query = $curriculum->edit_curriculum_details($curriculum_detail_id, $level_id, $semester_id, $course_id, $course_type);
 
-    if($run_query){
-        return $run_query;
-    }else{
+    if($run_query) {
+        $new_curriculum_detail = $curriculum->select_curriculum_detail($curriculum_detail_id);
+        return $curriculum->db_fetch_one();
+    }else {
         return false;
     }
 }

@@ -3,11 +3,15 @@ import './CurriculumCourse.css';
 import Select from 'react-select';
 import { FiMinus } from 'react-icons/fi';
 
-export const CurriculumCourse = ({ course }) => {
-  console.log(course);
+export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
   const [courses, setCourses] = useState([]);
   const [selectCourse, setSelectCourse] = useState({});
-  const [ courseTypes, setCourseTypes ] = useState([]);
+  const [courseTypes, setCourseTypes] = useState([]);
+  const [selectCourseType, setSelectCourseType] = useState('');
+
+  const updatedCourse = {
+    ...course,
+  };
 
   useEffect(() => {
     const getCourses = async () => {
@@ -16,9 +20,9 @@ export const CurriculumCourse = ({ course }) => {
     };
 
     const getCourseTypes = async () => {
-        const courseTypes = await fetchCourseTypes();
-        setCourseTypes(courseTypes);
-    }
+      const courseTypes = await fetchCourseTypes();
+      setCourseTypes(courseTypes);
+    };
 
     getCourses();
     getCourseTypes();
@@ -42,10 +46,12 @@ export const CurriculumCourse = ({ course }) => {
   };
 
   const fetchCourseTypes = async () => {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_course_type.php`);
-      const data = await res.json();
-      return data;
-  }
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_course_type.php`
+    );
+    const data = await res.json();
+    return data;
+  };
 
   return (
     <div>
@@ -57,13 +63,17 @@ export const CurriculumCourse = ({ course }) => {
           <Select
             style={{ color: '#515354' }}
             value={
-                (Object.keys(selectCourse).length === 0) ? { label: course.course_name, value: course.course_id }
+              Object.keys(selectCourse).length === 0
+                ? { label: course.course_name, value: course.course_id }
                 : selectCourse
             }
             options={courses}
-            onChange={(opt) =>
-              setSelectCourse({ label: opt.label, value: opt.value })
-            }
+            onChange={async (opt) => {
+              setSelectCourse({ label: opt.label, value: opt.value });
+              updatedCourse.course_id = opt.value;
+              console.log(updatedCourse);
+              await updateCourse(updatedCourse);
+            }}
           />
         </div>
 
@@ -71,19 +81,28 @@ export const CurriculumCourse = ({ course }) => {
           <div>
             <label className='curriculum-course-label'>Course Type</label>
           </div>
-          <select className='curriculum-course-select'>
+          <select
+            className='curriculum-course-select'
+            onChange={async (e) => {
+              setSelectCourseType(e.target.value);
+              updatedCourse.course_type = e.target.value;
+              await updateCourse(updatedCourse);
+            }}
+          >
             <option value={course.course_type}>
               {course.course_type_name}
             </option>
-            {
-                courseTypes.map((value, index) => (
-                    <option value={value.course_type_id} key={index}>{value.course_type_name}</option>
-                ))
-            }
-
+            {courseTypes.map((value, index) => (
+              <option value={value.course_type_id} key={index}>
+                {value.course_type_name}
+              </option>
+            ))}
           </select>
         </div>
-        <div className='curriculum-remove-course'>
+        <div
+          onClick={async () => removeCourse(course.curriculum_detail_id)}
+          className='curriculum-remove-course'
+        >
           <div
             style={{
               width: '25px',

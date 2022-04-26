@@ -61,13 +61,34 @@ class curriculum_class extends db_connection {
     }
 
     public function select_curriculum_details_by_id($curriculum_id){
-        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `app_server_student_level`.`student_level_name`, `app_server_semester`.`semester_name`, `app_server_course`.`course_name`, `app_server_course_type`.`course_type_name` 
+        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `apps_student_level`.`student_level_name`, `apps_semester`.`semester_name`, `apps_course`.`course_name`, `apps_course_type`.`course_type_name` 
         FROM `curriculum_detail`
-        INNER JOIN `app_server_student_level` ON `curriculum_detail`.`student_level`=`app_server_student_level`.`student_level_id`
-        INNER JOIN `app_server_semester` ON `curriculum_detail`.`semester_id`=`app_server_semester`.`semester_id`
-        INNER JOIN `app_server_course` ON `curriculum_detail`.`course_id`=`app_server_course`.`course_id`
-        INNER JOIN `app_server_course_type` ON `curriculum_detail`.`course_type`=`app_server_course_type`.`course_type_id`
+        INNER JOIN `apps_student_level` ON `curriculum_detail`.`student_level`=`apps_student_level`.`student_level_id`
+        INNER JOIN `apps_semester` ON `curriculum_detail`.`semester_id`=`apps_semester`.`semester_id`
+        INNER JOIN `apps_course` ON `curriculum_detail`.`course_id`=`apps_course`.`course_id`
+        INNER JOIN `apps_course_type` ON `curriculum_detail`.`course_type`=`apps_course_type`.`course_type_id`
         WHERE `curriculum_id`='$curriculum_id'";
+        return $this->db_query($sql);
+    }
+
+    public function add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $course_id, $course_type) {
+        $sql = "INSERT INTO `curriculum_detail`(`curriculum_id`, `student_level`, `semester_id`, `course_id`, `course_type`) VALUES ('$curriculum_id', '$student_level', '$semester_id', '$course_id', '$course_type')";
+        return $this->db_query_id($sql);
+    }
+
+    public function select_curriculum_detail($id) {
+        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `apps_student_level`.`student_level_name`, `apps_semester`.`semester_name`, `apps_course`.`course_name`, `apps_course_type`.`course_type_name` 
+        FROM `curriculum_detail`
+        INNER JOIN `apps_student_level` ON `curriculum_detail`.`student_level`=`apps_student_level`.`student_level_id`
+        INNER JOIN `apps_semester` ON `curriculum_detail`.`semester_id`=`apps_semester`.`semester_id`
+        INNER JOIN `apps_course` ON `curriculum_detail`.`course_id`=`apps_course`.`course_id`
+        INNER JOIN `apps_course_type` ON `curriculum_detail`.`course_type`=`apps_course_type`.`course_type_id`
+        WHERE `curriculum_detail_id`='$id'";
+        return $this->db_query($sql);
+    }
+
+    public function remove_curriculum_detail($id) {
+        $sql = "DELETE FROM `curriculum_detail` WHERE `curriculum_detail_id`='$id'";
         return $this->db_query($sql);
     }
 

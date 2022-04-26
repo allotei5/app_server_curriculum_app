@@ -1,9 +1,9 @@
 import { FiPlus } from "react-icons/fi";
 
-export const AddCurriculumCourse = () => {
+export const AddCurriculumCourse = ({ addNewCourse }) => {
   return (
     <>
-        <div>
+        <div onClick={async () => addNewCourse()}>
                 <div style={{
                     width: "25px",
                     height: "25px",

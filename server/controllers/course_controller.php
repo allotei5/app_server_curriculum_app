@@ -92,4 +92,3 @@ function select_one_course($id){
         return false;
     }
 }
-
