@@ -88,6 +88,18 @@ function select_curriculum_details_by_id($curriculum_id){
     }
 }
 
+function select_curriculum_details_by_level_semester_and_id($level_id, $semester_id , $curriculum_id) {
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->select_curriculum_details_by_level_semester_and_id($level_id, $semester_id , $curriculum_id);
+
+    if($run_query) {
+        return $curriculum->db_fetch_all();
+    }else {
+        return false;
+    }
+}
+
 function select_curriculum_by_year_group_and_major($year_group_id, $major_id){
     $curriculum = new curriculum_class;
 

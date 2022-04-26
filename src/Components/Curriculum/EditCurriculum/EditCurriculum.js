@@ -1,8 +1,28 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { CurriculumYearAccordion } from './CurriculumYearAccordion'
 import './EditCurriculum.css'
 
 export const EditCurriculum = () => {
+
+    const [ academicYears, setAcademicYears ] = useState([]);
+
+    useEffect(() => {
+        const getAcademicYears = async () => {
+            const academicYearsFromServer = await fetchAcademicYears();
+            setAcademicYears(academicYearsFromServer);
+        }
+
+        getAcademicYears();
+    }, []);
+
+    const fetchAcademicYears = async () => {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_academic_years.php`);
+        const data = await res.json();
+        console.log(data);
+        return data;
+    }
+
+    fetchAcademicYears();
 
   return (
       <>
@@ -21,7 +41,11 @@ export const EditCurriculum = () => {
             </div>
         </div>
         <div className='edit-curriculum'>
-            <CurriculumYearAccordion />
+            {
+                academicYears.map((year, index) => (
+                    <CurriculumYearAccordion key={index} year={year} />
+                ))
+            }
         </div>
     </>
   )

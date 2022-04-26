@@ -7,6 +7,11 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_semesters() {
+        $sql = "SELECT * FROM `apps_semester`";
+        return $this->db_query($sql);
+    }
+
     public function select_year_group_by_id($id){
         $sql = "SELECT * FROM `app_server_year_group` WHERE `year_group_id`='$id'";
         return $this->db_query($sql);
@@ -28,12 +33,7 @@ class curriculum_class extends db_connection {
     }
 
     public function select_course_type(){
-        $sql = "SELECT * FROM `app_server_course_type`";
-        return $this->db_query($sql);
-    }
-
-    public function select_semesters() {
-        $sql = "SELECT * FROM `app_server_semester`";
+        $sql = "SELECT * FROM `apps_course_type`";
         return $this->db_query($sql);
     }
 
@@ -71,14 +71,14 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
-    public function select_curriculum_details_by_level_and_id($level_id, $curriculum_id){
-        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `app_server_student_level`.`student_level_name`, `app_server_semester`.`semester_name`, `app_server_course`.`course_name`, `app_server_course_type`.`course_type_name` 
+    public function select_curriculum_details_by_level_semester_and_id($level_id, $semester_id , $curriculum_id){
+        $sql = "SELECT `curriculum_detail`.`curriculum_detail_id`, `curriculum_detail`.`curriculum_id`, `curriculum_detail`.`semester_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`course_id`, `curriculum_detail`.`course_type`, `apps_student_level`.`student_level_name`, `apps_semester`.`semester_name`, `apps_course`.`course_name`, `apps_course_type`.`course_type_name`
         FROM `curriculum_detail`
-        INNER JOIN `app_server_student_level` ON `curriculum_detail`.`student_level`=`app_server_student_level`.`student_level_id`
-        INNER JOIN `app_server_semester` ON `curriculum_detail`.`semester_id`=`app_server_semester`.`semester_id`
-        INNER JOIN `app_server_course` ON `curriculum_detail`.`course_id`=`app_server_course`.`course_id`
-        INNER JOIN `app_server_course_type` ON `curriculum_detail`.`course_type`=`app_server_course_type`.`course_type_id`
-        WHERE `student_level`='$level_id' AND `curriculum_id`='$curriculum_id'";
+        INNER JOIN `apps_student_level` ON `curriculum_detail`.`student_level`=`apps_student_level`.`student_level_id`
+        INNER JOIN `apps_semester` ON `curriculum_detail`.`semester_id`=`apps_semester`.`semester_id`
+        INNER JOIN `apps_course` ON `curriculum_detail`.`course_id`=`apps_course`.`course_id`
+        INNER JOIN `apps_course_type` ON `curriculum_detail`.`course_type`=`apps_course_type`.`course_type_id`
+        WHERE `student_level`='$level_id' AND `curriculum_id`='$curriculum_id' AND `curriculum_detail`.`semester_id`='$semester_id'";
         return $this->db_query($sql);
     }
 
