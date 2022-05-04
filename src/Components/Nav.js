@@ -12,10 +12,11 @@ export default function Nav() {
         </div>
         <nav>
           <ul className="nav__links">
-            <li> <Link className="link active" to="/">Home</Link></li>
+            <li> <Link className="link" to="/">Home</Link></li>
             <li> <Link className="link" to="/course-tracker">Course Tracker</Link></li>
             <li> <Link className="link" to="/view-curriculum">View Curriculum</Link></li>
             <li> <Link className="link" to="/edit-curriculum">Edit Curriculum</Link></li>
+            <li> <Link className="link" to="/edit-prerequisite">Edit Prerequisites</Link></li>
           </ul>
         </nav>
         <nav>

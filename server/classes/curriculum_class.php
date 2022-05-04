@@ -7,6 +7,11 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_year_groups() {
+        $sql = "SELECT * FROM `apps_year_group`";
+        return $this->db_query($sql);
+    }
+
     public function select_semesters() {
         $sql = "SELECT * FROM `apps_semester`";
         return $this->db_query($sql);
@@ -18,7 +23,7 @@ class curriculum_class extends db_connection {
     }
 
     public function select_majors(){
-        $sql = "SELECT * FROM `app_server_major`";
+        $sql = "SELECT * FROM `apps_major`";
         return $this->db_query($sql);
     }
 
@@ -43,11 +48,21 @@ class curriculum_class extends db_connection {
     }
 
     public function select_all_curriculum() {
-        $sql = "SELECT `app_server_year_group`.`year_group_name`, `app_server_major`.`major_code`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
+        $sql = "SELECT `apps_year_group`.`year_group_name`, `apps_major`.`major_code`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
         FROM `curriculum_curriculum`
-        INNER JOIN `app_server_year_group` ON `curriculum_curriculum`.`year_group`=`app_server_year_group`.`year_group_id`
-        INNER JOIN `app_server_major` ON `curriculum_curriculum`.`major_id`=`app_server_major`.`major_id`";
+        INNER JOIN `apps_year_group` ON `curriculum_curriculum`.`year_group`=`apps_year_group`.`year_group_id`
+        INNER JOIN `apps_major` ON `curriculum_curriculum`.`major_id`=`apps_major`.`major_id`";
 
+        return $this->db_query($sql);
+    }
+
+    public function select_curriculums_by_year_group($year_group_id) {
+        $sql = "SELECT `apps_year_group`.`year_group_name`, `apps_year_group`.`year_group_id`, `apps_major`.`major_name`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
+        FROM `curriculum_curriculum`
+        INNER JOIN `apps_year_group` ON `curriculum_curriculum`.`year_group_id`=`apps_year_group`.`year_group_id`
+        INNER JOIN `apps_major` ON `curriculum_curriculum`.`major_id`=`apps_major`.`major_id`
+        WHERE `apps_year_group`.`year_group_id`='$year_group_id'";
+        
         return $this->db_query($sql);
     }
 

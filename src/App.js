@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./Components/Nav";
 import Home from "./Components/Home";
@@ -7,6 +6,7 @@ import CourseTracker from "./Components/CourseTracker";
 import { ViewCurriculum } from "./Components/ViewCurriculum";
 import { EditPrerequisites } from "./Components/EditPrerequisites/EditPrerequisites";
 import { EditCurriculum } from "./Components/Curriculum/EditCurriculum/EditCurriculum";
+import { EditCurriculumPage } from "./Components/Curriculum/EditCurriculum/EditCurriculumPage";
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
           <Route path="/profile" element={<Home />} />
           <Route path="/edit-prerequisites" element={ <EditPrerequisites /> } />
           <Route path="/edit-prerequisite" element={ <EditPrerequisites /> } />
-          <Route path="/edit-curriculum" element={ <EditCurriculum /> } />
+          <Route path="/edit-curriculum" element={ <EditCurriculumPage /> } />
+          <Route path="/edit-curriculum/:curriculum_id" element={ <EditCurriculum /> } />
         </Route>
       </Routes>
   );

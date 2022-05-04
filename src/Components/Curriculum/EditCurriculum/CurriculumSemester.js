@@ -1,26 +1,23 @@
 import { useState, useEffect } from 'react'
 import { AddCurriculumCourse } from './AddCurriculumCourse'
 import { CurriculumCourse } from './CurriculumCourse'
+import { useParams } from "react-router-dom";
+import { fetchCoursesFromCurriculum } from '../../../serverRequests';
 
 export const CurriculumSemester = ({semester, academicYear}) => {
 
   const [ coursesFromServer, setCoursesFromServer ] = useState([]);
   const [ courseForCurriculum, setCourseForCurriculum ] = useState({});
+  const params = useParams();
 
   useEffect(() => {
     const getCourses = async () => {
-      const courses = await fetchCourses();
+      const courses = await fetchCoursesFromCurriculum(params.curriculum_id, semester.semester_id, academicYear);
       setCoursesFromServer(courses);
     }
 
     getCourses();
   }, []);
-
-  const fetchCourses = async () => {
-    const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/select_curriculum_details_by_level_semester_and_id.php?curriculum_id=1&semester_id=${semester.semester_id}&level_id=${academicYear}`);
-    const data = await res.json();
-    return data;
-  }
 
   const removeCourse = async (id) => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/remove_curriculum_detail.php`, {

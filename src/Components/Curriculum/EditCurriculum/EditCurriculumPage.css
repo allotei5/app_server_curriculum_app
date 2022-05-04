@@ -1,0 +1,39 @@
+.year-groups {
+    /* height: 200px; */
+    background-color: #fff;
+    width: 50%;
+    border-radius: 10px;
+    justify-self: center;
+    padding: 20px;
+}
+
+.year-groups-container {
+    background-color: #F0F0F0;
+    padding: 100px 0px;
+    display: grid;
+}
+
+.year-group {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    margin-bottom: 10px;
+}
+
+.year-group p {
+    /* justify-self: center; */
+    align-self: end;
+    padding-top: 5px;
+}
+
+.year-group-edit {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #0A7AFF;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    padding: 5px;
+    
+}

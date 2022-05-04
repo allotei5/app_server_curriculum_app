@@ -17,7 +17,7 @@ export const ViewCurriculum = () => {
             <div className="custom-container">
                 <h3 className='sub-title'>Freshman Year</h3>
                 <div className="curriculum-container">
-                    <h3 className='sub-title'>Semester 1</h3>
+                    <h3 className='new-title'>Semester 1</h3>
                     <div className="courses-grid">
                         <p className='headline-text'>Quantum Computing</p>
                         <p className='headline-text'>Credits 0.5</p>
@@ -42,7 +42,7 @@ export const ViewCurriculum = () => {
                         <p className='headline-text'>Pass grade: C+</p>
                         <p className='headline-text'>Major Elective</p>
                     </div>
-                    <h3 className='sub-title'>Semester 2</h3>
+                    <h3 className='new-title'>Semester 2</h3>
                     <div className="courses-grid">
                         <p className='headline-text'>Quantum Computing</p>
                         <p className='headline-text'>Credits 0.5</p>

@@ -34,6 +34,13 @@ code {
   color: #515354;
 }
 
+.new-title {
+  font-weight: 300px;
+  font-size: 24px;
+  line-height: 35px;
+  color: #515354;
+}
+
 .primary-button {
   color: #fff;
   text-decoration: none;
@@ -287,7 +294,7 @@ code {
 .curriculum-container{
   border: #000 1px solid;
   border-radius: 10px;
-  padding: 5px 50px;
+  padding: 40px 50px;
 }
 
 .courses-grid {

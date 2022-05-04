@@ -1,5 +1,4 @@
 <?php
-
 require_once(dirname(__FILE__)."/../classes/curriculum_class.php");
 require_once(dirname(__FILE__)."/./course_controller.php");
 
@@ -13,6 +12,30 @@ function select_academic_years(){
     if($run_query){
         return $year_group->db_fetch_all();
     }else{
+        return false;
+    }
+}
+
+function select_year_groups() {
+    $year_group = new curriculum_class;
+
+    $run_query = $year_group->select_year_groups();
+
+    if($run_query) {
+        return $year_group->db_fetch_all();
+    }else {
+        return false;
+    }
+}
+
+function select_curriculums_by_year_group($year_group_id) {
+    $year_group = new curriculum_class;
+
+    $run_query = $year_group->select_curriculums_by_year_group($year_group_id);
+
+    if($run_query) {
+        return $year_group->db_fetch_all();
+    }else {
         return false;
     }
 }
