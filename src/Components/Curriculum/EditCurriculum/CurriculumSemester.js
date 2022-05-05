@@ -43,7 +43,7 @@ export const CurriculumSemester = ({semester, academicYear}) => {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
-        curriculum_id: 1,
+        curriculum_id: params.curriculum_id,
         student_level: academicYear,
         semester_id: semester.semester_id
       })

@@ -3,7 +3,7 @@ import Nav from "./Components/Nav";
 import Home from "./Components/Home";
 import { Routes, Route } from "react-router-dom";
 import CourseTracker from "./Components/CourseTracker";
-import { ViewCurriculum } from "./Components/ViewCurriculum";
+import { ViewCurriculum } from "./Components/Curriculum/ViewCurriculum/ViewCurriculum";
 import { EditPrerequisites } from "./Components/EditPrerequisites/EditPrerequisites";
 import { EditCurriculum } from "./Components/Curriculum/EditCurriculum/EditCurriculum";
 import { EditCurriculumPage } from "./Components/Curriculum/EditCurriculum/EditCurriculumPage";

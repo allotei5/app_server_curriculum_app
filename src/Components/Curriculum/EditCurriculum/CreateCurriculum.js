@@ -10,16 +10,32 @@ import {  Button } from "react-bootstrap"
 import { fetchMajors } from "../../../serverRequests";
 
 
-export const CreateCurriculum = ({ show, handleClose, currentYearGroup }) => {
+export const CreateCurriculum = ({ show, handleClose, currentYearGroup, addNewCurriculum }) => {
     const [ majors, setMajors ] = useState([]);
+    const [ selectedMajor, setSelectedMajor ] = useState("");
 
-    useState(() => {
+    useEffect(() => {
         const getMajors = async () => {
             const majorsFromServer = await fetchMajors();
             setMajors(majorsFromServer);
         }
         getMajors();
-    }, [])
+    }, []);
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        if(selectedMajor === "") {
+            alert("choose a major")
+        }
+        const newCurriculum = {
+            year_group_id: currentYearGroup,
+            major_id: selectedMajor,
+            user_id: 1
+        }
+        await addNewCurriculum(newCurriculum);
+    }
+
+
   return (
     <>
         <Modal show={show} onHide={handleClose} animation={false}>
@@ -27,9 +43,9 @@ export const CreateCurriculum = ({ show, handleClose, currentYearGroup }) => {
                 <ModalTitle>Create a new Curriculum</ModalTitle>
             </ModalHeader>
             <ModalBody>
-                <form>
+                <form onSubmit={onSubmit}>
                     <label>Choose Major</label>
-                    <select className="form-select" required>
+                    <select className="form-select" required onChange={e => setSelectedMajor(e.target.value)}>
                         <option selected disabled>Majors</option>
                         {
                             majors.map((major, index) => (<option key={index} value={major.major_id}>{major.major_name}</option>))

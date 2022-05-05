@@ -40,6 +40,7 @@ function select_curriculums_by_year_group($year_group_id) {
     }
 }
 
+
 function select_majors() {
     $majors = new curriculum_class;
 
@@ -87,14 +88,27 @@ function select_semesters() {
     }
 }
 
-function select_all_curriculum() {
+function select_all_curriculums() {
     $curriculum = new curriculum_class;
 
-    $run_query = $curriculum->select_all_curriculum();
+    $run_query = $curriculum->select_all_curriculums();
 
     if($run_query){
         return $curriculum->db_fetch_all();
     }else{
+        return false;
+    }
+}
+
+function create_new_curriculum($year_group_id, $major_id, $user_id) {
+    $curriculum = new curriculum_class;
+
+    $run_query = $curriculum->create_new_curriculum($year_group_id, $major_id, $user_id);
+
+    if($run_query) {
+        $new_curriculum = $curriculum->select_one_curriculum_by_id($run_query);
+        return $curriculum->db_fetch_one();
+    }else {
         return false;
     }
 }

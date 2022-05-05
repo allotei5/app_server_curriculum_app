@@ -23,3 +23,36 @@ export const fetchMajors = async () => {
     const data = await res.json();
     return data;
 }
+
+export const createNewCurriculum = async (curriculum) => {
+    const res = await fetch(`${backendServer}/curriculum/add_new_curriculum.php`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...curriculum
+        })
+    });
+    const data = await res.json();
+    console.log(data);
+    return data;
+}
+
+export const fetchCurriculums = async () => {
+    const res = await fetch(`${backendServer}/curriculum/fetch_curriculums.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchAcademicYears = async () => {
+    const res = await fetch(`${backendServer}/curriculum/fetch_academic_years.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchSemesters = async () => {
+    const res = await fetch(`${backendServer}/curriculum/fetch_semesters.php`);
+    const data = await res.json();
+    return data;
+}

@@ -1,12 +1,11 @@
 import './EditCurriculum.css'
 import './EditCurriculumPage.css'
 import { FiEdit2, FiPlus } from "react-icons/fi";
-import { fetchCurriculumByYearGroup } from '../../../serverRequests';
+import { createNewCurriculum, fetchCurriculumByYearGroup, fetchYearGroups } from '../../../serverRequests';
 import { Link } from 'react-router-dom';
 import { CreateCurriculum } from './CreateCurriculum';
 
 import { useState, useEffect } from 'react'
-import { fetchYearGroups } from '../../../serverRequests'
 
 export const EditCurriculumPage = () => {
 
@@ -33,6 +32,11 @@ export const EditCurriculumPage = () => {
         setCurriculums(curriculumsFromServer);
         setDisplayCurriculums(true);
         setCurrentYearGroup(year_group_id);
+    }
+
+    const addNewCurriculum = async (curriculum) => {
+        const newCurriculum = await createNewCurriculum(curriculum);
+        setCurriculums([...curriculums, newCurriculum]);
     }
 
   return (
@@ -66,7 +70,7 @@ export const EditCurriculumPage = () => {
                             : curriculums.map((value, index) => (
                                 <div key={index} className='year-group'>
                                     <p className='headline-text'>
-                                        4 year curriculum for Management Information Systems 2021
+                                        4 year curriculum for {value.major_name} {value.year_group_name}
                                     </p>
                                     <Link to={`${value.curriculum_id}`} className='year-group-edit'>
                                         <FiEdit2 />
@@ -77,7 +81,7 @@ export const EditCurriculumPage = () => {
                         <div className='year-group-edit' onClick={handleShow}>
                             <FiPlus />
                         </div> 
-                        <CreateCurriculum show={show} handleClose={handleClose} currentYearGroup={currentYearGroup} />
+                        <CreateCurriculum show={show} handleClose={handleClose} currentYearGroup={currentYearGroup} addNewCurriculum={addNewCurriculum} />
 
                     </div>
                 )
