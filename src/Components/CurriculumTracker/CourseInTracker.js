@@ -22,6 +22,9 @@ export const CourseInTracker = ({ course }) => {
     if(completedState) {
       // this trigger means uncompleted
       course.completed = "0";
+      course.grade_id = null;
+      setCourses(courses.map(prevState => prevState.curriculum_tracker_id === course.curriculum_tracker_id ? course : prevState));
+
       if(currentUser !== null && currentUser.student_details !== undefined) {
         const updateCourse = await updateCourseInTracker(course);
         if(updateCourse.response) {
@@ -40,7 +43,6 @@ export const CourseInTracker = ({ course }) => {
 
     // set state
     // loop through courses in state and update only the course in question
-    setCourses(courses.map(prevState => prevState.curriculum_tracker_id === course.curriculum_tracker_id ? course : prevState));
     
 
   }

@@ -3,7 +3,7 @@ import { TrackerContext } from '../../Context/TrackerContext'
 import { CourseInTracker } from './CourseInTracker';
 
 
-export const Courses = ({ courseType }) => {
+export const Courses = ({ courseType, completeFilter }) => {
 
   const { courses } = useContext(TrackerContext);
   const [ filteredCourses, setFilteredCourses ] = useState([]);
@@ -11,7 +11,14 @@ export const Courses = ({ courseType }) => {
   useEffect(() => {
 
     if(courses !== null) {
-      setFilteredCourses(courses.filter((courses) => (courses.course_type === courseType)));
+      // Filter courses by type
+      setFilteredCourses(courses.filter((course) => {
+        if(completeFilter === null) {
+          return course.course_type === courseType
+        }else {
+          return course.course_type === courseType && course.completed == completeFilter
+        }
+      }));
     }
 
   }, [courses])
@@ -20,7 +27,7 @@ export const Courses = ({ courseType }) => {
     <>
       {
         (filteredCourses.length !== 0) ? filteredCourses.map((course) => (<CourseInTracker course={course} key={course.course_id} />))
-        : ""
+        : "No courses in this course type"
       }
     </>
   )

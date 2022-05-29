@@ -14,13 +14,13 @@ const MyTabs = () => {
         </TabList>
 
         <TabPanel>
-          <CourseType />
+          <CourseType completeFilter={null} />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <CourseType completeFilter={1} />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 3</h2>
+          <CourseType completeFilter={0} />
         </TabPanel>
       </Tabs>
     </div>

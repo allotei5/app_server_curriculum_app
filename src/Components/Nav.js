@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, NavLink } from "react-router-dom";
 import ashesi_logo from "../Images/ashesi_logo.png"
 import './Nav.css';
 
@@ -18,9 +18,9 @@ const Nav = () => {
         </div>
         <nav>
           <ul className="nav__links">
-            <li> <Link className="link" to="/">Home</Link></li>
-            <li> <Link className="link" to="/course-tracker">Course Tracker</Link></li>
-            <li> <Link className="link" to="/view-curriculum">View Curriculum</Link></li>
+            <li> <NavLink className="link" activeClassName="active" to="/">Home</NavLink></li>
+            <li> <NavLink className="link" activeClassName="active" to="/course-tracker">Course Tracker</NavLink></li>
+            <li> <NavLink className="link" activeClassName="active" to="/view-curriculum">View Curriculum</NavLink></li>
             {
               (currentUser.user_role == 1) ? 
               <>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { fetchCourseTypes } from "../../serverRequests";
 import { Courses } from './Courses';
 
-export const CourseType = () => {
+export const CourseType = ({ completeFilter }) => {
     const [ courseTypes, setCourseTypes ] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export const CourseType = () => {
             courseTypes.map((courseType, index) => (
                 <div key={index}>
                     <h2>{courseType.course_type_name}</h2>
-                    <Courses courseType={courseType.course_type_id} />
+                    <Courses courseType={courseType.course_type_id} completeFilter={completeFilter} />
                 </div>
             ))
         }
