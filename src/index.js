@@ -5,11 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { UserProvider } from "./Context/UserContext"
+import { TrackerProvider } from "./Context/TrackerContext"
+import { GradeProvider } from "./Context/GradeContext";
 
 ReactDOM.render(
   
     <BrowserRouter basename={"/app_server_curriculum_app"}>
-      <App />
+      <UserProvider>
+        <TrackerProvider>
+          <GradeProvider>
+            <App />
+          </GradeProvider>
+        </TrackerProvider>
+      </UserProvider>
     </BrowserRouter>,
   
   document.getElementById("root")

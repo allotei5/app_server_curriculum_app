@@ -1,9 +1,15 @@
-// import React from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import ashesi_logo from "../Images/ashesi_logo.png"
 import './Nav.css';
 
-export default function Nav() {
+import { UserContext } from "../Context/UserContext";
+import { ProfileModalButton } from "./Profile/ProfileModalButton";
+
+const Nav = () => {
+
+  const { currentUser } = useContext(UserContext);
+
   return (
     <>
       <header>
@@ -15,13 +21,20 @@ export default function Nav() {
             <li> <Link className="link" to="/">Home</Link></li>
             <li> <Link className="link" to="/course-tracker">Course Tracker</Link></li>
             <li> <Link className="link" to="/view-curriculum">View Curriculum</Link></li>
-            <li> <Link className="link" to="/edit-curriculum">Edit Curriculum</Link></li>
-            <li> <Link className="link" to="/edit-prerequisite">Edit Prerequisites</Link></li>
+            {
+              (currentUser.user_role == 1) ? 
+              <>
+                <li> <Link className="link" to="/edit-curriculum">Edit Curriculum</Link></li>
+                <li> <Link className="link" to="/edit-prerequisite">Edit Prerequisites</Link></li>
+              </>
+              : ""
+            }
           </ul>
         </nav>
         <nav>
           <ul className="nav__links app__links">
-            <li><Link className="link" to="/profile">Profile</Link></li>
+            {/* <li><Link className="link" to="/profile">Profile</Link></li> */}
+            <ProfileModalButton />
             <li><a className="link" href="#">Apps Dashboard</a></li>
           </ul>
         </nav>
@@ -30,3 +43,5 @@ export default function Nav() {
     </>
   );
 }
+
+export default Nav;

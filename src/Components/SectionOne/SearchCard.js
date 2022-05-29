@@ -4,23 +4,6 @@ import { SearchPrerequisites } from './SearchPrerequisites';
 
 export const SearchCard = ({ courses }) => {    
 
-    const [ searchedCourses, setSearchCourses ] = useState([]);
-    console.log(courses);
-
-    // setSearchCourses(courses.filter((course) => {
-    //     let regex = new RegExp(searchTerm);
-    //     return regex.test(course.course_name);
-    // }))
-    // console.log(courses.filter((value) => {
-    //     let regex = new RegExp(`${searchTerm}`);
-    //     // console.log(regex.test('calculus 1'))
-    //     return regex.test(value.course_name.toLowerCase());
-    // }));
-    // let regex = new RegExp(`${searchTerm}`);
-    // console.log(regex.test('Calculus 1'.toLowerCase()))
-
-
-    // console.log(searchTerm);
   return (
     courses.map((course) => (
         <div className='search-card-border'>

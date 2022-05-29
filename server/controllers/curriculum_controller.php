@@ -53,6 +53,18 @@ function select_majors() {
     }
 }
 
+function select_departments() {
+    $depts = new curriculum_class;
+
+    $run_query = $depts->select_departments();
+
+    if($run_query){
+        return $depts->db_fetch_all();
+    }else{
+        return false;
+    }
+}
+
 function select_course_type() {
     $course_type = new curriculum_class;
 
@@ -342,6 +354,21 @@ function update_users_course_in_curriculum($user_id, $curriculum_track_id, $curr
     if($run_query) {
         return $run_query;
     }else{
+        return false;
+    }
+}
+
+function select_student_courses_in_tracker($user_id) {
+    $tracker = new curriculum_class;
+
+    $run_query = $tracker->select_student_courses_in_tracker($user_id);
+
+    if($run_query) {
+        $courses = $tracker->db_fetch_all();
+        if(empty($courses)) {
+            // insert courses into table
+        }
+    } else {
         return false;
     }
 }

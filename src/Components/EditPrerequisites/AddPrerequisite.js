@@ -13,17 +13,6 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
     const [formMinimumGrade, setFormMinimumGrade] = useState('');
     const [minimumGrades, setMinimumGrades] = useState([]);
 
-    // const file_path = "http://localhost/app_server_curriculum_app/server/actions/courses/get_all_courses.php";
-    // fetch(file_path)
-    // .then((res) => {
-    //     // console.log(res)
-    //     // console.log(res);
-    //     return res.json()
-    // })
-    // .then(data => {
-    //     console.log(data)
-    // })
-    // hi
 
     useEffect(() => {
         const getCourses = async () => {

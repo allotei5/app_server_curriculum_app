@@ -7,6 +7,11 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_departments() {
+        $sql = "SELECT * FROM `apps_department`";
+        return $this->db_query($sql);
+    }
+
     public function select_year_groups() {
         $sql = "SELECT * FROM `apps_year_group`";
         return $this->db_query($sql);
@@ -120,11 +125,11 @@ class curriculum_class extends db_connection {
     }
 
     public function select_curriculum_by_year_group_and_major($year_group_id, $major_id){
-        $sql = "SELECT `app_server_year_group`.`year_group_name`,`curriculum_curriculum`.`major_id`, `curriculum_curriculum`.`year_group`, `app_server_major`.`major_code`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
+        $sql = "SELECT `apps_year_group`.`year_group_name`,`curriculum_curriculum`.`major_id`, `curriculum_curriculum`.`year_group_id`, `apps_major`.`major_code`, `curriculum_curriculum`.`lastupdate`, `curriculum_curriculum`.`curriculum_id`
         FROM `curriculum_curriculum`
-        INNER JOIN `app_server_year_group` ON `curriculum_curriculum`.`year_group`=`app_server_year_group`.`year_group_id`
-        INNER JOIN `app_server_major` ON `curriculum_curriculum`.`major_id`=`app_server_major`.`major_id` 
-        WHERE `year_group`='$year_group_id' AND `curriculum_curriculum`.`major_id`='$major_id'";
+        INNER JOIN `apps_year_group` ON `curriculum_curriculum`.`year_group_id`=`apps_year_group`.`year_group_id`
+        INNER JOIN `apps_major` ON `curriculum_curriculum`.`major_id`=`apps_major`.`major_id` 
+        WHERE `curriculum_curriculum`.`year_group_id`='$year_group_id' AND `curriculum_curriculum`.`major_id`='$major_id'";
         return $this->db_query($sql);
     }
 
@@ -217,34 +222,34 @@ class curriculum_class extends db_connection {
     }
 
     public function select_student_courses_in_tracker($user_id){
-        $sql = "SELECT `app_server_course`.`course_name`, `app_server_course`.`course_unit`, `app_server_course`.`course_id`, `curriculum_track`.`curriculum_track_id`, `curriculum_track`.`user_id`, `curriculum_track`.`curriculum_detail_id`, `curriculum_track`.`completed`, `curriculum_track`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `app_server_semester`.`semester_name`, `app_server_student_level`.`student_level_name`
-        FROM `app_server_course`
+        $sql = "SELECT `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_id`, `curriculum_tracker`.`curriculum_tracker_id`, `curriculum_tracker`.`user_id`, `curriculum_tracker`.`curriculum_detail_id`, `curriculum_tracker`.`completed`, `curriculum_tracker`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `apps_semester`.`semester_name`, `apps_student_level`.`student_level_name`
+        FROM `apps_course`
         INNER JOIN `curriculum_detail`
-        ON `app_server_course`.`course_id`=`curriculum_detail`.`course_id`
-        INNER JOIN `curriculum_track`
-        ON `curriculum_track`.`curriculum_detail_id`=`curriculum_detail`.`curriculum_detail_id`
-        INNER JOIN `app_server_student_level`
-        ON `app_server_student_level`.`student_level_id`=`curriculum_detail`.`student_level`
-        INNER JOIN `app_server_semester`
-        ON `app_server_semester`.`semester_id`=`curriculum_detail`.`semester_id`
-        WHERE `curriculum_track`.`user_id`='$user_id'";
+        ON `apps_course`.`course_id`=`curriculum_detail`.`course_id`
+        INNER JOIN `curriculum_tracker`
+        ON `curriculum_tracker`.`curriculum_detail_id`=`curriculum_detail`.`curriculum_detail_id`
+        INNER JOIN `apps_student_level`
+        ON `apps_student_level`.`student_level_id`=`curriculum_detail`.`student_level`
+        INNER JOIN `apps_semester`
+        ON `apps_semester`.`semester_id`=`curriculum_detail`.`semester_id`
+        WHERE `curriculum_tracker`.`user_id`='$user_id'";
         return $this->db_query($sql);
     }
     public function select_student_courses_in_tracker_completed($user_id){
-        $sql = "SELECT `app_server_course`.`course_name`, `app_server_course`.`course_unit`, `app_server_course`.`course_id`, `curriculum_track`.`curriculum_track_id`, `curriculum_track`.`user_id`, `curriculum_track`.`curriculum_detail_id`, `curriculum_track`.`completed`, `curriculum_track`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `app_server_semester`.`semester_name`, `app_server_student_level`.`student_level_name`, `app_server_grade_breakdown`.`grade_point`
-        FROM `app_server_course`
+        $sql = "SELECT `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_id`, `curriculum_tracker`.`curriculum_tracker_id`, `curriculum_tracker`.`user_id`, `curriculum_tracker`.`curriculum_detail_id`, `curriculum_tracker`.`completed`, `curriculum_tracker`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `apps_semester`.`semester_name`, `apps_student_level`.`student_level_name`, `apps_grade_breakdown`.`grade_point`
+        FROM `apps_course`
         INNER JOIN `curriculum_detail`
-        ON `app_server_course`.`course_id`=`curriculum_detail`.`course_id`
-        INNER JOIN `curriculum_track`
-        ON `curriculum_track`.`curriculum_detail_id`=`curriculum_detail`.`curriculum_detail_id`
-        INNER JOIN `app_server_student_level`
-        ON `app_server_student_level`.`student_level_id`=`curriculum_detail`.`student_level`
-        INNER JOIN `app_server_semester`
-        ON `app_server_semester`.`semester_id`=`curriculum_detail`.`semester_id`
-        INNER JOIN `app_server_grade_breakdown`
-        ON `app_server_grade_breakdown`.`grade_id` = `curriculum_track`.`grade_id`
-        WHERE `curriculum_track`.`user_id`='$user_id'
-        AND `curriculum_track`.`completed`=1
+        ON `apps_course`.`course_id`=`curriculum_detail`.`course_id`
+        INNER JOIN `curriculum_tracker`
+        ON `curriculum_tracker`.`curriculum_detail_id`=`curriculum_detail`.`curriculum_detail_id`
+        INNER JOIN `apps_student_level`
+        ON `apps_student_level`.`student_level_id`=`curriculum_detail`.`student_level`
+        INNER JOIN `apps_semester`
+        ON `apps_semester`.`semester_id`=`curriculum_detail`.`semester_id`
+        INNER JOIN `apps_grade_breakdown`
+        ON `apps_grade_breakdown`.`grade_id` = `curriculum_tracker`.`grade_id`
+        WHERE `curriculum_tracker`.`user_id`='$user_id'
+        AND `curriculum_tracker`.`completed`=1
         ";
         return $this->db_query($sql);
     }

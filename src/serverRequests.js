@@ -35,7 +35,6 @@ export const createNewCurriculum = async (curriculum) => {
         })
     });
     const data = await res.json();
-    console.log(data);
     return data;
 }
 
@@ -53,6 +52,51 @@ export const fetchAcademicYears = async () => {
 
 export const fetchSemesters = async () => {
     const res = await fetch(`${backendServer}/curriculum/fetch_semesters.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchCourseTypes = async () => {
+    const res = await fetch(`${backendServer}/courses/get_all_course_types.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchLoggedInUser = async () => {
+    const res = await fetch(`${backendServer}/user/get_user.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchDepartments = async () => {
+    const res = await fetch(`${backendServer}/curriculum/fetch_departments.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchTrackerCourses = async (user, year, major) => {
+    const res = await fetch(`${backendServer}/tracker/get_student_courses_in_tracker.php?user_id=${user}&major=${major}&year_group=${year}`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchGradeBreakDown = async () => {
+    const res = await fetch(`${backendServer}/courses/get_grade_breakdown.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const updateCourseInTracker = async (trackerCourse) => {
+    const res = await fetch(`${backendServer}/tracker/update_course_in_tracker.php`, {
+        method: 'PUT', 
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...trackerCourse
+        })
+    });
+
     const data = await res.json();
     return data;
 }
