@@ -1,11 +1,12 @@
 import React from 'react'
 import hero_image from "../../Images/hero_image.svg"
+import graduation from "../../Images/graduation.svg"
 
 
 export const HeroIllustration = () => {
     return (
-        <div style={{textAlign: "right"}}>
-            <img width="100%" src={hero_image} alt="logo" />
+        <div style={{justifySelf: "end", width: "500px"}}>
+            <img width="90%" src={graduation} alt="logo" />
         </div>
     )
 }

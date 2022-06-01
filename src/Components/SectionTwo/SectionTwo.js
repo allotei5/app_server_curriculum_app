@@ -11,7 +11,7 @@ export default function SectionTwo() {
           Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis,
           diam a arcu, mi aliquam.
         </p>
-        <div style={{textAlign: "right"}}><Button ButtonName="Call to action" ButtonSrc="/" /></div>
+        <div style={{textAlign: "right"}}><Button ButtonName="Call to action" ButtonStyle="button secondary-button" ButtonSrc="/" /></div>
       </div>
       <div className="section-two-curriculum-grid">
         <div className="">

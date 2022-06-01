@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Button(props) {
+const Button = ({ButtonSrc, ButtonName, ButtonStyle}) => {
   return (
     // remomber to do css for primary button and secondary button
-      <Link className="primary-button" to={props.ButtonSrc}>{props.ButtonName}</Link>
+      <Link className={ButtonStyle} to={ButtonSrc}>{ButtonName}</Link>
   );
 }
 

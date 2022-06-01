@@ -16,6 +16,7 @@ export const Courses = ({curriculum, year, semester}) => {
     <>
       
           {
+            (curriculumCourses.length !== 0) ? 
             curriculumCourses.map((course, index) => (
               <div className="courses-grid" key={index}>
                 <p className='headline-text'>{course.course_name}</p>
@@ -23,7 +24,7 @@ export const Courses = ({curriculum, year, semester}) => {
                 <p className='headline-text'>Pass grade: {course.grade_letter}</p>
                 <p className='headline-text'>{course.course_type_name}</p>
               </div>
-            ))
+            )): <p className='headline-text'>There are no courses for this semester</p>
           }
     </>
   )

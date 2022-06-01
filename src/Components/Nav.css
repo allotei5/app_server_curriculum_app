@@ -21,13 +21,24 @@ header {
 
 .link{
     text-decoration: none;
-    color: #000;
+    color: #515354;
 }
 
 .link:hover {
-    color: #923d41
+    color: #000
 }
 
 .active {
-    color: #923d41;
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.img_div {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    padding-top: 18px;
 }

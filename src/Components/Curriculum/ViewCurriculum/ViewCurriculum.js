@@ -11,7 +11,6 @@ export const ViewCurriculum = () => {
     useEffect(() => {
         const getCurriculums = async () => {
             const curriculumFromServer = await fetchCurriculums();
-            console.log(curriculumFromServer);
             const preppedCurriculum = [];
             curriculumFromServer.forEach((value, index) => {
                 preppedCurriculum.push({
@@ -25,6 +24,7 @@ export const ViewCurriculum = () => {
 
         getCurriculums();
     }, [])
+    
   return (
     <div>
         <div className="course-tracker-page">

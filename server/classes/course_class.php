@@ -2,6 +2,11 @@
 require_once(dirname(__FILE__)."/../settings/db_class.php");
 
 class course_class extends db_connection {
+    /**
+     * It returns a list of all courses in the database.
+     * 
+     * @return The result of the query.
+     */
     public function select_all_courses() {
         $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
@@ -11,6 +16,13 @@ class course_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    /**
+     * It returns all courses of a given type.
+     * 
+     * @param course_type 1
+     * 
+     * @return The query result.
+     */
     public function select_all_courses_by_type($course_type) {
         $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
@@ -22,6 +34,11 @@ class course_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    /**
+     * Select all course types from the apps_course_type table.
+     * 
+     * @return The query result.
+     */
     public function select_all_course_types() {
         $sql = "SELECT * FROM `apps_course_type`";
         return $this->db_query($sql);

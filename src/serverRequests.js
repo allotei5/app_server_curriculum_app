@@ -100,3 +100,9 @@ export const updateCourseInTracker = async (trackerCourse) => {
     const data = await res.json();
     return data;
 }
+
+export const fetchCourses = async () => {
+    const res = await fetch(`${backendServer}/courses/get_all_courses.php`);
+    const data = await res.json();
+    return data;
+}

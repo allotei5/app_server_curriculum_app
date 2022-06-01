@@ -3,16 +3,16 @@ import { HomePageHero } from './HomePageHero/HomePageHero'
 import SectionOne from './SectionOne/SectionOne'
 import SectionTwo from './SectionTwo/SectionTwo'
 import { HomeCourseTrackerHero } from './HomeCourseTrackerHero'
-import { SectionFour } from './SectionFour'
+import { Footer } from './Footer'
+import { Loading } from './Loading/Loading'
 
 function Home() {
     return (
         <div>
             <HomePageHero />
             <SectionOne/>
-            <SectionTwo/>
+            {/* <SectionTwo/> */}
             <HomeCourseTrackerHero />
-            <SectionFour />
         </div>
     )
 }

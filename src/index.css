@@ -15,7 +15,7 @@ code {
 .headline-title {
   font-size: 40px;
   line-height: 48px;
-  font-weight: 600;
+  font-weight: 700;
   color: #554343;
 
 }
@@ -28,8 +28,8 @@ code {
 }
 
 .sub-title {
-  font-weight: 300px;
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 35px;
   line-height: 35px;
   color: #515354;
 }
@@ -41,21 +41,40 @@ code {
   color: #515354;
 }
 
-.primary-button {
-  color: #fff;
+.button {
   text-decoration: none;
-  background: #923d41;
   padding: 10px 20px;
   border-radius: 5px;
   display: inline-block;
   margin-right: 10px;
 }
 
+.primary-button {
+  background: #923d41;
+  color: #fff;
+}
+
+.primary-button:hover {
+  color: #fff;
+  background: #7f3438;
+
+}
+
+.secondary-button {
+  background: #fff;
+  color: #923d41;
+  border: #923d41 2px solid;
+}
+
+.secondary-button:hover {
+  color: #923d41;
+}
+
 .HomePageHero{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: auto 5%;
-  height: 80vh;
+  margin: auto 9%;
+  height: 82vh;
   /* border: lawngreen 1px solid; */
   align-items: center;
 }
@@ -73,7 +92,7 @@ code {
 }
 
 .section-two{
-  margin: auto 5%;
+  margin: auto 8%;
   height: 50vh;
   /* border: lawngreen 1px solid; */
   padding: 80px 0;
@@ -89,11 +108,12 @@ code {
 .section-3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: auto 5%;
+  margin: 150px 9%;
 }
 
 .HomeCourseTrackerText{
   text-align: end;
+  align-self: center;
 }
 
 .section-four {
@@ -167,6 +187,7 @@ code {
   border: #554343 1px solid;
   border-radius: 10px;
   padding-top: 10px;
+  padding-bottom: 10px;
   vertical-align: center;
   cursor: pointer;
   /* background-color: #923d41; */
@@ -300,6 +321,7 @@ code {
 .courses-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 0 20px;
 }
 
 .grid {
@@ -327,4 +349,17 @@ code {
   text-align: center;
   padding: 10px 5px;
   cursor: pointer;
+}
+
+.search-bar {
+  width: 40rem;
+  background: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar:focus {
+  border: #923d41 1px solid !important;
 }
