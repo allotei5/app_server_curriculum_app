@@ -8,7 +8,6 @@ export const TrackerContext = createContext({
 export const TrackerProvider = ({ children }) => {
     
     const [ courses, setCourses ] = useState(null);
-    const [ course, setCourse ] = useState(null);
     const value = { courses, setCourses };
 
     return <TrackerContext.Provider value={value}>{children}</TrackerContext.Provider>

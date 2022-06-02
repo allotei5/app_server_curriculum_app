@@ -10,7 +10,7 @@ export const Courses = ({ courseType, completeFilter }) => {
 
   useEffect(() => {
 
-    if(courses !== null) {
+    if(courses !== null && courses.response === undefined) {
       // Filter courses by type
       setFilteredCourses(courses.filter((course) => {
         if(completeFilter === null) {
@@ -19,6 +19,8 @@ export const Courses = ({ courseType, completeFilter }) => {
           return course.course_type === courseType && course.completed == completeFilter
         }
       }));
+    } else {
+      setFilteredCourses([]);
     }
 
   }, [courses])

@@ -8,7 +8,7 @@ import ModalTitle from "react-bootstrap/ModalTitle";
 
 import {  Button } from "react-bootstrap"
 
-import { fetchDepartments, fetchYearGroups, fetchMajors } from "../../serverRequests";
+import { fetchDepartments, fetchYearGroups, fetchMajors, updateProfile } from "../../serverRequests";
 
 import { UserContext } from '../../Context/UserContext';
 
@@ -48,8 +48,11 @@ export const ProfileModal = ({ show, handleClose}) => {
 
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
+    // console.log(currentUser);
+
     const studentDetails = (currentUser.student_details !== undefined) ? (currentUser.student_details) : (null);
 
+    const [ formStudentId, setFormStudentId ] = useState((studentDetails) ? (studentDetails.student_id) : "");
     const [ formDepartment, setFormDepartment ] = useState((studentDetails) ? (studentDetails.student_dept) : "");
     const [ formYearGroup, setFormYearGroup ] = useState((studentDetails) ? (studentDetails.student_year_group) : "");
     const [ formMajors, setFormMajors ] = useState((studentDetails) ? (studentDetails.student_major) : "");
@@ -61,30 +64,33 @@ export const ProfileModal = ({ show, handleClose}) => {
     const [ success, setSuccess ] = useState(false);
     const [ formError, setFormError ] = useState(false);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         // submit form to backend
         // checking if new values have been entered
         if (studentDetails !== null) {
             // basically check if any of the fields have changed
-            if (formDepartment !== studentDetails.student_dept || formYearGroup !== studentDetails.student_year_group || formMajors !== studentDetails.student_major) {
+            if ( formStudentId !== studentDetails.student_id || formDepartment !== studentDetails.student_dept || formYearGroup !== studentDetails.student_year_group || formMajors !== studentDetails.student_major) {
                 const updatedUser = {
                     ...currentUser,
                     student_details: {
+                        student_id: formStudentId,
                         student_dept: formDepartment,
                         department_name: formDepartmentName,
                         student_year_group: formYearGroup,
                         year_group_name: formYearGroupName,
-                        major_id: formMajors,
-                        major_name: formMajorsName
+                        student_major: formMajors,
+                        major_name: formMajorsName,
+                        changed: true
                     }
                 }
 
-                console.log(updatedUser);
+                // console.log(updatedUser);
                 setCurrentUser(updatedUser);
                 setSuccess(true);
+                
+                const updateProfileBackend = await updateProfile(updatedUser);
 
-                // submit form to backend
 
                 setTimeout(() => {
                     handleClose();
@@ -117,7 +123,10 @@ export const ProfileModal = ({ show, handleClose}) => {
                     (formError) ? <div className="profile-form" style={{color: "maroon"}}>All fields are required</div>
                     : ""
                 }
-                
+                <div className='profile-form'>
+                    <label>Enter your student ID</label>
+                    <input type="number" className="form-control" value={formStudentId} onChange={ e => setFormStudentId(e.target.value) } />
+                </div>
 
                 <div className="profile-form">
                     <label>Choose your department</label>
@@ -167,7 +176,6 @@ export const ProfileModal = ({ show, handleClose}) => {
                 </div>
 
                 <div className="profile-form">
-
                     <button type='submit' className='btn btn-primary'>Update</button>
                 </div>
 

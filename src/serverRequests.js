@@ -106,3 +106,18 @@ export const fetchCourses = async () => {
     const data = await res.json();
     return data;
 }
+
+export const updateProfile = async (currentUser) => {
+    const res = await fetch(`${backendServer}/user/update_student_details.php`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...currentUser
+        })
+    })
+
+    const data = await res.json();
+    return data;
+}

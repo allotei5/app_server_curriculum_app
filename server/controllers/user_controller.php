@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__)."/../classes/user_class.php");
+require_once(dirname(__FILE__)."/../controllers/tracker_controller.php");
 
 function get_user_details($user_id) {
     $user = new user_class;
@@ -18,5 +19,37 @@ function get_user_details($user_id) {
         }
 
         return $user_details;
+    }
+}
+
+function update_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major) {
+    $user = new user_class;
+
+    // check if details are already in the table
+    $run_query_check_for_student_details = $user->select_student_details($user_id);
+
+    $student_details = $user->db_fetch_one();
+
+    // if student details are empty run insert else run update
+    if(empty($student_details)) {
+
+        $run_query_insert = $user->insert_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major);
+        if($run_query_insert) {
+            return true;
+        } else {
+            return false;
+        }
+
+    } else {
+
+        $run_query_update = $user->update_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major);
+        if($run_query_update) {
+            // delete courses in tracker
+            delete_student_courses_in_tracker($user_id);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

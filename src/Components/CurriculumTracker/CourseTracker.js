@@ -6,6 +6,8 @@ import { UserContext } from '../../Context/UserContext'
 import { TrackerContext } from '../../Context/TrackerContext'
 import { GradeContext } from '../../Context/GradeContext'
 
+import error_illustion from '../../Images/error_illustration.svg';
+
 import { fetchTrackerCourses, fetchGradeBreakDown } from '../../serverRequests'
 
 const CourseTracker = () => {
@@ -21,12 +23,13 @@ const CourseTracker = () => {
             if (currentUser.student_details !== undefined) {
                 const courses = await fetchTrackerCourses(currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major);
                 setCourses(courses);
+                console.log(currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major)
+                console.log(currentUser.student_details);
             } else {
                 setUserPrompt(true);
             }
         }
         getTrackerCourses();
-        console.log(currentUser)
     }, [currentUser])
 
     useEffect(() => {
@@ -34,13 +37,8 @@ const CourseTracker = () => {
             const grades = await fetchGradeBreakDown();
             setGrades(grades);
         }
-
         getGradeBreakDown();
     }, [])
-
-    // useEffect(() => {
-    //     console.log(grades);
-    // }, [grades])
 
     return (
         <div className="course-tracker-page">
@@ -51,12 +49,21 @@ const CourseTracker = () => {
                             <div>
                                 <h3 className='sub-title'>praesent auctor nulla nec fusce.</h3>
                                 <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                                {
+                                    (courses !== null) ? (courses.response !== undefined) ? <div>No curriculum available for this user</div> : "" : ""
+                                }
                             </div>
                             <Cgpa />
                         </div>
                         
                         <div className="">
-                            <MyTabs/>
+                            {
+                                (courses !== null) ? (courses.response !== undefined) ? "" : <MyTabs/> : ""
+                            }
+                            {/* {
+                                (courses.response !== undefined) ? <div><img width="90%" src={error_illustion} alt="logo" /></div> : 
+                            } */}
+                            
                         </div>
                     </>
                 :

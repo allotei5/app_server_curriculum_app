@@ -33,5 +33,11 @@ class tracker_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function delete_student_courses_in_tracker($user_id) {
+
+        $sql = "DELETE FROM `curriculum_tracker` WHERE `user_id` ='$user_id'";
+        return $this->db_query($sql);
+    }
+
 
 }

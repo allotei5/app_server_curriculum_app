@@ -16,4 +16,14 @@ class user_class extends db_connection {
         WHERE `apps_student`.`apps_user_id`='$user_id'";
         return $this->db_query($sql);
     }
+
+    public function update_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major) {
+        $sql = "UPDATE `apps_student` SET `student_id`='$student_id',`student_dept`='$student_dept',`student_year_group`='$student_year_group',`student_major`='$student_major' WHERE `apps_user_id`='$user_id'";
+        return $this->db_query($sql);
+    }
+
+    public function insert_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major){
+        $sql = "INSERT INTO `apps_student`(`apps_user_id`, `student_id`, `student_dept`, `student_year_group`, `student_major`) VALUES ('$user_id','$student_id','$student_dept','$student_year_group','$student_major')";
+        return $this->db_query($sql);
+    }
 }

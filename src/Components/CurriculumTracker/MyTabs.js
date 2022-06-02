@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { CourseType } from "./CourseType";
 
 const MyTabs = () => {
-  const [ state, setState ] = useState([])
   return (
     <div className="tabs-div">
       <Tabs className="">

@@ -19,7 +19,7 @@ function select_student_courses_in_tracker($user_id, $major, $year_group) {
 
         if(empty($curriculum)) {
             return [
-                "responseMessage" => "Curriculum Unavailable"
+                "response" => false
             ];
         } else {
             $curriculum_id = $curriculum["curriculum_id"];
@@ -49,4 +49,27 @@ function update_course_in_tracker($tracker_id, $completed, $grade_id) {
         return false;
     }
     
+}
+
+function delete_student_courses_in_tracker($user_id) {
+    $tracker = new tracker_class;
+
+    $tracker_course_query = $tracker->select_student_courses_in_tracker($user_id);
+
+    $courses = $tracker->db_fetch_all();
+
+    if(!empty($courses)) {
+
+        $run_query = $tracker->delete_student_courses_in_tracker($user_id);
+
+        if($run_query) {
+            return $run_query;
+        } else {
+            return false;
+        }
+
+    }
+
+    return true;
+  
 }
