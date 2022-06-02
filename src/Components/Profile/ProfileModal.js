@@ -49,6 +49,9 @@ export const ProfileModal = ({ show, handleClose}) => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
     // console.log(currentUser);
+    useEffect(() => {
+        console.log(currentUser)
+    }, [currentUser]);
 
     const studentDetails = (currentUser.student_details !== undefined) ? (currentUser.student_details) : (null);
 
@@ -91,7 +94,6 @@ export const ProfileModal = ({ show, handleClose}) => {
                 
                 const updateProfileBackend = await updateProfile(updatedUser);
 
-
                 setTimeout(() => {
                     handleClose();
                     setSuccess(false)
@@ -102,7 +104,32 @@ export const ProfileModal = ({ show, handleClose}) => {
             }
 
         }else {
-            handleClose();
+
+            const updatedUser = {
+                ...currentUser,
+                student_details: {
+                    student_id: formStudentId,
+                    student_dept: formDepartment,
+                    department_name: formDepartmentName,
+                    student_year_group: formYearGroup,
+                    year_group_name: formYearGroupName,
+                    student_major: formMajors,
+                    major_name: formMajorsName,
+                    changed: true
+                }
+            }
+
+            // console.log(updatedUser);
+            setCurrentUser(updatedUser);
+            setSuccess(true);
+            
+            const updateProfileBackend = await updateProfile(updatedUser);
+
+            setTimeout(() => {
+                handleClose();
+                setSuccess(false)
+            }, 1500)
+
         }
         
     }

@@ -30,6 +30,7 @@ const CourseTracker = () => {
             }
         }
         getTrackerCourses();
+        console.log(currentUser);
     }, [currentUser])
 
     useEffect(() => {
@@ -67,10 +68,8 @@ const CourseTracker = () => {
                         </div>
                     </>
                 :
-                <>Please set up your profile to continue using this feature</>
+                <div className="course-tracker-grid">Please set up your profile to continue using this feature</div>
             }
-            
-            
         </div>
     )
 }

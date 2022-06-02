@@ -14,7 +14,13 @@ function get_user_details($user_id) {
             // fetch and add student details
             $run_query_2 = $user->select_student_details($user_id);
             if($run_query_2) {
-                $user_details['student_details'] = $user->db_fetch_one();
+                $student_details = $user->db_fetch_one();
+
+                if(empty($student_details)) {
+                    return $user_details;
+                }
+
+                $user_details['student_details'] = $student_details;
             }
         }
 
