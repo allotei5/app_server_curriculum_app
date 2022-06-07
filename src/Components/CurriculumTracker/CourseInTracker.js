@@ -25,7 +25,7 @@ export const CourseInTracker = ({ course }) => {
       course.grade_id = null;
       setCourses(courses.map(prevState => prevState.curriculum_tracker_id === course.curriculum_tracker_id ? course : prevState));
 
-      if(currentUser !== null && currentUser.student_details !== undefined) {
+      if(currentUser !== null && currentUser.student_details !== undefined && currentUser.user_role == 4) {
         const updateCourse = await updateCourseInTracker(course);
         if(updateCourse.response) {
           console.log("worked");

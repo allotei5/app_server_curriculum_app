@@ -20,6 +20,7 @@ const CourseTracker = () => {
 
     useEffect(() => {
         const getTrackerCourses = async () => {
+            setUserPrompt(false);
             if (currentUser.student_details !== undefined) {
                 const courses = await fetchTrackerCourses(currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major);
                 setCourses(courses);
@@ -30,7 +31,7 @@ const CourseTracker = () => {
             }
         }
         getTrackerCourses();
-        console.log(currentUser);
+        console.log("changed");
     }, [currentUser])
 
     useEffect(() => {
@@ -40,6 +41,10 @@ const CourseTracker = () => {
         }
         getGradeBreakDown();
     }, [])
+
+    useEffect(() => {
+        console.log(courses)
+    }, [courses])
 
     return (
         <div className="course-tracker-page">

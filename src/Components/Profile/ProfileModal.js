@@ -92,7 +92,9 @@ export const ProfileModal = ({ show, handleClose}) => {
                 setCurrentUser(updatedUser);
                 setSuccess(true);
                 
-                const updateProfileBackend = await updateProfile(updatedUser);
+                if (currentUser.user_role == 4) {
+                    const updateProfileBackend = await updateProfile(updatedUser);
+                }
 
                 setTimeout(() => {
                     handleClose();
@@ -123,8 +125,9 @@ export const ProfileModal = ({ show, handleClose}) => {
             setCurrentUser(updatedUser);
             setSuccess(true);
             
-            const updateProfileBackend = await updateProfile(updatedUser);
-
+            if (currentUser.user_role == 4) {
+                const updateProfileBackend = await updateProfile(updatedUser);
+            }
             setTimeout(() => {
                 handleClose();
                 setSuccess(false)
