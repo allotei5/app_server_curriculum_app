@@ -5,9 +5,13 @@ import { createNewCurriculum, fetchCurriculumByYearGroup, fetchYearGroups } from
 import { Link } from 'react-router-dom';
 import { CreateCurriculum } from './CreateCurriculum';
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { Navigate } from 'react-router-dom';
+
+import { UserContext } from '../../../Context/UserContext';
 
 export const EditCurriculumPage = () => {
+    const { currentUser } = useContext(UserContext)
 
     const [ yearGroups, setYearGroups ] = useState([]);
     const [ curriculums, setCurriculums ] = useState([]);
@@ -37,6 +41,14 @@ export const EditCurriculumPage = () => {
     const addNewCurriculum = async (curriculum) => {
         const newCurriculum = await createNewCurriculum(curriculum);
         setCurriculums([...curriculums, newCurriculum]);
+    }
+
+    if (currentUser.permissions === undefined) {
+        return <Navigate to="/" replace />
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        return <Navigate to="/" replace />
     }
 
   return (

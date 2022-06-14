@@ -67,6 +67,14 @@ export const ProfileModal = ({ show, handleClose}) => {
     const [ success, setSuccess ] = useState(false);
     const [ formError, setFormError ] = useState(false);
 
+    if (currentUser.user_role != 4 || currentUser.user_role != 1 || currentUser.user_role != 2) {
+        handleClose();
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        handleClose();
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault();
         // submit form to backend

@@ -1,9 +1,15 @@
+import { useContext } from 'react';
 import { useState, useEffect } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import { AccordionContainer } from './AccordionContainer';
 import { CourseTypeAccordion } from './CourseTypeAccordion';
+import { Navigate } from 'react-router-dom';
+
 
 
 export const EditPrerequisites = () => {
+
+    const { currentUser } = useContext(UserContext);
 
     const [courses, setCourses] = useState([]);
     const [courseType, setCourseType] = useState([]);
@@ -27,6 +33,13 @@ export const EditPrerequisites = () => {
 
 
     // console.log(courseType);
+    if (currentUser.permissions === undefined) {
+        return <Navigate to="/" replace />
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        return <Navigate to="/" replace />
+    }
 
   return (
     <div className="edit-prerequisite-page">

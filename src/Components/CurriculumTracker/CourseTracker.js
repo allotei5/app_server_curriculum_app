@@ -9,12 +9,15 @@ import { GradeContext } from '../../Context/GradeContext'
 import error_illustion from '../../Images/error_illustration.svg';
 
 import { fetchTrackerCourses, fetchGradeBreakDown } from '../../serverRequests'
+import { Navigate } from 'react-router-dom'
 
 const CourseTracker = () => {
 
     const { currentUser } = useContext(UserContext);
     const { courses, setCourses } = useContext(TrackerContext);
     const { grades, setGrades } = useContext(GradeContext);
+
+    
     
     const [ userPrompt, setUserPrompt ] = useState(false);
 
@@ -45,6 +48,14 @@ const CourseTracker = () => {
     useEffect(() => {
         console.log(courses)
     }, [courses])
+
+    if (currentUser.user_role != 4 || currentUser.user_role != 1 || currentUser.user_role != 2) {
+        return <Navigate to="/" replace />
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        return <Navigate to="/" replace />
+    }
 
     return (
         <div className="course-tracker-page">

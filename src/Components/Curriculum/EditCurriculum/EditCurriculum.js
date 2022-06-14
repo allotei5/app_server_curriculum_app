@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { useState, useEffect } from 'react'
+import { UserContext } from '../../../Context/UserContext';
 import { CurriculumYearAccordion } from './CurriculumYearAccordion'
 import './EditCurriculum.css'
+import { Navigate } from 'react-router-dom';
 
 export const EditCurriculum = () => {
 
     const [ academicYears, setAcademicYears ] = useState([]);
+    const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
         const getAcademicYears = async () => {
@@ -23,6 +27,14 @@ export const EditCurriculum = () => {
     }
 
     fetchAcademicYears();
+
+    if (currentUser.permissions === undefined) {
+        return <Navigate to="/" replace />
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        return <Navigate to="/" replace />
+    }
 
   return (
       <>
