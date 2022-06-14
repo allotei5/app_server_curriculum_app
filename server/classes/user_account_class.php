@@ -21,7 +21,7 @@ class user_account_class extends db_connection
 	*/
 	public function get_user_permission_cls($a, $b){
 		//a query to get user permission for a system
-		$sql = "SELECT * FROM app_server_user_permission WHERE `application_id`='$a' AND `user_id`='$b'";
+		$sql = "SELECT * FROM apps_user_permission WHERE `app_id`='$a' AND `user_id`='$b'";
 
 		//execute the query
 		return $this->db_query($sql);

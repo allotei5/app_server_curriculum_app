@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__)."/../classes/user_class.php");
 require_once(dirname(__FILE__)."/../controllers/tracker_controller.php");
+require_once(dirname(__FILE__)."/../controllers/user_account_controller.php");
 
 function get_user_details($user_id) {
     $user = new user_class;
@@ -22,6 +23,15 @@ function get_user_details($user_id) {
 
                 $user_details['student_details'] = $student_details;
             }
+        } else if($user_details['user_role'] == 1 || $user_details['user_role'] == 2) {
+            // fetch user permissions
+            $permissions = get_user_permission_ctr(7, $user_id);
+
+            if(empty($permissions)) {
+                return $user_details;
+            }
+
+            $user_details['permissions'] = $permissions;
         }
 
         return $user_details;
