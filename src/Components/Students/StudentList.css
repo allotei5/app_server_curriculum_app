@@ -1,0 +1,51 @@
+.student-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    color: #fff;
+    background-color: #953D41;
+    padding: 5px;
+}
+
+.student-list-grid p {
+    margin: 0;
+}
+
+.student-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    padding: 5px;
+    border-bottom: rgb(206, 206, 206) 1px solid;
+}
+
+.student-grid p {
+    margin: 0;
+}
+
+.student-grid button {
+    all: unset;
+    justify-self: start;
+}
+
+.student-grid button:hover {
+    color: #953D41;
+}
+
+.student-ctl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5px;
+}
+
+#add-student {
+    justify-self: end;
+}
+
+#search {
+    justify-self: start;
+}

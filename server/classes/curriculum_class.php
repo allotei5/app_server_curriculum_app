@@ -38,7 +38,7 @@ class curriculum_class extends db_connection {
     }
 
     public function select_student_level(){
-        $sql = "SELECT * FROM `app_server_student_level`";
+        $sql = "SELECT * FROM `apps_student_level`";
         return $this->db_query($sql);
     }
 

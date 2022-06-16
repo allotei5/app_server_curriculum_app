@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchCourseTypes } from "../../serverRequests";
+import { fetchLevels } from "../../serverRequests";
 import { Courses } from './Courses';
 
 export const CourseType = ({ completeFilter }) => {
@@ -7,7 +7,7 @@ export const CourseType = ({ completeFilter }) => {
 
     useEffect(() => {
         const getCourseTypes = async () => {
-            const courseTypesFromServer = await fetchCourseTypes();
+            const courseTypesFromServer = await fetchLevels();
             setCourseTypes(courseTypesFromServer);
         }
 
@@ -19,8 +19,8 @@ export const CourseType = ({ completeFilter }) => {
         {
             courseTypes.map((courseType, index) => (
                 <div key={index}>
-                    <h2>{courseType.course_type_name}</h2>
-                    <Courses courseType={courseType.course_type_id} completeFilter={completeFilter} />
+                    <h2>{courseType.student_level_name}</h2>
+                    <Courses courseType={courseType.student_level_id} completeFilter={completeFilter} />
                 </div>
             ))
         }

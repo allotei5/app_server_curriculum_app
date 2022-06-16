@@ -38,6 +38,18 @@ function get_user_details($user_id) {
     }
 }
 
+function get_student_details($user_id) {
+    $student = new user_class;
+
+    $run_query = $student->select_one_student_details($user_id);
+
+    if($run_query) {
+        return $student->db_fetch_one();
+    } else {
+        return false;
+    }
+}
+
 function update_student_details($user_id, $student_id, $student_dept, $student_year_group, $student_major) {
     $user = new user_class;
 
@@ -67,5 +79,29 @@ function update_student_details($user_id, $student_id, $student_dept, $student_y
             return false;
         }
 
+    }
+}
+
+function get_all_students($start) {
+    $students = new user_class;
+
+    $run_query = $students->select_all_students($start);
+
+    if($run_query) {
+        return $students->db_fetch_all();
+    } else {
+        return false;
+    }
+}
+
+function count_all_students() {
+    $students = new user_class;
+
+    $run_query = $students->count_all_students();
+
+    if($run_query) {
+        return $students->db_count();
+    } else {
+        return false;
     }
 }

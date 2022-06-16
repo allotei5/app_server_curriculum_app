@@ -3,11 +3,7 @@ require_once(dirname(__FILE__)."/../../controllers/user_controller.php");
 header('Access-Control-Allow-Origin: *');
 header("Content-Type:application/json");
 
-// session_start();
-
-// TODO wrap around logged in user
-
-$user = 1;
-
-echo json_encode(get_user_details($user));
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * 5;
+echo json_encode(get_all_students($start));
 

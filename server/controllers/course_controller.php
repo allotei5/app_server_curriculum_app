@@ -23,6 +23,19 @@ function select_all_courses() {
     }
 }
 
+function select_all_courses_by_department($department) {
+    $courses = new course_class;
+
+    $run_query = $courses->select_all_courses_by_department($department);
+
+    if($run_query) {
+        return $courses->db_fetch_all();
+    } else {
+        return false;
+    }
+
+}
+
 function select_all_courses_formatted_by_type($course_type) {
     $course = new course_class;
 

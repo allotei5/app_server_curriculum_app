@@ -1,14 +1,14 @@
 import React from 'react'
 import { CourseTypeAccordion } from './CourseTypeAccordion'
 
-export const AccordionContainer = ({courseTypes}) => {
+export const AccordionContainer = ({departments}) => {
     // console.log(courseTypes);
     // hi
   return (
     <>
         {
-           courseTypes.map((value, index) => (
-            <CourseTypeAccordion key={index} newKey={index} courseType={value}  />
+           departments.map((value, index) => (
+            <CourseTypeAccordion key={index} newKey={index} department={value}  />
   ))
         }
     </>

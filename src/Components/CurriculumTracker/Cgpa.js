@@ -49,7 +49,7 @@ export const Cgpa = () => {
     }, [grades, courses])
 
     return (
-        <div className='cgpa'>
+        <div className='cgpa' style={{alignSelf: "start"}}>
             <h4>CGPA:</h4>
             <p>
                 {

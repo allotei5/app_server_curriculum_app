@@ -14,9 +14,9 @@ export const Courses = ({ courseType, completeFilter }) => {
       // Filter courses by type
       setFilteredCourses(courses.filter((course) => {
         if(completeFilter === null) {
-          return course.course_type === courseType
+          return course.student_level === courseType
         }else {
-          return course.course_type === courseType && course.completed == completeFilter
+          return course.student_level === courseType && course.completed == completeFilter
         }
       }));
     } else {
@@ -25,11 +25,15 @@ export const Courses = ({ courseType, completeFilter }) => {
 
   }, [courses])
 
+  useEffect(() => {
+    console.log(filteredCourses)
+  }, [filteredCourses])
+
   return (
     <>
       {
-        (filteredCourses.length !== 0) ? filteredCourses.map((course) => (<CourseInTracker course={course} key={course.course_id} />))
-        : "No courses in this course type"
+        (filteredCourses.length !== 0) ? filteredCourses.map((course, index) => (<CourseInTracker course={course} key={course.curriculum_tracker_id} />))
+        : "No courses in this year"
       }
     </>
   )

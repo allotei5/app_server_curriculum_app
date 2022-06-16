@@ -12,7 +12,6 @@ export const CourseInTracker = ({ course }) => {
   const { currentUser } = useContext(UserContext);
 
   const [ completedState, setCompletedState ] = useState((course.completed == 1) ? true : false);
-  const [ selectGrade, setSelectGrade ] = useState("");
   
   // setTasks(tasks.map(prevState => prevState.id === data.id ? data : prevState));
 
@@ -25,7 +24,7 @@ export const CourseInTracker = ({ course }) => {
       course.grade_id = null;
       setCourses(courses.map(prevState => prevState.curriculum_tracker_id === course.curriculum_tracker_id ? course : prevState));
 
-      if(currentUser !== null && currentUser.student_details !== undefined && currentUser.user_role == 4) {
+      if(currentUser !== null && currentUser.student_details !== undefined) {
         const updateCourse = await updateCourseInTracker(course);
         if(updateCourse.response) {
           console.log("worked");
@@ -84,7 +83,7 @@ export const CourseInTracker = ({ course }) => {
               (completedState == 1) 
               ? (<select className="select-input" onChange={ e => onGradeSelectChange(e.target.value) }>
                     {
-                      (course.grade_id) ? grades.filter((grade) => (grade.grade_id === course.grade_id)).map((grade) => (<option value={grade.grade_id}>{grade.grade_letter}</option>))
+                      (course.grade_id) ? grades.filter((grade) => (grade.grade_id === course.grade_id)).map((grade, index) => (<option key={index} value={grade.grade_id}>{grade.grade_letter}</option>))
                       :<option defaultValue>Grades</option>
                     }
                     {

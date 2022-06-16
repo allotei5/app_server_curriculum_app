@@ -24,6 +24,7 @@ const AdminNav = ({ currentUser }) => {
                         <li> <NavLink className="link" activeclassname="active" to="/course-tracker">Course Tracker</NavLink></li>
                         <li> <Link className="link" to="/edit-curriculum">Edit Curriculum</Link></li>
                         <li> <Link className="link" to="/edit-prerequisite">Edit Prerequisites</Link></li>
+                        <li> <Link className="link" to="/students">Students</Link></li>
                     </>
                     : ""
                     }

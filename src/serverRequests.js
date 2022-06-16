@@ -50,6 +50,12 @@ export const fetchAcademicYears = async () => {
     return data;
 }
 
+export const fetchLevels = async () => {
+    const res = await fetch(`${backendServer}/curriculum/fetch_student_levels.php`);
+    const data = await res.json();
+    return data;
+}
+
 export const fetchSemesters = async () => {
     const res = await fetch(`${backendServer}/curriculum/fetch_semesters.php`);
     const data = await res.json();
@@ -120,5 +126,35 @@ export const updateProfile = async (currentUser) => {
 
     const data = await res.json();
     console.log(data);
+    return data;
+}
+
+export const getAllStudents = async (start) => {
+    const res = await fetch(`${backendServer}/user/get_students.php?page=${start}`);
+    const data = await res.json();
+    return data;
+}
+
+export const getOneStudentDetails = async (id) => {
+    const res = await fetch(`${backendServer}/user/get_student.php?user_id=${id}`);
+    const data = await res.json();
+    return data;
+}
+
+export const getStudentCount = async () => {
+    const res = await fetch(`${backendServer}/user/get_student_count.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const getDepartments = async () => {
+    const res = await fetch(`${backendServer}/courses/get_all_departments.php`);
+    const data = await res.json();
+    return data;
+}
+
+export const fetchCoursesByDepartment = async (id) => {
+    const res = await fetch(`${backendServer}/courses/get_all_courses_by_department.php?department_id=${id}`);
+    const data = await res.json();
     return data;
 }

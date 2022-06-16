@@ -22,6 +22,7 @@ header {
 .link{
     text-decoration: none;
     color: #515354;
+    font-size: 14px;
 }
 
 .link:hover {
