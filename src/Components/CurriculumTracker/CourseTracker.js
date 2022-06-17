@@ -28,7 +28,7 @@ const CourseTracker = () => {
                 setUserPrompt(true);
             }
         }
-        console.log(currentUser);
+        // console.log(currentUser);
        
         getTrackerCourses();
     }, [currentUser])

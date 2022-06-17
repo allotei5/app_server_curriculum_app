@@ -8,7 +8,7 @@ class tracker_class extends db_connection {
     }
 
     public function select_student_courses_in_tracker($user_id) {
-        $sql = "SELECT `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_type`, `apps_course`.`course_id`, `curriculum_tracker`.`curriculum_tracker_id`, `curriculum_tracker`.`user_id`, `curriculum_tracker`.`curriculum_detail_id`, `curriculum_tracker`.`completed`, `curriculum_tracker`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `apps_semester`.`semester_name`, `apps_student_level`.`student_level_name`
+        $sql = "SELECT `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_id`, `curriculum_tracker`.`curriculum_tracker_id`, `curriculum_tracker`.`user_id`, `curriculum_tracker`.`curriculum_detail_id`, `curriculum_tracker`.`completed`, `curriculum_tracker`.`grade_id`, `curriculum_detail`.`student_level`, `curriculum_detail`.`semester_id`, `apps_semester`.`semester_name`, `apps_student_level`.`student_level_name`
         FROM `apps_course`
         INNER JOIN `curriculum_detail`
         ON `apps_course`.`course_id`=`curriculum_detail`.`course_id`

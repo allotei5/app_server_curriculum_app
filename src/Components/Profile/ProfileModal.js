@@ -48,10 +48,7 @@ export const ProfileModal = ({ show, handleClose}) => {
 
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
-    // console.log(currentUser);
-    useEffect(() => {
-        console.log(currentUser)
-    }, [currentUser]);
+    
 
     const studentDetails = (currentUser.student_details !== undefined) ? (currentUser.student_details) : (null);
 
@@ -96,7 +93,6 @@ export const ProfileModal = ({ show, handleClose}) => {
                     }
                 }
 
-                // console.log(updatedUser);
                 setCurrentUser(updatedUser);
                 setSuccess(true);
                 
@@ -129,7 +125,6 @@ export const ProfileModal = ({ show, handleClose}) => {
                 }
             }
 
-            // console.log(updatedUser);
             setCurrentUser(updatedUser);
             setSuccess(true);
             

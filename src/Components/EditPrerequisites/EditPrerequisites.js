@@ -2,13 +2,21 @@ import { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { AccordionContainer } from './AccordionContainer';
-import { CourseTypeAccordion } from './CourseTypeAccordion';
 import { Navigate } from 'react-router-dom';
-import { getDepartments } from '../../serverRequests';
-
+import {  getDepartments } from '../../serverRequests';
+import { AddCourseModal } from './AddCourseModal';
+import { UpdateCourseModal } from './UpdateCourseModal';
 
 
 export const EditPrerequisites = () => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [ updateShow, setUpdateShow ] = useState(false);
+    const updateHandleClose = () => setUpdateShow(false)
+    const updateHandleShow = () => setUpdateShow(true)
+
 
     const { currentUser } = useContext(UserContext);
 
@@ -20,6 +28,7 @@ export const EditPrerequisites = () => {
             const depts = await getDepartments()
             setDepartments(depts);
         }
+        
         fetchDepartments();
     }, []);
 
@@ -39,6 +48,12 @@ export const EditPrerequisites = () => {
             praesent auctor nulla nec fusce.
         </h3>
         <p>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. </p>
+        <div style={{marginBottom: "10px"}}>
+            <button onClick={() => handleShow()} className='btn btn-primary' style={{marginRight: "10px"}}>Add Course</button>
+            <button onClick={() => updateHandleShow() } className='btn btn-success'>Update Course</button>
+        </div>
+        <AddCourseModal show={show} handleClose={handleClose} departments={departments}/>
+        <UpdateCourseModal show={updateShow} handleClose={updateHandleClose} departments={departments} />
         <AccordionContainer departments={departments} />
         
        

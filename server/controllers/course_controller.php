@@ -105,3 +105,16 @@ function select_one_course($id){
         return false;
     }
 }
+
+function add_new_course($dept, $code, $name, $unit, $grade, $user) {
+    $course = new course_class;
+
+    // run query
+    $run_query = $course->add_new_course($dept, $code, $name, $unit, $grade, $user);
+
+    if($run_query) {
+        return $run_query;
+    } else {
+        return false;
+    }
+}

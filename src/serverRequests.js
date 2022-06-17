@@ -157,4 +157,20 @@ export const fetchCoursesByDepartment = async (id) => {
     const res = await fetch(`${backendServer}/courses/get_all_courses_by_department.php?department_id=${id}`);
     const data = await res.json();
     return data;
+    // console.log(`${backendServer}/courses/get_all_courses_by_department.php?department_id=${id}`)
+}
+
+export const createNewCourse = async (course) => {
+    const res = await fetch(`${backendServer}/courses/add_new_course.php`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...course
+        })
+    });
+
+    const data = await res.json();
+    return data;
 }

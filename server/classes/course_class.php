@@ -8,10 +8,9 @@ class course_class extends db_connection {
      * @return The result of the query.
      */
     public function select_all_courses() {
-        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
         INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
-        INNER JOIN `apps_course_type` ON `apps_course`.`course_type` = `apps_course_type`.`course_type_id`
         INNER JOIN `apps_grade_breakdown` ON `apps_course`.`course_min_grade` = `apps_grade_breakdown`.`grade_id`";
         return $this->db_query($sql);
     }
@@ -24,7 +23,7 @@ class course_class extends db_connection {
      * @return The query result.
      */
     public function select_all_courses_by_type($course_type) {
-        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
         INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
         INNER JOIN `apps_course_type` ON `apps_course`.`course_type` = `apps_course_type`.`course_type_id`
@@ -35,10 +34,9 @@ class course_class extends db_connection {
     }
 
     public function select_all_courses_by_department($department) {
-        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_type`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_course_type`.`course_type_name`, `apps_grade_breakdown`.`grade_letter`
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
         INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
-        INNER JOIN `apps_course_type` ON `apps_course`.`course_type` = `apps_course_type`.`course_type_id`
         INNER JOIN `apps_grade_breakdown` ON `apps_course`.`course_min_grade` = `apps_grade_breakdown`.`grade_id`
  		WHERE `apps_course`.`course_dept`='$department'";
         
@@ -86,6 +84,12 @@ class course_class extends db_connection {
 
     public function select_grade_by_id($id){
         $sql = "SELECT * FROM `app_server_grade_breakdown` WHERE `grade_id`='$id'";
+        return $this->db_query($sql);
+    }
+
+    public function add_new_course($dept, $code, $name, $unit, $grade, $user) {
+        $sql = "INSERT INTO `apps_course`(`course_dept`, `course_code`, `course_name`, `course_unit`, `course_min_grade`, `user_id`, `lastupdate`) VALUES ('$dept', '$code', '$name', '$unit', '$grade', '$user', NOW())";
+        
         return $this->db_query($sql);
     }
 }
