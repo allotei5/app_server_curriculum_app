@@ -125,7 +125,6 @@ export const updateProfile = async (currentUser) => {
     })
 
     const data = await res.json();
-    console.log(data);
     return data;
 }
 
@@ -172,5 +171,27 @@ export const createNewCourse = async (course) => {
     });
 
     const data = await res.json();
+    return data;
+}
+
+export const fetchCourse = async (id) => {
+    const res = await fetch(`${backendServer}/courses/get_one_course.php?course_id=${id}`);
+    const data = await res.json();
+    return data;
+}
+
+export const updateCourse = async (course) => {
+    const res = await fetch(`${backendServer}/courses/update_course.php`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...course
+        })
+    })
+
+    const data = await res.json();
+    console.log(data);
     return data;
 }

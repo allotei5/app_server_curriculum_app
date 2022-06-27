@@ -54,7 +54,11 @@ class course_class extends db_connection {
     }
     
     public function select_one_course($id){
-        $sql = "SELECT * FROM `apps_course` WHERE `course_id`='$id'";
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`,  `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
+        FROM `apps_course`
+        INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
+        INNER JOIN `apps_grade_breakdown` ON `apps_course`.`course_min_grade` = `apps_grade_breakdown`.`grade_id`
+ 		WHERE `apps_course`.`course_id`='$id'";
 
         return $this->db_query($sql);
     }
@@ -90,6 +94,12 @@ class course_class extends db_connection {
     public function add_new_course($dept, $code, $name, $unit, $grade, $user) {
         $sql = "INSERT INTO `apps_course`(`course_dept`, `course_code`, `course_name`, `course_unit`, `course_min_grade`, `user_id`, `lastupdate`) VALUES ('$dept', '$code', '$name', '$unit', '$grade', '$user', NOW())";
         
+        return $this->db_query($sql);
+    }
+
+    public function update_course($id, $dept, $code, $name, $unit, $grade) {
+        $sql = "UPDATE `apps_course` SET `course_dept`='$dept',`course_code`='$code',`course_name`='$name',`course_unit`='$unit',`course_min_grade`='$grade', `lastupdate`=NOW() WHERE `course_id`='$id'";
+
         return $this->db_query($sql);
     }
 }

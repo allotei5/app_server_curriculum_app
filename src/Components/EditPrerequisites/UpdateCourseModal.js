@@ -7,19 +7,20 @@ import {  Button } from "react-bootstrap"
 
 import { useState, useEffect } from "react";
 import { GradeContext } from "../../Context/GradeContext";
-import { createNewCourse, fetchCourses, fetchGradeBreakDown } from "../../serverRequests";
+import { createNewCourse, fetchCourse, fetchCourses, fetchGradeBreakDown, updateCourse } from "../../serverRequests";
 import { Navigate } from "react-router-dom";
 import Select from "react-select";
 
 export const UpdateCourseModal = ({ show, handleClose, departments }) => {
 
+    const [ formCourse, setFormCourse ] = useState([]);
     const [ formDept, setFormDept ] = useState("");
     const [ formCode, setFormCode ] = useState("");
     const [ formName, setFormName ] = useState("");
     const [ formUnit, setFormUnit ] = useState("");
     const [ formGrade, setFormGrade ] = useState("");
     const [ courseId, setCourseId ] = useState("");
-    const [ courses, setCourses ] = useState([]);
+    const [ courses, setCourses ] = useState({});
 
     const [ grades, setGrades ] = useState([]);
     const [ formError, setFormError ] = useState(false);
@@ -45,8 +46,44 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
         getCourses();
     }, [])
 
-    const onSubmit = async (e) => {
+    useEffect(() => {
+        const getCourse = async (id) => {
+            const course = await fetchCourse(id);
+            setFormCourse(course);
+            setFormCode(course.course_code)
+            setFormName(course.course_name)
+            setFormGrade(course.course_min_grade)
+            setFormUnit(course.course_unit)
+            setFormDept(course.course_dept)
+            console.log(course);
+        }
 
+        getCourse(courseId)
+    }, [courseId])
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        setFormError(false);
+
+        if(formDept !== "" || formCode !== "" || formName !== "" || formUnit !== "" || formGrade !== "") {
+            const course = {
+                course_id: courseId,
+                dept: formDept,
+                code: formCode,
+                name: formName,
+                unit: formUnit,
+                grade: formGrade,
+                submit: true
+            }
+
+            const update = await updateCourse(course);
+            if(update.response == true) {
+                handleClose()
+                return <Navigate to="/edit-prerequisite" replace />
+            } else {
+                setFormError(true)
+            }
+        }
     }
 
   return (
@@ -72,7 +109,7 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
                                 <label>Department</label>
                             </div>
                             <select required className="form-select" onChange={ e => setFormDept(e.target.value)}>
-                                <option value="">Choose department</option>
+                                <option value={formCourse.course_dept}>{formCourse.department_name}</option>
                                 {
                                     departments.map((dept, index) => (<option key={index} value={dept.department_id}>{dept.department_name}</option>))
                                 }
@@ -82,20 +119,20 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
                             <div>
                                 <label>Course code</label>
                             </div>
-                            <input className="form-control" type="text" placeholder="course code" onChange={ e => setFormCode(e.target.value) } required/>
+                            <input className="form-control" type="text" placeholder="course code" value={formCode} onChange={ e => setFormCode(e.target.value) } required/>
                         </div>
                         <div style={{marginBottom: "10px"}}>
                             <div>
                                 <label>Course Name</label>
                             </div>
-                            <input className="form-control" type="text" placeholder="Course Name" onChange={ e => setFormName(e.target.value) } required />
+                            <input className="form-control" type="text" placeholder="Course Name" value={formName} onChange={ e => setFormName(e.target.value) } required />
                         </div>
                         <div style={{marginBottom: "10px"}}>
                             <div>
                                 <label>Course unit</label>
                             </div>
                             <select className="form-select" required onChange={ e => setFormUnit(e.target.value) }>
-                                <option value="">Units</option>
+                                <option value={formCourse.course_unit}>{formCourse.course_unit}</option>
                                 <option value="0.5">0.5</option>
                                 <option value="1">1</option>
                             </select>
@@ -105,7 +142,7 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
                                 <label>Minimum Grade</label>
                             </div>
                             <select className="form-select" required onChange={ e => setFormGrade(e.target.value) }>
-                                <option value="">Grade</option>
+                                <option value={formCourse.course_min_grade}>{formCourse.grade_letter}</option>
                                 {
                                     grades.map((grade, index) => (<option key={index} value={grade.grade_id}>{grade.grade_letter}</option>))
                                 }
@@ -113,7 +150,7 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
                             </select>
                         </div>               
                         
-                        <button className="btn btn-primary" style={{marginTop: "10px"}} type="submit">Add Course</button>
+                        <button className="btn btn-primary" style={{marginTop: "10px"}} type="submit">Update Course</button>
                     </form>
                 }       
             </ModalBody>

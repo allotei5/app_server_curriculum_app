@@ -118,3 +118,16 @@ function add_new_course($dept, $code, $name, $unit, $grade, $user) {
         return false;
     }
 }
+
+function update_course($id, $dept, $code, $name, $unit, $grade) {
+    $course = new course_class;
+
+    // run query
+    $run_query = $course->update_course($id, $dept, $code, $name, $unit, $grade);
+
+    if($run_query) {
+        return $run_query;
+    } else {
+        return false;
+    }
+}
