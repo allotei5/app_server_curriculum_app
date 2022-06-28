@@ -19,12 +19,15 @@ class user_class extends db_connection {
 
     public function select_all_students($start) {
         
-        $sql = "SELECT `apps_student`.`student_id`, `apps_student`.`student_dept`, `apps_department`.`department_name`, `apps_student`.`student_year_group`, `apps_year_group`.`year_group_name`, `apps_student`.`student_major`, `apps_major`.`major_name`, `apps_users`.`user_id`, `apps_users`.`user_fname`, `apps_users`.`user_lname`, `apps_users`.`user_email`
-        FROM `apps_student`
-        INNER JOIN `apps_users` ON `apps_student`.`apps_user_id` = `apps_users`.`user_id`
-        INNER JOIN `apps_department` ON `apps_student`.`student_dept` = `apps_department`.`department_id`
-        INNER JOIN `apps_year_group` ON `apps_student`.`student_year_group` = `apps_year_group`.`year_group_id`
-        INNER JOIN `apps_major` ON `apps_student`.`student_major` = `apps_major`.`major_id` LIMIT $start, 5";
+        $sql = "SELECT * FROM `apps_users`
+        LEFT JOIN `apps_student`
+        	ON `apps_users`.`user_id`=`apps_student`.`apps_user_id`
+        LEFT JOIN `apps_department`
+        	ON `apps_student`.`student_dept` = `apps_department`.`department_id`
+        LEFT JOIN `apps_year_group`
+        	ON `apps_student`.`student_year_group` = `apps_year_group`.`year_group_id`
+        LEFT JOIN `apps_major`
+        	ON `apps_student`.`student_major` = `apps_major`.`major_id` LIMIT $start, 5";
 
         return $this->db_query($sql);
     }

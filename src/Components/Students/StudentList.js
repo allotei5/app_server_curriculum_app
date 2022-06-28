@@ -2,14 +2,19 @@ import { useEffect, useState } from 'react'
 import { getAllStudents, getStudentCount } from '../../serverRequests';
 import { Loading } from '../Loading/Loading';
 import { Student } from './Student'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Navigate } from 'react-router-dom';
 import './StudentList.css'
+import { useContext } from 'react';
+import { UserContext } from '../../Context/UserContext';
+
 
 export const StudentList = () => {
     const [ students, setStudents ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(false);
     const [ pages, setPages ] = useState([]);
     const params = useParams();
+
+    const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
 
@@ -35,6 +40,14 @@ export const StudentList = () => {
         countPages();
 
     }, [params])
+
+    if (currentUser.permissions === undefined) {
+        return <Navigate to="/" replace />
+    } 
+
+    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+        return <Navigate to="/" replace />
+    }
   return (
     <div className='custom-container'>
         {
@@ -65,7 +78,7 @@ export const StudentList = () => {
                             </Link>
                         </li>
                         {
-                            pages.map((link, index) => (<li className="page-item"><Link className="page-link" to={`/students/${link}`}>{link}</Link></li>))
+                            pages.map((link, index) => (<li key={index} className="page-item"><Link className="page-link" to={`/students/${link}`}>{link}</Link></li>))
                         } 
                         <li className="page-item">
                             <Link className="page-link" to="#" aria-label="Next">
@@ -76,7 +89,7 @@ export const StudentList = () => {
                 </nav>
             </>
         }
-        
+
     </div>
   )
 }

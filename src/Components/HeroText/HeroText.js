@@ -13,8 +13,7 @@ export const HeroText = () => {
                 (currentUser.user_role == 4) ? <Button ButtonName="Course Tracker" ButtonStyle="button primary-button" ButtonSrc="/"/> : ""
             }
             {
-                (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) ? "" : <Button ButtonName="Course Tracker" ButtonStyle="button primary-button" ButtonSrc="/"/>
-
+                (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) ? <Button ButtonName="Course Tracker" ButtonStyle="button primary-button" ButtonSrc="/"/> : ""
             }
             <Button ButtonName="View Curriculum" ButtonStyle="button secondary-button" ButtonSrc="/view-curriculum" />
         </div>

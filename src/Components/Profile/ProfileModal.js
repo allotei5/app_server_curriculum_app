@@ -15,7 +15,7 @@ import { UserContext } from '../../Context/UserContext';
 import './ProfileModal.css';
 
 
-export const ProfileModal = ({ show, handleClose}) => {
+export const ProfileModal = ({ show, handleClose }) => {
 
     const [ departments, setDepartments ] = useState([])
     const [ yearGroups, setYearGroups ] = useState([]);
