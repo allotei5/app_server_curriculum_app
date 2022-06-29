@@ -7,10 +7,13 @@ import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import {  Button } from "react-bootstrap"
 
+import { useNavigate } from 'react-router-dom';
+
 import { fetchDepartments, fetchYearGroups, fetchMajors, updateProfile } from "../../serverRequests";
 
 
 export const StudentProfileModal = ({ show, handleClose, student }) => {
+  let navigate = useNavigate()
 
   if(student.student_dept === null && student.student_id === null && student.student_major === null && student.student_year_group === null) {
     var studentDetails = null;
@@ -88,35 +91,46 @@ export const StudentProfileModal = ({ show, handleClose, student }) => {
         setTimeout(() => {
             handleClose();
             setSuccess(false)
+            navigate(`/course-tracker/${student.user_id}`, { replace: true })
         }, 1500)
 
       }else {
           handleClose();
+          // navigate(`/course-tracker/${student.user_id}`, { replace: true })
       }
     } else {
-      const updatedUser = {
-        
-        student_details: {
-            student_id: formStudentId,
-            student_dept: formDepartment,
-            department_name: formDepartmentName,
-            student_year_group: formYearGroup,
-            year_group_name: formYearGroupName,
-            student_major: formMajors,
-            major_name: formMajorsName,
-            changed: true
-        },
-        user_id: student.user_id
+      setFormError(false)
+
+      if (formStudentId !== "" || formDepartment !== "" || formYearGroup !== "" ) {
+        setFormError(true)
+      } else {
+
+      
+        const updatedUser = {
+          
+          student_details: {
+              student_id: formStudentId,
+              student_dept: formDepartment,
+              department_name: formDepartmentName,
+              student_year_group: formYearGroup,
+              year_group_name: formYearGroupName,
+              student_major: formMajors,
+              major_name: formMajorsName,
+              changed: true
+          },
+          user_id: student.user_id
+        }
+
+        setSuccess(true);
+        const updateProfileBackend = await updateProfile(updatedUser);
+
+        setTimeout(() => {
+            handleClose();
+            setSuccess(false)
+            navigate(`/course-tracker/${student.user_id}`, { replace: true })
+            
+        }, 1500)
       }
-
-      setSuccess(true);
-      const updateProfileBackend = await updateProfile(updatedUser);
-
-      setTimeout(() => {
-          handleClose();
-          setSuccess(false)
-      }, 1500)
-
     }
   }
 
@@ -138,7 +152,7 @@ export const StudentProfileModal = ({ show, handleClose, student }) => {
                 }
                 <div className='profile-form'>
                   <label>Enter your student ID</label>
-                  <input type="number" className="form-control" value={formStudentId} onChange={ e => setFormStudentId(e.target.value) } />
+                  <input type="number" required className="form-control" value={formStudentId} onChange={ e => setFormStudentId(e.target.value) } />
                 </div>
                 <div className="profile-form">
                     <label>Choose your department</label>
