@@ -9,10 +9,7 @@ const SearchResult = ({results}) =>{
      
     return (
         <div>
-            {(results.length != 0) ? <SearchCard courses={results} /> : <div><img src={search_image} alt="search illustration"/></div> }
-            {/* <SearchCard />
-            {isResult && <div>card goes here</div>}
-            {!isResult && <div><img src={search_image} alt="search illustration"/></div>} */}
+            {(results.length != 0) ? <SearchCard courses={results} /> : <div style={{display: "grid", justifyContent: "center"}}><img src={search_image} alt="search illustration"/></div> }
         </div>
     )
 }

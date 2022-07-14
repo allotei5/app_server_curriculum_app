@@ -10,15 +10,15 @@ export const SearchCard = ({ courses }) => {
         <div className='main-course-grid'>
             <div>
                 <h5>{course.course_name}</h5>
-                <h6>Credits: {course.course_unit} </h6>
+                <h6 className='cs-fs-2'>Credits: {course.course_unit} </h6>
             </div>
             <div className='main-course-grade'>
-                <p className='headline-text'>Pass Grade: {course.grade_letter}</p>
+                <p className='cs-fs-2'>Pass Grade: {course.grade_letter}</p>
             </div>
         </div>
         <div>
             <h5>Prerequisites</h5>
-            <div className='prerequisite-courses-grid'>
+            <div className='prerequisite-courses-grid cs-fs-2'>
                 <SearchPrerequisites prerequisites={course.prerequisites} />
             </div>
         </div>

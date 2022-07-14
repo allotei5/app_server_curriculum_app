@@ -10,6 +10,7 @@ import { UserContext } from '../Context/UserContext'
 
 function Home() {
     const { currentUser } = useContext(UserContext);
+
     return (
         <div>
             <HomePageHero />
@@ -20,7 +21,6 @@ function Home() {
             }
             {
                 (currentUser.user_role == 4 || currentUser.user_role == 3) ? <HomeCourseTrackerHero /> : ""
-
             }
         </div>
     )

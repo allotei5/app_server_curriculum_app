@@ -47,6 +47,7 @@ code {
   border-radius: 5px;
   display: inline-block;
   margin-right: 10px;
+  font-size: 14px;
 }
 
 .primary-button {
@@ -352,14 +353,58 @@ code {
 }
 
 .search-bar {
-  width: 40rem;
+  /* width: 40rem; */
   background: #fff;
   border: none;
   padding: 1rem;
   border-radius: 10px;
   margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 14px;
+
 }
 
 .search-bar:focus {
-  border: #923d41 1px solid !important;
+  outline: none !important;
+  border: #000 1px solid !important;
+}
+
+.bar-icon {
+  display: none;
+}
+
+
+
+@media (min-width: 276px) {
+  .cs-fs-1 {
+    font-size: 24px;
+  }
+
+  .cs-fs-2 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #797C7D;
+  }
+
+  .cs-fs-3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    color: #515354;
+  }
+
+}
+
+
+
+@media (min-width: 768px) {
+  .cs-fs-1 {
+    font-size: 32px;
+  }
+
+  .cs-col {
+    width: 800px !important;
+  }
+  
 }

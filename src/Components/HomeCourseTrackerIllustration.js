@@ -4,8 +4,8 @@ import grades from "../Images/grades.svg"
 
 export const HomeCourseTrackerIllustration = () => {
     return (
-        <div>
-            <img src={grades} width="80%" alt="logo" />
+        <div className='mb-3'>
+            <img src={grades} width="90%" alt="logo" />
         </div>
     )
 }

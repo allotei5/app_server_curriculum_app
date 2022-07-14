@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Col, Container, Row } from 'react-bootstrap';
 import SearchBar from './SearchBar'
 import SearchResult from './SearchResult'
 
@@ -22,14 +23,21 @@ const SectionOne = () => {
     }
     
     return (
-        <div className='section-one' >
-            <h3 className='sub-title'>COURSE PREREQUISITE CHECKER</h3>
-            <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. </p>
-            
-            <SearchBar getSearchResults={getSearchTerm} />
-            <SearchResult results={searchResults} />
 
-
+        <div style={{backgroundColor: "#fafafa"}}>
+            <Container className="py-5 px-5 cs-col" style={{display: "grid", justifyContent: "center"}}>
+                <Col>
+                    <h3 className='cs-fs-3 fw-bolder text-center'>COURSE PREREQUISITE CHECKER</h3>
+                    <p className='cs-fs-2 my-4 text-center'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. </p>     
+                </Col>
+                
+                    <SearchBar getSearchResults={getSearchTerm} />
+                
+                <Col>
+                <SearchResult results={searchResults} />
+                </Col>
+                
+        </Container>
         </div>
        
     )

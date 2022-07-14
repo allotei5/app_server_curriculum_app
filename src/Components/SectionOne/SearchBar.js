@@ -24,7 +24,7 @@ const SearchBar = ({ getSearchResults }) => {
     <input
       className='search-bar'
       key='random1'
-      placeholder={'search for Courses...'}
+      placeholder={'Search for Courses...'}
       onChange={(e) => setSearch(e.target.value)}
     />
   );
