@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import ashesi_logo from "../../Images/ashesi_logo.png"
 import '../Nav.css';
@@ -9,7 +8,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Col, Row } from "react-bootstrap";
 
 const StudentNav = ({ currentUser }) => {
 //   return (

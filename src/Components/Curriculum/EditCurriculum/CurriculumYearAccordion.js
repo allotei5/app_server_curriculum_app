@@ -1,6 +1,7 @@
 import { Accordion } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { CurriculumSemester } from './CurriculumSemester';
+import { Container, Row, Col } from 'react-bootstrap'
 
 export const CurriculumYearAccordion = ({year}) => {
     const [ semesters, setSemesters ] = useState([]);
@@ -9,7 +10,6 @@ export const CurriculumYearAccordion = ({year}) => {
         const getSemesters = async () => {
             const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_semesters.php`);
             const data = await res.json();
-            console.log(data);
             setSemesters(data);
         }
 

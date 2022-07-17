@@ -16,6 +16,7 @@ import { Loading } from './Components/Loading/Loading';
 import { fetchLoggedInUser } from './serverRequests';
 import { Footer } from './Components/Footer';
 import { StudentList } from './Components/Students/StudentList';
+import NotFound from './Components/404/NotFound';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Nav />}>
               <Route index element={<Home />} />
+              <Route path="*" element={<NotFound />} />
               <Route path="/course-tracker" element={ <CourseTracker /> } />
               <Route path="/course-tracker/:user_id" element={ <CourseTracker /> } />
               <Route path="/view-curriculum" element={<ViewCurriculum />} />

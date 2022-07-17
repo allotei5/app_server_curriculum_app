@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './CurriculumCourse.css';
 import Select from 'react-select';
 import { FiMinus } from 'react-icons/fi';
+import { Container, Row, Col } from 'react-bootstrap'
+
 
 export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
   const [courses, setCourses] = useState([]);
@@ -55,78 +57,87 @@ export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
 
   return (
     <div>
-      <div className='curriculum-course-grid'>
-        <div>
+      <Row className=''>
+        <Col>
           <div>
-            <label className='curriculum-course-label'>Course Name</label>
+            <div>
+              <label className='curriculum-course-label'>Course Name</label>
+            </div>
+            <Select
+              style={{ color: '#515354' }}
+              value={
+                Object.keys(selectCourse).length === 0
+                  ? { label: course.course_name, value: course.course_id }
+                  : selectCourse
+              }
+              options={courses}
+              onChange={async (opt) => {
+                setSelectCourse({ label: opt.label, value: opt.value });
+                updatedCourse.course_id = opt.value;
+                console.log(updatedCourse);
+                await updateCourse(updatedCourse);
+              }}
+            />
           </div>
-          <Select
-            style={{ color: '#515354' }}
-            value={
-              Object.keys(selectCourse).length === 0
-                ? { label: course.course_name, value: course.course_id }
-                : selectCourse
-            }
-            options={courses}
-            onChange={async (opt) => {
-              setSelectCourse({ label: opt.label, value: opt.value });
-              updatedCourse.course_id = opt.value;
-              console.log(updatedCourse);
-              await updateCourse(updatedCourse);
-            }}
-          />
-        </div>
-
-        <div>
+        </Col>
+        
+        <Col>
+        
           <div>
-            <label className='curriculum-course-label'>Course Type</label>
-          </div>
-          <select
-            className='curriculum-course-select'
-            onChange={async (e) => {
-              setSelectCourseType(e.target.value);
-              updatedCourse.course_type = e.target.value;
-              await updateCourse(updatedCourse);
-            }}
-          >
-            <option value={course.course_type}>
-              {course.course_type_name}
-            </option>
-            {courseTypes.map((value, index) => (
-              <option value={value.course_type_id} key={index}>
-                {value.course_type_name}
+            <div>
+              <label className='curriculum-course-label'>Course Type</label>
+            </div>
+            <select
+              className='curriculum-course-select'
+              onChange={async (e) => {
+                setSelectCourseType(e.target.value);
+                updatedCourse.course_type = e.target.value;
+                await updateCourse(updatedCourse);
+              }}
+            >
+              <option value={course.course_type}>
+                {course.course_type_name}
               </option>
-            ))}
-          </select>
-        </div>
-        <div
-          onClick={async () => removeCourse(course.curriculum_detail_id)}
-          className='curriculum-remove-course'
-        >
-          <div
-            style={{
-              width: '25px',
-              height: '25px',
-              borderRadius: '50%',
-              backgroundColor: '#FF620A',
-              color: '#fff',
-              cursor: 'pointer',
-              float: 'left',
-              textAlign: 'center',
-            }}
-          >
-            <FiMinus />
+              {courseTypes.map((value, index) => (
+                <option value={value.course_type_id} key={index}>
+                  {value.course_type_name}
+                </option>
+              ))}
+            </select>
           </div>
-          <span
-            style={{
-              fontSize: '12px',
-              paddingLeft: '5px',
-            }}
+        </Col>
+
+        <Col>
+          <div
+            onClick={async () => removeCourse(course.curriculum_detail_id)}
+            className='curriculum-remove-course'
           >
-            Remove
-          </span>
-        </div>
-      </div>
+            <div
+              style={{
+                width: '25px',
+                height: '25px',
+                borderRadius: '50%',
+                backgroundColor: '#FF620A',
+                color: '#fff',
+                cursor: 'pointer',
+                float: 'left',
+                textAlign: 'center',
+              }}
+            >
+              <FiMinus />
+            </div>
+            <span
+              style={{
+                fontSize: '12px',
+                paddingLeft: '5px',
+              }}
+            >
+              Remove
+            </span>
+          </div>
+        </Col>
+
+      </Row>
     </div>
   );
 };
