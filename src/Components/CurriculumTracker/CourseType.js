@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { fetchLevels } from "../../serverRequests";
 import { Courses } from './Courses';
+import { Container, Row, Col } from 'react-bootstrap'
 
 export const CourseType = ({ completeFilter }) => {
     const [ courseTypes, setCourseTypes ] = useState([]);
@@ -22,6 +23,7 @@ export const CourseType = ({ completeFilter }) => {
                     <h2>{courseType.student_level_name}</h2>
                     <Courses courseType={courseType.student_level_id} completeFilter={completeFilter} />
                 </div>
+                // <div>d</div>
             ))
         }
     </>

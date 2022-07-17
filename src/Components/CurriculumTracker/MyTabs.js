@@ -1,26 +1,37 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { CourseType } from "./CourseType";
+import { Container, Row, Col } from 'react-bootstrap'
+
 
 const MyTabs = () => {
   return (
     <div className="tabs-div">
-      <Tabs className="">
-        <TabList className="tab-list">
-          <Tab className="tab-item" >All Courses</Tab>
-          <Tab className="tab-item">Completed Courses</Tab>
-          <Tab className="tab-item">Uncompleted Courses</Tab>
-        </TabList>
-
-        <TabPanel>
-          <CourseType completeFilter={null} />
-        </TabPanel>
-        <TabPanel>
-          <CourseType completeFilter={1} />
-        </TabPanel>
-        <TabPanel>
-          <CourseType completeFilter={0} />
-        </TabPanel>
+      <Tabs>
+        <Container>
+        <Row>
+            <TabList className='tab-list'>
+              
+            <Tab className="tab-item cs-fs-2">All Courses</Tab>
+            <Tab className="tab-item cs-fs-2">Completed Courses</Tab>
+            <Tab className="tab-item cs-fs-2">Uncompleted Courses</Tab>
+                
+            </TabList>
+            </Row>
+          
+          
+            <TabPanel>
+                <CourseType completeFilter={null} />
+              </TabPanel>
+              <TabPanel>
+                <CourseType completeFilter={1} />
+              </TabPanel>
+              <TabPanel>
+                <CourseType completeFilter={0} />
+              </TabPanel>
+          
+          
+        </Container>
       </Tabs>
     </div>
   );

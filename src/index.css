@@ -162,7 +162,7 @@ code {
 
 .tabs-div {
   background-color: #f0f0f0;
-  padding: 50px 5%;
+  padding: 50px 0;
   margin-top: 50px;
 }
 
@@ -171,28 +171,23 @@ code {
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center;
-  /* min-width: 100vw; */
-  /* border: #554343 1px solid; */
   text-align: center;
-  /* height: 52px; */
   border-radius: 10px;
   gap: 3px;
 }
 
 .tab-item {
   list-style: none;
-  height: 100%;
+  height: 50px;
   width: 100%;
-  /* align-content: center; */
-  /* background-color: #515354; */
   border: #554343 1px solid;
   border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  vertical-align: center;
   cursor: pointer;
-  /* background-color: #923d41; */
-
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  /* padding: 30px; */
+  justify-content: center;
 }
 
 .react-tabs__tab--selected {
@@ -384,7 +379,7 @@ code {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: #797C7D;
+    /* color: #797C7D; */
   }
 
   .cs-fs-3 {

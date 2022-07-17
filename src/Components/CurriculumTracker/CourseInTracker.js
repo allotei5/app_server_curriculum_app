@@ -4,6 +4,8 @@ import { TrackerContext } from "../../Context/TrackerContext";
 import { UserContext } from '../../Context/UserContext';
 
 import { updateCourseInTracker } from "../../serverRequests";
+import { Container, Row, Col } from 'react-bootstrap'
+
 
 export const CourseInTracker = ({ course }) => {
 
@@ -63,38 +65,38 @@ export const CourseInTracker = ({ course }) => {
   // console.log(course);
 
   return (
-    <>
-      <div className="course-tracker-courses">
-          <div className="">
-              <p className="headline-text">{course.course_name}</p>
-          </div>
-          <div className="">
-            <h3 className="headline-text ">Credits: {course.course_unit}</h3>
-          </div>
-          <div className="courses">
-            <label className="checkbox-label">
-                <input type="checkbox" checked={completedState} onChange={e => onCompletedChange()} />
-                <span className="checkbox-custom"></span>
-                Completed
-            </label>
-          </div>
-          <div>
-            {
-              (completedState == 1) 
-              ? (<select className="select-input" onChange={ e => onGradeSelectChange(e.target.value) }>
-                    {
-                      (course.grade_id) ? grades.filter((grade) => (grade.grade_id === course.grade_id)).map((grade, index) => (<option key={index} value={grade.grade_id}>{grade.grade_letter}</option>))
-                      :<option defaultValue>Grades</option>
-                    }
-                    {
-                      grades.map((grade) => (<option key={grade.grade_id} value={grade.grade_id}>{grade.grade_letter}</option>))
-                    }
-                  </select>)
-            : ""
-            }
-          </div>
-          
-      </div>
-    </>
+    
+    <Row>
+        <Col md={5} className="">
+            <p className="cs-fs-2" style={{color: "#000"}}>{course.course_name}</p>
+        </Col>
+        <Col className="">
+          <h3 className="cs-fs-2">Credits: {course.course_unit}</h3>
+        </Col>
+        <Col md={3} className="courses">
+          <label className="checkbox-label cs-fs-2">
+              <input type="checkbox" checked={completedState} onChange={e => onCompletedChange()} />
+              <span className="checkbox-custom"></span>
+              Completed
+          </label>
+        </Col>
+        <Col>
+          {
+            (completedState == 1) 
+            ? (<select className="select-input" onChange={ e => onGradeSelectChange(e.target.value) }>
+                  {
+                    (course.grade_id) ? grades.filter((grade) => (grade.grade_id === course.grade_id)).map((grade, index) => (<option key={index} value={grade.grade_id}>{grade.grade_letter}</option>))
+                    :<option defaultValue>Grades</option>
+                  }
+                  {
+                    grades.map((grade) => (<option key={grade.grade_id} value={grade.grade_id}>{grade.grade_letter}</option>))
+                  }
+                </select>)
+          : ""
+          }
+        </Col>
+        
+    </Row>
+    
   )
 }

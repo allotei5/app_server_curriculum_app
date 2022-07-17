@@ -64,19 +64,22 @@ export const ProfileModal = ({ show, handleClose }) => {
     const [ success, setSuccess ] = useState(false);
     const [ formError, setFormError ] = useState(false);
 
-    if (currentUser.user_role != 4 && currentUser.user_role != 1 && currentUser.user_role != 2) {
-        handleClose();
-    } 
+    // if (currentUser.user_role != 4 && currentUser.user_role != 1 && currentUser.user_role != 2) {
+    //     handleClose();
+    // } 
 
-    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
-        handleClose();
-    }
+    // if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+    //     handleClose();
+    // }
 
     const onSubmit = async (e) => {
         e.preventDefault();
         // submit form to backend
         // checking if new values have been entered
+        // console.log('hm')
+        // return;
         if (studentDetails !== null) {
+            
             // basically check if any of the fields have changed
             if ( formStudentId !== studentDetails.student_id || formDepartment !== studentDetails.student_dept || formYearGroup !== studentDetails.student_year_group || formMajors !== studentDetails.student_major) {
                 const updatedUser = {
@@ -147,7 +150,7 @@ export const ProfileModal = ({ show, handleClose }) => {
             <ModalTitle>Update Profile</ModalTitle>
         </ModalHeader>
         <ModalBody>
-            <form onSubmit={ e => onSubmit(e)}>
+            <form>
                 {
                     (success) ? <div className="profile-form" style={{color: "green"}}> Profile Updated successfully</div>
                     : ""
@@ -208,9 +211,8 @@ export const ProfileModal = ({ show, handleClose }) => {
                     <small style={{color: "maroon"}}>Please Note! When you update your details you will lose all progress on the Curriculum tracking page</small>
                 </div>
 
-                <div className="profile-form">
-                    <button type='submit' className='btn btn-primary'>Update</button>
-                </div>
+                <button className='btn btn-primary' onClick={(e) => onSubmit(e)}>Update</button>
+                
 
             </form>
         </ModalBody>

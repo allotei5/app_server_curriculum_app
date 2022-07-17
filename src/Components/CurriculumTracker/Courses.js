@@ -25,10 +25,6 @@ export const Courses = ({ courseType, completeFilter }) => {
 
   }, [courses])
 
-  useEffect(() => {
-    console.log(filteredCourses)
-  }, [filteredCourses])
-
   return (
     <>
       {

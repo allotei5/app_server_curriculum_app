@@ -8,6 +8,7 @@ import { GradeContext } from '../../Context/GradeContext'
 
 import { fetchTrackerCourses, fetchGradeBreakDown, getOneStudentDetails } from '../../serverRequests'
 import { Navigate, Link, useParams } from 'react-router-dom'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const CourseTracker = () => {
 
@@ -78,18 +79,22 @@ const CourseTracker = () => {
             {
                 (!userPrompt) ?
                     <>
-                        <div className="course-tracker-grid">
-                            <div>
-                                <h3 className='sub-title'>Your 4 year curriculum</h3>
-                                <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
-                                {
-                                    (courses !== null) ? (courses.response !== undefined) ? <div>No curriculum available for this user</div> : "" : ""
-                                }
-                            </div>
-                            <Cgpa />
-                        </div>
+                        <Container>
+                            <Row>
+                                <Col md={9}>
+                                    <h3 className='cs-fs-3 fw-bold'>Your 4 year curriculum</h3>
+                                    <p className='cs-fs-2'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                                    {
+                                        (courses !== null) ? (courses.response !== undefined) ? <div className='cs-fs-2'>No curriculum available for this user</div> : "" : ""
+                                    }
+                                </Col>
+                                <Col>
+                                    <Cgpa />
+                                </Col>
+                            </Row>
+                        </Container>
                         
-                        <div className="">
+                        <div>
                             {
                                 (courses !== null) ? (courses.response !== undefined) ? "" : <MyTabs/> : ""
                             }                            
