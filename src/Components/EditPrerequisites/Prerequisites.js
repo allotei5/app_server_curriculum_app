@@ -4,6 +4,8 @@ import { AddPrerequisite } from './AddPrerequisite';
 import { CourseButton } from './CourseButton';
 import { FiPlus } from "react-icons/fi";
 
+import { addNewPrerequisite, fetchPrerequisites, removePrerequisiteFromServer } from '../../serverRequests';
+
 export const Prerequisites = ({course}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -20,25 +22,8 @@ export const Prerequisites = ({course}) => {
         getPrerequisites();
     }, [])
 
-    const fetchPrerequisites = async (course_id) => {
-        const res = await fetch(`http://localhost/app_server_curriculum_app/server/actions/prerequisites/get_one_course_prerequisites.php?course_id=${course_id}`);
-        const data = await res.json();
-        return data;
-    }
-
-
-    const addNewPrerequisite = async (newPrerequisite) => {
-        const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/prerequisites/add_new_prerequisite.php", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(newPrerequisite)
-        });
-
-        console.log(newPrerequisite);
-
-        const data = await res.json();
+    const addPrerequisite = async (newPrerequisite) => {
+        const data = await addNewPrerequisite(newPrerequisite);
         if(data.course_id) {
             setPrerequisites([...prerequisites, data]);
         }else{
@@ -47,17 +32,7 @@ export const Prerequisites = ({course}) => {
     }
 
     const removePrerequisite = async (pre_requisite_id) => {
-        const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/prerequisites/delete_prerequisite.php", {
-            method: "DELETE",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                course_id: pre_requisite_id
-            })
-        });
-
-        const data = await res.json();
+        const data = await removePrerequisiteFromServer(pre_requisite_id)
         console.log(data)
         if(data.response === true) {
             setPrerequisites(prerequisites.filter((value, index) => (value.pre_requisite_id !== pre_requisite_id)))
@@ -96,7 +71,7 @@ export const Prerequisites = ({course}) => {
                       paddingLeft: "5px"
                   }}>Add</span>
                 </div>
-            <AddPrerequisite addNewPrerequisite={addNewPrerequisite} courseId={course.course_id} show={show} handleClose={handleClose} />
+            <AddPrerequisite addPrerequisite={addPrerequisite} courseId={course.course_id} show={show} handleClose={handleClose} />
         </div>
     </div>
   )

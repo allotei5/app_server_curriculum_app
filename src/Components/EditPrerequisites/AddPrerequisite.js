@@ -7,7 +7,9 @@ import ModalTitle from "react-bootstrap/ModalTitle";
 import Select from 'react-select';
 import { useState, useEffect } from 'react'
 
-export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite}) => {
+import { fetchCourses, fetchGradeBreakDown } from "../../serverRequests";
+
+export const AddPrerequisite = ({show, handleClose, courseId, addPrerequisite}) => {
     const [course, setCourse] = useState([]);
     const [prerequisite, setPrerequisite] = useState('');
     const [formMinimumGrade, setFormMinimumGrade] = useState('');
@@ -16,7 +18,15 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
 
     useEffect(() => {
         const getCourses = async () => {
-            const preparedCourses = await fetchCourses();
+            const courses = await fetchCourses();
+            const preparedCourses = [];
+            courses.forEach((course, index) => {
+                let preparedCourse = {
+                    value: course.course_id,
+                    label: course.course_name
+                }
+                preparedCourses.push(preparedCourse);
+            });
             setCourse(preparedCourses);
         }
         const getGrades = async () => {
@@ -28,28 +38,7 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
         getGrades();
     }, []);
 
-    const fetchCourses = async () => {
-        const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/courses/get_all_courses.php")
-        const data = await res.json();
-        const preparedCourses = [];
-        data.forEach((course, index) => {
-            let preparedCourse = {
-                value: course.course_id,
-                label: course.course_name
-            }
-            preparedCourses.push(preparedCourse);
-        });
-        // console.log(preparedCourses);
-        return preparedCourses;
-    }
-
-    const fetchGradeBreakDown = async () => {
-        const res = await fetch("http://localhost/app_server_curriculum_app/server/actions/courses/get_grade_breakdown.php");
-        const data = await res.json();
-        return data;
-    }
-
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         if(prerequisite === '') {
             alert("Choose a prerequisite");
@@ -58,7 +47,7 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
             alert("Choose minimum grade");
         }
 
-        addNewPrerequisite({
+        await addPrerequisite({
             course_id: courseId,
             prerequisite_course_id: prerequisite,
             min_grade_id: formMinimumGrade,
@@ -88,7 +77,7 @@ export const AddPrerequisite = ({show, handleClose, courseId, addNewPrerequisite
                         <label>Choose minimum Grade</label>
                         <div>
                             <select className="form-select" required onChange={opt => setFormMinimumGrade(opt.target.value) } >
-                                <option defaultValue disabled>Minimum Grades</option>
+                                <option defaultValue disabled selected>Minimum Grades</option>
                                 {
                                     minimumGrades.map((value, index) => (
                                         <option key={index} value={value.grade_id}>{value.grade_letter}</option>

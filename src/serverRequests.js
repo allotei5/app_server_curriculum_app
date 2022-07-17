@@ -210,3 +210,37 @@ export const updateCourse = async (course) => {
     console.log(data);
     return data;
 }
+
+export const fetchPrerequisites = async (course_id) => {
+    const res = await fetch(`${backendServer}/prerequisites/get_one_course_prerequisites.php?course_id=${course_id}`);
+    const data = await res.json();
+    return data;
+}
+
+export const addNewPrerequisite = async (newPrerequisite) => {
+    const res = await fetch(`${backendServer}/prerequisites/add_new_prerequisite.php`, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(newPrerequisite)
+    });
+    console.log(newPrerequisite);
+    const data = await res.json();
+    return data;
+}
+
+export const removePrerequisiteFromServer = async (pre_requisite_id) => {
+    const res = await fetch(`${backendServer}/prerequisites/delete_prerequisite.php`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            course_id: pre_requisite_id
+        })
+    });
+
+    const data = await res.json();
+    return data;
+}
