@@ -1,6 +1,6 @@
 import './EditCurriculum.css'
 import './EditCurriculumPage.css'
-import { FiEdit2, FiPlus } from "react-icons/fi";
+import { FiEdit2, FiPlus, FiEdit } from "react-icons/fi";
 import { createNewCurriculum, fetchCurriculumByYearGroup, fetchYearGroups } from '../../../serverRequests';
 import { Link } from 'react-router-dom';
 import { CreateCurriculum } from './CreateCurriculum';
@@ -11,6 +11,7 @@ import { Navigate } from 'react-router-dom';
 import { UserContext } from '../../../Context/UserContext';
 
 import { Container, Row, Col } from 'react-bootstrap'
+import { EditCurriculumMajor } from './EditCurriculumMajor';
 
 
 export const EditCurriculumPage = () => {
@@ -20,10 +21,14 @@ export const EditCurriculumPage = () => {
     const [ curriculums, setCurriculums ] = useState([]);
     const [ displayCurriculums, setDisplayCurriculums ] = useState(false);
     const [ show, setShow ] = useState(false);
+    const [ editShow, setEditShow ] = useState(false);
     const [ currentYearGroup, setCurrentYearGroup ] = useState("")
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+
+    const handleEditShow = () => setEditShow(true);
+    const handleEditClose = () => setEditShow(false);
 
     useEffect(() => {
         const getYearGroups = async () => {
@@ -36,6 +41,7 @@ export const EditCurriculumPage = () => {
 
     const getCurriculum = async (year_group_id) => {
         const curriculumsFromServer = await fetchCurriculumByYearGroup(year_group_id);
+        console.log(curriculumsFromServer);
         setCurriculums(curriculumsFromServer);
         setDisplayCurriculums(true);
         setCurrentYearGroup(year_group_id);
@@ -100,6 +106,10 @@ export const EditCurriculumPage = () => {
                                                     <FiEdit2 />
                                                 </button>
                                             </Link>
+                                            <button className='year-group-edit ms-3' style={{backgroundColor: "orange"}} onClick={handleEditShow}>
+                                                <FiEdit />
+                                            </button>
+                                            <EditCurriculumMajor show={editShow} handleClose={handleEditClose} currentYearGroup={currentYearGroup} currentCurriculum={value} setCurriculums={setCurriculums} curriculums={curriculums} />
                                         </Col>
                                     </Row>
                                     

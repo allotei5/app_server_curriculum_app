@@ -163,7 +163,7 @@ class curriculum_class extends db_connection {
         $year_group_id = mysqli_real_escape_string($this->db, $year_group_id);
         $major_id = mysqli_real_escape_string($this->db, $major_id);
 
-        $sql = "UPDATE `curriculum_curriculum` SET `year_group`='$year_group_id',`major_id`='$major_id', `lastupdate`=NOW() WHERE `curriculum_id`='$curriculum_id'";
+        $sql = "UPDATE `curriculum_curriculum` SET `year_group_id`='$year_group_id',`major_id`='$major_id', `lastupdate`=NOW() WHERE `curriculum_id`='$curriculum_id'";
         return $this->db_query_escape_string($sql);
     }
 

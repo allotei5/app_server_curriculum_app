@@ -38,6 +38,21 @@ export const createNewCurriculum = async (curriculum) => {
     return data;
 }
 
+export const editCurriculum = async (curriculum) => {
+    const res = await fetch(`${backendServer}/curriculum/edit_curriculum.php`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...curriculum
+        })
+    })
+
+    const data = await res.json();
+    return data;
+}
+
 export const fetchCurriculums = async () => {
     const res = await fetch(`${backendServer}/curriculum/fetch_curriculums.php`);
     const data = await res.json();
