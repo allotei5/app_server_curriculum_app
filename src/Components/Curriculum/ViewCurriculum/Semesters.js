@@ -18,7 +18,7 @@ export const Semesters = ({ curriculum, year }) => {
       {
         semesters.map((semester, index) => (
           <div key={index}>
-            <p>{semester.semester_name}</p>
+            <p className='fw-bold'>{semester.semester_name}</p>
             <Courses curriculum={curriculum} year={year} semester={semester.semester_id} />
           </div>
         ))

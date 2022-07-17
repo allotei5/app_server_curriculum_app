@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Select from 'react-select'
 import { fetchCurriculums } from '../../../serverRequests';
 import { AcademicYear } from './AcademicYear';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export const ViewCurriculum = () => {
 
@@ -27,23 +28,26 @@ export const ViewCurriculum = () => {
     
   return (
     <div>
-        <div className="course-tracker-page">
-            <div className="course-tracker-grid curriculum-grid">
-                <div>
-                    <h3 className='sub-title'>praesent auctor nulla nec fusce.</h3>
-                    <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
-                </div>
-                <Select options={curriculum} onChange={opt => setChosenCurriculum(opt.value)} /> 
-            </div>
-            <div className="custom-container">
+        <Container className="">
+            <Row>
+                <Col md={9}>
+                    <div>
+                        <h3 className='cs-fs-3 fw-bold'>praesent auctor nulla nec fusce.</h3>
+                        <p className='cs-fs-2 my-4'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                    </div>
+                </Col>
+                <Col>   
+                    <p>Please choose a year group</p>
+                    <Select options={curriculum} onChange={opt => setChosenCurriculum(opt.value)} /> 
+                </Col>
+            </Row>
+            <Row>
                 {
-                    (chosenCurriculum === "") ? <p>Please choose a year group</p>
-                    :<AcademicYear curriculum={chosenCurriculum} />
-                
+                    (chosenCurriculum !== "") && <AcademicYear curriculum={chosenCurriculum} />
                 }
-            </div>
+            </Row>
 
-        </div>
+        </Container>
 </div>
   )
 }
