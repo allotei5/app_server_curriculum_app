@@ -6,6 +6,7 @@ import './EditCurriculum.css'
 import { Navigate } from 'react-router-dom';
 
 import { Container, Row, Col } from 'react-bootstrap'
+import { fetchAcademicYears } from '../../../serverRequests';
 
 
 export const EditCurriculum = () => {
@@ -22,13 +23,6 @@ export const EditCurriculum = () => {
         getAcademicYears();
     }, []);
 
-    const fetchAcademicYears = async () => {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_academic_years.php`);
-        const data = await res.json();
-        return data;
-    }
-
-    fetchAcademicYears();
 
     if (currentUser.permissions === undefined) {
         return <Navigate to="/" replace />
