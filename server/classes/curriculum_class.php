@@ -91,8 +91,8 @@ class curriculum_class extends db_connection {
         return $this->db_query($sql);
     }
 
-    public function add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $course_id, $course_type) {
-        $sql = "INSERT INTO `curriculum_detail`(`curriculum_id`, `student_level`, `semester_id`, `course_id`, `course_type`) VALUES ('$curriculum_id', '$student_level', '$semester_id', '$course_id', '$course_type')";
+    public function add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $course_id) {
+        $sql = "INSERT INTO `curriculum_detail`(`curriculum_id`, `student_level`, `semester_id`, `course_id`, `course_type`) VALUES ('$curriculum_id', '$student_level', '$semester_id', '$course_id', 1)";
         return $this->db_query_id($sql);
     }
 

@@ -45,7 +45,6 @@ export const Cgpa = () => {
     useEffect(() => {
 
         setGpa(calculateCGPA());
-        console.log('hi')
     }, [grades, courses])
 
     return (

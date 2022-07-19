@@ -3,6 +3,7 @@ import './CurriculumCourse.css';
 import Select from 'react-select';
 import { FiMinus } from 'react-icons/fi';
 import { Container, Row, Col } from 'react-bootstrap'
+import { fetchCourseTypes, fetchCourses } from '../../../serverRequests';
 
 
 export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
@@ -17,12 +18,12 @@ export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
 
   useEffect(() => {
     const getCourses = async () => {
-      const coursesFromServer = await fetchCourses();
+      const coursesFromServer = await fetchCoursesFromServer();
       setCourses(coursesFromServer);
     };
 
     const getCourseTypes = async () => {
-      const courseTypes = await fetchCourseTypes();
+      const courseTypes = await fetchCourseTypes()
       setCourseTypes(courseTypes);
     };
 
@@ -30,11 +31,8 @@ export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
     getCourseTypes();
   }, []);
 
-  const fetchCourses = async () => {
-    const res = await fetch(
-      'http://localhost/app_server_curriculum_app/server/actions/courses/get_all_courses.php'
-    );
-    const data = await res.json();
+  const fetchCoursesFromServer = async () => {
+    const data = await fetchCourses();
     const preparedCourses = [];
     data.forEach((course, index) => {
       let preparedCourse = {
@@ -45,14 +43,6 @@ export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
     });
     // console.log(preparedCourses);
     return preparedCourses;
-  };
-
-  const fetchCourseTypes = async () => {
-    const res = await fetch(
-      `${process.env.REACT_APP_BACKEND_SERVER}actions/curriculum/fetch_course_type.php`
-    );
-    const data = await res.json();
-    return data;
   };
 
   return (
@@ -74,7 +64,6 @@ export const CurriculumCourse = ({ course, removeCourse, updateCourse }) => {
               onChange={async (opt) => {
                 setSelectCourse({ label: opt.label, value: opt.value });
                 updatedCourse.course_id = opt.value;
-                console.log(updatedCourse);
                 await updateCourse(updatedCourse);
               }}
             />

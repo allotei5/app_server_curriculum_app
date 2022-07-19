@@ -211,6 +211,54 @@ export const updateCourse = async (course) => {
     return data;
 }
 
+export const removeCourseFromCurriculum = async (id) => {
+    const res = await fetch(`${backendServer}/curriculum/remove_curriculum_detail.php`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          curriculum_detail_id: id
+        })
+      });
+      const data = await res.json();
+      return data
+}
+
+export const fetchOneCourseForCurriculumFromServer = async (curriculum_id, student_level, semester_id) => {
+    const res = await fetch(`${backendServer}/curriculum/add_new_course_to_curriculum.php`, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          curriculum_id,
+          student_level,
+          semester_id
+        })
+      });
+    // console.log(`${backendServer}/curriculum/add_new_course_to_curriculum.php`);
+    console.log(JSON.stringify({
+        curriculum_id,
+        student_level,
+        semester_id
+      }))
+    const data = await res.json();
+    return data;
+}
+
+export const updateCourseInCurriculum = async (course) => {
+    const res = await fetch(`${backendServer}/curriculum/edit_curriculum_details.php`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...course
+        })
+    });
+
+    const data = await res.json();
+    return data;
+}
+
 export const fetchPrerequisites = async (course_id) => {
     const res = await fetch(`${backendServer}/prerequisites/get_one_course_prerequisites.php?course_id=${course_id}`);
     const data = await res.json();

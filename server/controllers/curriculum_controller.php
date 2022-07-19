@@ -133,7 +133,7 @@ function add_new_curriculum_detail($curriculum_id, $student_level, $semester_id)
     if($run_query) {
         $result = $course->db_fetch_one();
         $curriculum = new curriculum_class;
-        $add_new_course = $curriculum->add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $result['course_id'], $result['course_type']);
+        $add_new_course = $curriculum->add_new_curriculum_detail($curriculum_id, $student_level, $semester_id, $result['course_id']);
         $new_curriculum_detail = $curriculum->select_curriculum_detail($add_new_course);
         return $curriculum->db_fetch_one();
     } else{
