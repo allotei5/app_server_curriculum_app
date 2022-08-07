@@ -1,4 +1,5 @@
-const backendServer = `http://localhost/app_server_curriculum_app/server/actions`;
+const backendServer = `https://ashesi-apps.brainstormafrica.com/curriculum-app/server/actions`;
+// const backendServer = `http://localhost/app_server_curriculum_app/server/actions`;
 
 export const fetchYearGroups = async () => {
     const res = await fetch(`${backendServer}/curriculum/fetch_year_groups.php`);
@@ -85,6 +86,7 @@ export const fetchCourseTypes = async () => {
 
 export const fetchLoggedInUser = async () => {
     const res = await fetch(`${backendServer}/user/get_user.php`);
+    console.log(`${backendServer}/user/get_user.php`)
     const data = await res.json();
     return data;
 }
@@ -96,7 +98,9 @@ export const fetchDepartments = async () => {
 }
 
 export const fetchTrackerCourses = async (user, year, major) => {
-    const res = await fetch(`${backendServer}/tracker/get_student_courses_in_tracker.php?user_id=${user}&major=${major}&year_group=${year}`);
+    const date = new Date();
+    const time = date.getTime();
+    const res = await fetch(`${backendServer}/tracker/get_student_courses_in_tracker.php?user_id=${user}&major=${major}&year_group=${year}&nocache=${time}`);
     const data = await res.json();
     return data;
 }
@@ -128,6 +132,12 @@ export const fetchCourses = async () => {
     return data;
 }
 
+export const fetchCoursesByName = async (term) => {
+    const res = await fetch(`${backendServer}/courses/get_courses_by_name.php?course=${term}`);
+    const data = await res.json();
+    return data;
+}
+ 
 export const updateProfile = async (currentUser) => {
     const res = await fetch(`${backendServer}/user/update_student_details.php`, {
         method: 'PUT',

@@ -23,6 +23,27 @@ function select_all_courses() {
     }
 }
 
+function select_courses_by_name($course_name) {
+    $courses = new course_class;
+
+    $name = '%'.$course_name.'%';
+    // run query
+    $run_query = $courses->select_courses_by_name($name);
+
+    if($run_query){
+        $coursesFromDB = $courses->db_fetch_all();
+        $result = [];
+        foreach($coursesFromDB as $course) {
+            $course_prerequisites_query = $courses->select_course_prerequisites($course["course_id"]);
+            $course["prerequisites"] = $courses->db_fetch_all();
+            array_push($result, $course);
+        }
+        return $result;
+    }else {
+        return false;
+    }
+}
+
 function select_all_courses_by_department($department) {
     $courses = new course_class;
 

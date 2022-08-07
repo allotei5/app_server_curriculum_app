@@ -7,7 +7,7 @@ header("Content-Type:application/json");
 
 // TODO wrap around logged in user
 
-$user = 1;
+$user = 5;
 
 echo json_encode(get_user_details($user));
 

@@ -27,6 +27,7 @@ function App() {
   useEffect(()=> {
     const getLoggedInUser = async () => {
       const currentUser = await fetchLoggedInUser();
+      console.log(currentUser);
       setCurrentUser(currentUser);
     }
 

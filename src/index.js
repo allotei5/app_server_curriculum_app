@@ -11,7 +11,7 @@ import { GradeProvider } from "./Context/GradeContext";
 
 ReactDOM.render(
   
-    <BrowserRouter basename={"/app_server_curriculum_app"}>
+    <BrowserRouter basename={"/curriculum-app"}>
       <UserProvider>
         <TrackerProvider>
           <GradeProvider>

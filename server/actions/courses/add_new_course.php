@@ -6,6 +6,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require_once(dirname(__FILE__)."/../../controllers/course_controller.php");
 
 $form_data=json_decode(file_get_contents("php://input"));
+echo $form_data;
 
 if(isset($form_data->submit)) {
 
