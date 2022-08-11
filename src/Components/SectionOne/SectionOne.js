@@ -7,19 +7,29 @@ const SectionOne = () => {
         
     const [ searchResults, setSearchResults ] = useState([]);
 
-    const getSearchTerm = (courses, results) => {
+    // old function
+    // const getSearchTerm = (courses, results) => {
 
-        // getSearchResults(results);
-        // console.log(courses, results)
-        if (results.length == 0){
+    //     // getSearchResults(results);
+    //     // console.log(courses, results)
+    //     if (results.length == 0){
+    //         setSearchResults([])
+    //     }else {
+    //         setSearchResults(courses.filter((value) => {
+    //             let pattern = new RegExp(`${results}`);
+    //             return pattern.test(value.course_name.toLowerCase())
+    //         }))
+    //     }
+
+    // }
+
+    // new function 
+    const getSearchTerm = (coursesFromDb) => {
+        if(coursesFromDb.length === 0) {
             setSearchResults([])
-        }else {
-            setSearchResults(courses.filter((value) => {
-                let pattern = new RegExp(`${results}`);
-                return pattern.test(value.course_name.toLowerCase())
-            }))
+        } else {
+            setSearchResults(coursesFromDb)
         }
-
     }
     
     return (
@@ -30,11 +40,11 @@ const SectionOne = () => {
                     <h3 className='cs-fs-3 fw-bolder text-center'>COURSE PREREQUISITE CHECKER</h3>
                     <p className='cs-fs-2 my-4 text-center'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. </p>     
                 </Col>
-                
-                    <SearchBar getSearchResults={getSearchTerm} />
-                
                 <Col>
-                <SearchResult results={searchResults} />
+                    <SearchBar getSearchResults={getSearchTerm} />
+                </Col>
+                <Col>
+                    <SearchResult results={searchResults} />
                 </Col>
                 
         </Container>

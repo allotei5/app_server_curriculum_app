@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/curriculum-app/static/css/main.e71ba8f8.css",
-    "main.js": "/curriculum-app/static/js/main.7ec1d03d.js",
+    "main.css": "/curriculum-app/static/css/main.d4165a9e.css",
+    "main.js": "/curriculum-app/static/js/main.f00fbcaf.js",
     "static/js/787.d8f35705.chunk.js": "/curriculum-app/static/js/787.d8f35705.chunk.js",
     "static/media/hero_image.svg": "/curriculum-app/static/media/hero_image.6e4f5edc977e1f02e17c6253a4a23045.svg",
     "static/media/ashesi_logo.png": "/curriculum-app/static/media/ashesi_logo.06c743f3915737a5be0c.png",
@@ -10,12 +10,12 @@
     "static/media/search_image.svg": "/curriculum-app/static/media/search_image.654ddf13ca3cd385d49088f39eaac971.svg",
     "static/media/graduation.svg": "/curriculum-app/static/media/graduation.bd4d27704ea95c9b71113af56bd4d147.svg",
     "index.html": "/curriculum-app/index.html",
-    "main.e71ba8f8.css.map": "/curriculum-app/static/css/main.e71ba8f8.css.map",
-    "main.7ec1d03d.js.map": "/curriculum-app/static/js/main.7ec1d03d.js.map",
+    "main.d4165a9e.css.map": "/curriculum-app/static/css/main.d4165a9e.css.map",
+    "main.f00fbcaf.js.map": "/curriculum-app/static/js/main.f00fbcaf.js.map",
     "787.d8f35705.chunk.js.map": "/curriculum-app/static/js/787.d8f35705.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e71ba8f8.css",
-    "static/js/main.7ec1d03d.js"
+    "static/css/main.d4165a9e.css",
+    "static/js/main.f00fbcaf.js"
   ]
 }

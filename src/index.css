@@ -348,7 +348,7 @@ code {
 }
 
 .search-bar {
-  /* width: 40rem; */
+  width: 100%;
   background: #fff;
   border: none;
   padding: 1rem;
