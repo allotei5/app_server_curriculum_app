@@ -1,5 +1,5 @@
-const backendServer = `https://ashesi-apps.brainstormafrica.com/curriculum-app/server/actions`;
-// const backendServer = `http://localhost/app_server_curriculum_app/server/actions`;
+// const backendServer = `https://apps.ashesi.edu.gh/curriculum/server/actions`;
+const backendServer = `http://localhost/app_server_curriculum_app/server/actions`;
 
 export const fetchYearGroups = async () => {
     const res = await fetch(`${backendServer}/curriculum/fetch_year_groups.php`);

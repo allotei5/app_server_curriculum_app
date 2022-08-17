@@ -25,7 +25,8 @@ function get_user_details($user_id) {
             }
         } else if($user_details['user_role'] == 1 || $user_details['user_role'] == 2) {
             // fetch user permissions
-            $permissions = get_user_permission_ctr(7, $user_id);
+            //8 is the app ID
+            $permissions = get_user_permission_ctr(8, $user_id);
 
             if(empty($permissions)) {
                 return $user_details;

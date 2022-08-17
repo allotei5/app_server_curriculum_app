@@ -17,6 +17,9 @@ import { fetchLoggedInUser } from './serverRequests';
 import { Footer } from './Components/Footer';
 import { StudentList } from './Components/Students/StudentList';
 import NotFound from './Components/404/NotFound';
+import StudentRoutes from './Components/AuthRoutes/StudentRoutes';
+import UnAuth from './Components/AuthRoutes/UnAuth';
+import AuthStaffAndFaculty from './Components/AuthRoutes/AuthStaffAndFaculty';
 
 function App() {
 
@@ -26,9 +29,18 @@ function App() {
 
   useEffect(()=> {
     const getLoggedInUser = async () => {
-      const currentUser = await fetchLoggedInUser();
-      console.log(currentUser);
-      setCurrentUser(currentUser);
+      try {
+        const currentUser = await fetchLoggedInUser();
+
+        if( currentUser.isLogedin !== undefined ) {
+          // window.location.href="https://apps.ashesi.edu.gh/app_server/login/login"
+        }
+
+        setCurrentUser(currentUser);
+      } catch (error) {
+        console.log(error)
+      }
+      
     }
 
     getLoggedInUser();
@@ -38,22 +50,10 @@ function App() {
     
       (!currentUser) ? <Loading /> 
       : <>
-          <Routes>
-            <Route exact path="/" element={<Nav />}>
-              <Route index element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/course-tracker" element={ <CourseTracker /> } />
-              <Route path="/course-tracker/:user_id" element={ <CourseTracker /> } />
-              <Route path="/view-curriculum" element={<ViewCurriculum />} />
-              <Route path="/profile" element={<Home />} />
-              <Route path="/edit-prerequisites" element={ <EditPrerequisites /> } />
-              <Route path="/edit-prerequisite" element={ <EditPrerequisites /> } />
-              <Route path="/edit-curriculum" element={ <EditCurriculumPage /> } />
-              <Route path="/edit-curriculum/:curriculum_id" element={ <EditCurriculum /> } />
-              <Route path="/students" element={<StudentList />} />
-              <Route path="/students/:page" element={<StudentList />} />
-            </Route>
-          </Routes>
+          { currentUser.user_role == 4 && <StudentRoutes />}
+          { currentUser.user_role == 5 && <UnAuth />}
+          { (currentUser.user_role == 1 || currentUser.user_role == 2) && currentUser.permissions == undefined && <UnAuth />}
+          { (currentUser.user_role == 1 || currentUser.user_role == 2) && currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1 && <AuthStaffAndFaculty />}
           <Footer />
         </>
     

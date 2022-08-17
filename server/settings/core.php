@@ -5,6 +5,9 @@ session_start();
 //for header redirection
 ob_start();
 
+//set app server application id
+$app_id = 8;
+
 //funtion to check for login
 function core_check_login()
 {
@@ -19,6 +22,35 @@ function core_check_login()
 
     	//to stop the rest of the code from executing
     	exit();
+	}
+}
+
+//funtion to check for login react
+function core_react_check_login()
+{
+	// //response array 
+	$loginResponse = array('isLogedin' => false);
+
+	//check if login session exit
+	if (!isset($_SESSION['app_server_user_id'])) 
+	{
+		//set current page as session
+		$_SESSION["app_pre_page"] = $_SERVER['SCRIPT_NAME'];
+
+		// //redirect to login page
+		// header('Location: ../../app_server/login/login.php');
+
+		// //to stop the rest of the code from executing
+		// exit();
+
+		return $loginResponse;
+
+	}else
+	{
+
+		$loginResponse['isLogedin'] = true;
+
+		return $loginResponse;
 	}
 }
 

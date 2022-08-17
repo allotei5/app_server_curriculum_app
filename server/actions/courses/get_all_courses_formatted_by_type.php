@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__)."/../../controllers/course_controller.php");
-// header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: *');
 header("Content-Type:application/json");
 
 if(isset($_GET["course_type_id"])){

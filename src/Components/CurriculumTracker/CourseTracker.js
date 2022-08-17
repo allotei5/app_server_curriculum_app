@@ -61,18 +61,18 @@ const CourseTracker = () => {
     
 
 
-    // only be available to students and admins
-    if (currentUser.user_role != 4 && currentUser.user_role != 1 && currentUser.user_role != 2) {
-        return <Navigate to="/" replace />
-    } 
+    // only be available to students and admins and staff
+    // if (currentUser.user_role != 4 && currentUser.user_role != 1 && currentUser.user_role != 2) {
+    //     return <Navigate to="/" replace />
+    // } 
 
-    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
-        return <Navigate to="/" replace />
-    }
+    // if (currentUser.permissions == undefined) {
+    //     return <Navigate to="/" replace />
+    // }
 
-    if (Object.keys(params).length !== 0 && currentUser.user_role == 4) {
-        return <Navigate to="/course-tracker" replace />
-    }
+    // if (Object.keys(params).length !== 0 && currentUser.user_role != 4) {
+    //     return <Navigate to="/course-tracker" replace />
+    // }
 
     return (
         <div className="course-tracker-page">

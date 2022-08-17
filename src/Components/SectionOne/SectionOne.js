@@ -6,6 +6,8 @@ import SearchResult from './SearchResult'
 const SectionOne = () => {
         
     const [ searchResults, setSearchResults ] = useState([]);
+    const [ isEmpty, setIsEmpty ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
 
     // old function
     // const getSearchTerm = (courses, results) => {
@@ -25,8 +27,10 @@ const SectionOne = () => {
 
     // new function 
     const getSearchTerm = (coursesFromDb) => {
+        setIsEmpty(false)
         if(coursesFromDb.length === 0) {
             setSearchResults([])
+            setIsEmpty(true)
         } else {
             setSearchResults(coursesFromDb)
         }
@@ -41,10 +45,10 @@ const SectionOne = () => {
                     <p className='cs-fs-2 my-4 text-center'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. </p>     
                 </Col>
                 <Col>
-                    <SearchBar getSearchResults={getSearchTerm} />
+                    <SearchBar setIsLoading={setIsLoading} getSearchResults={getSearchTerm} setSearchResults={setSearchResults} />
                 </Col>
                 <Col>
-                    <SearchResult results={searchResults} />
+                    <SearchResult isEmpty={isEmpty} isLoading={isLoading} results={searchResults} />
                 </Col>
                 
         </Container>

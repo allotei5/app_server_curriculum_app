@@ -24,13 +24,13 @@ export const EditCurriculum = () => {
     }, []);
 
 
-    if (currentUser.permissions === undefined) {
-        return <Navigate to="/" replace />
-    } 
+    // if (currentUser.permissions === undefined) {
+    //     return <Navigate to="/" replace />
+    // } 
 
-    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
-        return <Navigate to="/" replace />
-    }
+    // if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+    //     return <Navigate to="/" replace />
+    // }
 
   return (
       <>

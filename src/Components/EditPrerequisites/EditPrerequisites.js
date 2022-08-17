@@ -34,13 +34,13 @@ export const EditPrerequisites = () => {
 
 
     // console.log(courseType);
-    if (currentUser.permissions === undefined) {
-        return <Navigate to="/" replace />
-    } 
+    // if (currentUser.permissions === undefined) {
+    //     return <Navigate to="/" replace />
+    // } 
 
-    if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
-        return <Navigate to="/" replace />
-    }
+    // if (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) {
+    //     return <Navigate to="/" replace />
+    // }
 
   return (
     <div className="edit-prerequisite-page">
