@@ -35,7 +35,7 @@ const AlumNav = ({ currentUser }) => {
                     </Navbar.Text>
                     <Navbar.Text>
                         <Nav className="me-auto">
-                            <Nav.Link href="#link">Apps</Nav.Link>
+                            <Nav.Link href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</Nav.Link>
                         </Nav>
                     </Navbar.Text>
                 </Navbar.Collapse>

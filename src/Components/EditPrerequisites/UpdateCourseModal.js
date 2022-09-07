@@ -7,7 +7,7 @@ import {  Button } from "react-bootstrap"
 
 import { useState, useEffect } from "react";
 import { GradeContext } from "../../Context/GradeContext";
-import { createNewCourse, fetchCourse, fetchCourses, fetchGradeBreakDown, updateCourse } from "../../serverRequests";
+import { createNewCourse, fetchCourse, fetchCourses, fetchGradeBreakDown, updateCourse, fetchCoursesOnly } from "../../serverRequests";
 import { Navigate } from "react-router-dom";
 import Select from "react-select";
 
@@ -32,7 +32,7 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
         }
 
         const getCourses = async () => {
-            const courses = await fetchCourses();
+            const courses = await fetchCoursesOnly();
             let preparedCourses =[];
             courses.forEach((value, index) => {
                 preparedCourses.push({

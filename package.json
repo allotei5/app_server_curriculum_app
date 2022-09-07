@@ -1,6 +1,6 @@
 {
   "name": "curriculum-app",
-  "//homepage": "https://apps.ashesi.edu.gh/curriculum",
+  "homepage": "https://apps.ashesi.edu.gh/curriculum",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -83,7 +83,7 @@ const CourseTracker = () => {
                             <Row>
                                 <Col md={9}>
                                     <h3 className='cs-fs-3 fw-bold'>Your 4 year curriculum</h3>
-                                    <p className='cs-fs-2'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                                    <p className='cs-fs-2'>Welcome to the course tracking tool! Use this page to track the courses you need to take in order to graduate from Ashesi. All you need to do is check the courses you have taken and choose the grade you got in it</p>
                                     {
                                         (courses !== null) ? (courses.response !== undefined) ? <div className='cs-fs-2'>No curriculum available for this user</div> : "" : ""
                                     }
@@ -100,11 +100,11 @@ const CourseTracker = () => {
                             }                            
                         </div>
                     </>
-                : (currentUser.user_role == 1) ? 
+                : (currentUser.user_role == 1 || currentUser.permissions?.user_permission_id == 1) ? 
                 <div className="course-tracker-grid">
                     <div> 
-                        <h3 className='sub-title'>lipsum</h3>
-                        <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                        <h3 className='sub-title'>4 year curriculum tracker</h3>
+                        <p className='headline-text'>Welcome to the course tracking tool! Use this page to track the courses a student needs to take in order to graduate from Ashesi. All you need to do is check the courses they have taken and choose the grade they got in them</p>
                         <Link to="/students" className="button primary-button">Choose student</Link>            
                     </div>
                     <Cgpa />

@@ -15,6 +15,13 @@ class course_class extends db_connection {
         return $this->db_query($sql);
     }
 
+    public function select_all_courses_from_course_table_only() {
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`
+        FROM `apps_course`
+        INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`";
+        return $this->db_query($sql);
+    }
+
     public function select_courses_by_name($course_name) {
         $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
         FROM `apps_course`
@@ -44,10 +51,9 @@ class course_class extends db_connection {
     }
 
     public function select_all_courses_by_department($department) {
-        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`, `apps_grade_breakdown`.`grade_letter`
+        $sql = "SELECT `apps_course`.`course_id`, `apps_course`.`course_dept`, `apps_course`.`course_code`, `apps_course`.`course_name`, `apps_course`.`course_unit`, `apps_course`.`course_min_grade`, `apps_department`.`department_name`
         FROM `apps_course`
         INNER JOIN `apps_department` ON `apps_course`.`course_dept` = `apps_department`.`department_id`
-        INNER JOIN `apps_grade_breakdown` ON `apps_course`.`course_min_grade` = `apps_grade_breakdown`.`grade_id`
  		WHERE `apps_course`.`course_dept`='$department'";
         
         return $this->db_query($sql);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchCourses, fetchCoursesByName } from '../../serverRequests';
 import Button from '../Button';
 
-const SearchBar = ({ getSearchResults, setIsLoading, setSearchResults }) => {
+const SearchBar = ({ getSearchResults, setIsLoading, setSearchResults, setIsEmpty }) => {
   const [search, setSearch] = useState('');
 
   const [ courses, setCourses ] = useState([]);
@@ -39,6 +39,7 @@ const SearchBar = ({ getSearchResults, setIsLoading, setSearchResults }) => {
       setSearchResults([])
       setSearch("")
       setClear(false)
+      setIsEmpty(false)
     }
   
 

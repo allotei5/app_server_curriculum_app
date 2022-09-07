@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/curriculum-app/static/css/main.d4165a9e.css",
-    "main.js": "/curriculum-app/static/js/main.f00fbcaf.js",
-    "static/js/787.d8f35705.chunk.js": "/curriculum-app/static/js/787.d8f35705.chunk.js",
-    "static/media/hero_image.svg": "/curriculum-app/static/media/hero_image.6e4f5edc977e1f02e17c6253a4a23045.svg",
-    "static/media/ashesi_logo.png": "/curriculum-app/static/media/ashesi_logo.06c743f3915737a5be0c.png",
-    "static/media/grades.svg": "/curriculum-app/static/media/grades.716e01a62332d2eb34e686d0c557626f.svg",
-    "static/media/page_not_found.svg": "/curriculum-app/static/media/page_not_found.127f899ff0bdf035a42a2dfbc62e805d.svg",
-    "static/media/search_image.svg": "/curriculum-app/static/media/search_image.654ddf13ca3cd385d49088f39eaac971.svg",
-    "static/media/graduation.svg": "/curriculum-app/static/media/graduation.bd4d27704ea95c9b71113af56bd4d147.svg",
-    "index.html": "/curriculum-app/index.html",
-    "main.d4165a9e.css.map": "/curriculum-app/static/css/main.d4165a9e.css.map",
-    "main.f00fbcaf.js.map": "/curriculum-app/static/js/main.f00fbcaf.js.map",
-    "787.d8f35705.chunk.js.map": "/curriculum-app/static/js/787.d8f35705.chunk.js.map"
+    "main.css": "/curriculum/static/css/main.1dd58a55.css",
+    "main.js": "/curriculum/static/js/main.226605bd.js",
+    "static/js/787.d8f35705.chunk.js": "/curriculum/static/js/787.d8f35705.chunk.js",
+    "static/media/hero_image.svg": "/curriculum/static/media/hero_image.6e4f5edc977e1f02e17c6253a4a23045.svg",
+    "static/media/ashesi_logo.png": "/curriculum/static/media/ashesi_logo.06c743f3915737a5be0c.png",
+    "static/media/grades.svg": "/curriculum/static/media/grades.716e01a62332d2eb34e686d0c557626f.svg",
+    "static/media/page_not_found.svg": "/curriculum/static/media/page_not_found.127f899ff0bdf035a42a2dfbc62e805d.svg",
+    "static/media/search_image.svg": "/curriculum/static/media/search_image.654ddf13ca3cd385d49088f39eaac971.svg",
+    "static/media/graduation.svg": "/curriculum/static/media/graduation.bd4d27704ea95c9b71113af56bd4d147.svg",
+    "index.html": "/curriculum/index.html",
+    "main.1dd58a55.css.map": "/curriculum/static/css/main.1dd58a55.css.map",
+    "main.226605bd.js.map": "/curriculum/static/js/main.226605bd.js.map",
+    "787.d8f35705.chunk.js.map": "/curriculum/static/js/787.d8f35705.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4165a9e.css",
-    "static/js/main.f00fbcaf.js"
+    "static/css/main.1dd58a55.css",
+    "static/js/main.226605bd.js"
   ]
 }

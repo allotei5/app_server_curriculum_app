@@ -106,3 +106,14 @@ function count_all_students() {
         return false;
     }
 }
+
+function search_student($name) {
+    $students = new user_class;
+    $run_query = $students->search_student($name);
+    // return $run_query;
+    if($run_query) {
+        return $students->db_fetch_all();
+    } else {
+        return false;
+    }
+}

@@ -66,7 +66,7 @@ export const EditCurriculumPage = () => {
             <Row>
                 <Col>
                     <h3 className='cs-fs-3'>Edit Curriculum</h3>
-                    <p className='cs-fs-2'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. </p>
+                    {/* <p className='cs-fs-2'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. </p> */}
                 </Col>
                 <Col className='hero-item d-flex flex-row-reverse'>
                     <div>

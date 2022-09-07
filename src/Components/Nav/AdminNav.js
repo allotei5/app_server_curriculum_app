@@ -17,7 +17,7 @@ return (
     <Navbar expand="lg">
         <Container>
                 
-            <Navbar.Brand href="#home">
+            <Navbar.Brand to='/'>
                 <div className="img_div" to="/" >
                     <div>
                         <img className="logo" src={ashesi_logo} alt="logo"/>

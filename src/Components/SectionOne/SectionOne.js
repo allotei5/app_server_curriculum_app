@@ -42,10 +42,10 @@ const SectionOne = () => {
             <Container className="py-5 px-5 cs-col" style={{display: "grid", justifyContent: "center"}}>
                 <Col>
                     <h3 className='cs-fs-3 fw-bolder text-center'>COURSE PREREQUISITE CHECKER</h3>
-                    <p className='cs-fs-2 my-4 text-center'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. </p>     
+                    <p className='cs-fs-2 my-4 text-center'>Use this tool to identify which courses you need to take as prerequisites before taking a course. Use the search bar below to look up a course and its prerequisites </p>     
                 </Col>
                 <Col>
-                    <SearchBar setIsLoading={setIsLoading} getSearchResults={getSearchTerm} setSearchResults={setSearchResults} />
+                    <SearchBar setIsLoading={setIsLoading} getSearchResults={getSearchTerm} setSearchResults={setSearchResults} setIsEmpty={setIsEmpty} />
                 </Col>
                 <Col>
                     <SearchResult isEmpty={isEmpty} isLoading={isLoading} results={searchResults} />
