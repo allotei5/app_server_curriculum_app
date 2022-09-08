@@ -27,8 +27,23 @@ class user_class extends db_connection {
         LEFT JOIN `apps_year_group`
         	ON `apps_student`.`student_year_group` = `apps_year_group`.`year_group_id`
         LEFT JOIN `apps_major`
-        	ON `apps_student`.`student_major` = `apps_major`.`major_id` LIMIT $start, 5";
+        	ON `apps_student`.`student_major` = `apps_major`.`major_id` WHERE `apps_users`.`user_role`=4 LIMIT $start, 5";
 
+        return $this->db_query($sql);
+    }
+
+    public function search_student($name) {
+        $sql = "SELECT * FROM `apps_users`
+        LEFT JOIN `apps_student`
+        	ON `apps_users`.`user_id`=`apps_student`.`apps_user_id`
+        LEFT JOIN `apps_department`
+        	ON `apps_student`.`student_dept` = `apps_department`.`department_id`
+        LEFT JOIN `apps_year_group`
+        	ON `apps_student`.`student_year_group` = `apps_year_group`.`year_group_id`
+        LEFT JOIN `apps_major`
+        	ON `apps_student`.`student_major` = `apps_major`.`major_id`
+        WHERE (`apps_users`.`user_fname` LIKE '$name' OR `apps_users`.`user_lname` LIKE '$name') AND `apps_users`.`user_role`=4
+        ";
         return $this->db_query($sql);
     }
 

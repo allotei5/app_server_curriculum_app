@@ -38,7 +38,7 @@ export const EditCurriculum = () => {
             <Row className='edit-curriculum-hero'>
                 <Col>
                     <h3 className='sub-title'>Edit Curriculum</h3>
-                    <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. <br /> Lectus sagittis, diam a arcu, mi aliquam. </p>
+                    {/* <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. <br /> Lectus sagittis, diam a arcu, mi aliquam. </p> */}
                 </Col>
                 <Col className='hero-item'>
                     <h6>Academic Year</h6>

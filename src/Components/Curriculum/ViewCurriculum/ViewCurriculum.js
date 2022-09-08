@@ -32,8 +32,8 @@ export const ViewCurriculum = () => {
             <Row>
                 <Col md={9}>
                     <div>
-                        <h3 className='cs-fs-3 fw-bold'>praesent auctor nulla nec fusce.</h3>
-                        <p className='cs-fs-2 my-4'>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. In urna posuere sed egestas interdum tristique nunc, semper. Convallis pretium tempus in neque lobortis.</p>
+                        <h3 className='cs-fs-3 fw-bold'>View any curriculum</h3>
+                        <p className='cs-fs-2 my-4'>Look up any curriculum with the form</p>
                     </div>
                 </Col>
                 <Col>   

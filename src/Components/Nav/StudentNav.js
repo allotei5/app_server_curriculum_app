@@ -48,8 +48,10 @@ const StudentNav = ({ currentUser }) => {
                     <div className="img_div" to="/" >
                         <div>
                             <img className="logo" src={ashesi_logo} alt="logo"/>
+                            <span style={{color: "#000", paddingRight: "10px", fontWeight: "500", textDecoration: "none", fontSize: "14px"}}>Curriculum App</span>
+
                         </div>
-                        <div style={{fontSize: "18px"}}><span style={{color: "#923d41", paddingRight: "10px", fontWeight: "600", textDecoration: "none"}}>Curriculum</span> App</div>
+                        {/* <div style={{fontSize: "18px"}}><span style={{color: "#923d41", paddingRight: "10px", fontWeight: "600", textDecoration: "none"}}>Curriculum</span> App</div> */}
                     </div>
                 </Navbar.Brand>
                 
@@ -65,7 +67,7 @@ const StudentNav = ({ currentUser }) => {
                     <Navbar.Text>
                         <Nav className="me-auto">
                             <Nav.Link style={{paddingTop: "10px"}}><ProfileModalButton /></Nav.Link>
-                            <Nav.Link href="#link">Apps</Nav.Link>
+                            <Nav.Link href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</Nav.Link>
                         </Nav>
                     </Navbar.Text>
                 </Navbar.Collapse>

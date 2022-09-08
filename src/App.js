@@ -33,7 +33,7 @@ function App() {
         const currentUser = await fetchLoggedInUser();
 
         if( currentUser.isLogedin !== undefined ) {
-          // window.location.href="https://apps.ashesi.edu.gh/app_server/login/login"
+          window.location.href="https://apps.ashesi.edu.gh/app_server/login/login"
         }
 
         setCurrentUser(currentUser);
@@ -46,18 +46,35 @@ function App() {
     getLoggedInUser();
   }, [])
 
-  return (
-    
-      (!currentUser) ? <Loading /> 
-      : <>
-          { currentUser.user_role == 4 && <StudentRoutes />}
-          { currentUser.user_role == 5 && <UnAuth />}
-          { (currentUser.user_role == 1 || currentUser.user_role == 2) && currentUser.permissions == undefined && <UnAuth />}
-          { (currentUser.user_role == 1 || currentUser.user_role == 2) && currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1 && <AuthStaffAndFaculty />}
-          <Footer />
-        </>
-    
-  );
+  // if user is a student
+  if (currentUser != null && currentUser.user_role == 4) {
+    return (
+      (!currentUser) ? <Loading />:
+      <>
+        <StudentRoutes />
+        <Footer />
+      </>
+    )
+  } else if (currentUser != null && currentUser.user_role != 4 && currentUser.permissions?.user_permission_id == 1) {
+    // if user is not a student and has permission
+    return (
+      (!currentUser) ? <Loading />:
+      <>
+        <AuthStaffAndFaculty />
+        <Footer />
+      </>
+    )
+  } else {
+    // every one else
+    return (
+      (!currentUser) ? <Loading />:
+      <>
+        <UnAuth />
+        <Footer />
+      </>
+    )
+  }
+
 }
 
 export default App;

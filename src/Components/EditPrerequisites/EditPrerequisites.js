@@ -45,9 +45,9 @@ export const EditPrerequisites = () => {
   return (
     <div className="edit-prerequisite-page">
         <h3 className='headline-title'>
-            praesent auctor nulla nec fusce.
+            Edit Prerequisites
         </h3>
-        <p>Turpis est nunc nulla aliquam enim montes, massa at. Lectus sagittis, diam a arcu, mi aliquam. </p>
+        <p>Use this page to add prerequisites to a course. You can also use it to update courses</p>
         <div style={{marginBottom: "10px"}}>
             <button onClick={() => handleShow()} className='btn btn-primary' style={{marginRight: "10px"}}>Add Course</button>
             <button onClick={() => updateHandleShow() } className='btn btn-success'>Update Course</button>
