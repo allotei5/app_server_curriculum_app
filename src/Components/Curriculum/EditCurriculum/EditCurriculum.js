@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react'
 import { UserContext } from '../../../Context/UserContext';
 import { CurriculumYearAccordion } from './CurriculumYearAccordion'
 import './EditCurriculum.css'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import { Container, Row, Col } from 'react-bootstrap'
-import { fetchAcademicYears } from '../../../serverRequests';
+import { fetchLevels } from '../../../serverRequests';
+
+import Button from '../../Button';
 
 
 export const EditCurriculum = () => {
@@ -16,7 +18,8 @@ export const EditCurriculum = () => {
 
     useEffect(() => {
         const getAcademicYears = async () => {
-            const academicYearsFromServer = await fetchAcademicYears();
+            const academicYearsFromServer = await fetchLevels();
+            console.log(academicYearsFromServer)
             setAcademicYears(academicYearsFromServer);
         }
 
@@ -41,10 +44,7 @@ export const EditCurriculum = () => {
                     {/* <p className='headline-text'>Turpis est nunc nulla aliquam enim montes, massa at. <br /> Lectus sagittis, diam a arcu, mi aliquam. </p> */}
                 </Col>
                 <Col className='hero-item'>
-                    <h6>Academic Year</h6>
-                    <select className='select-input'>
-                        <option>2019/2020</option>
-                    </select>
+                    <Button ButtonName="Back" ButtonStyle="button primary-button" ButtonSrc="/edit-curriculum"/>
                 </Col>
             </Row>
         </Container>

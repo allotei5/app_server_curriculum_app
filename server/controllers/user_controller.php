@@ -99,9 +99,9 @@ function count_all_students() {
     $students = new user_class;
 
     $run_query = $students->count_all_students();
-
+    $count = $students->db_fetch_one();
     if($run_query) {
-        return $students->db_count();
+        return $count['nums'];
     } else {
         return false;
     }

@@ -200,7 +200,7 @@ export const fetchCoursesByDepartment = async (id) => {
 }
 
 export const createNewCourse = async (course) => {
-    console.log(`${backendServer}/courses/add_new_course.php`)
+    console.log(`${backendServer}/courses/add_new_course`)
     console.log(course);
     const res = await fetch(`${backendServer}/courses/add_new_course.php`, {
         method: 'POST',
@@ -264,12 +264,7 @@ export const fetchOneCourseForCurriculumFromServer = async (curriculum_id, stude
           semester_id
         })
       });
-    // console.log(`${backendServer}/curriculum/add_new_course_to_curriculum`);
-    console.log(JSON.stringify({
-        curriculum_id,
-        student_level,
-        semester_id
-      }))
+    
     const data = await res.json();
     return data;
 }

@@ -16,7 +16,7 @@ const AlumNav = ({ currentUser }) => {
         <Navbar expand="lg">
             <Container>
                     
-                <Navbar.Brand href="#home">
+                <Navbar.Brand to="/">
                     <div className="img_div" to="/" >
                         <div>
                             <img className="logo" src={ashesi_logo} alt="logo"/>
@@ -35,6 +35,7 @@ const AlumNav = ({ currentUser }) => {
                     </Navbar.Text>
                     <Navbar.Text>
                         <Nav className="me-auto">
+                            <Nav.Link style={{paddingTop: "10px"}} className='link' href="https://apps.ashesi.edu.gh/app_server/login/logout.php">Logout</Nav.Link>
                             <Nav.Link href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</Nav.Link>
                         </Nav>
                     </Navbar.Text>

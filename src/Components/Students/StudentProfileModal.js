@@ -101,7 +101,7 @@ export const StudentProfileModal = ({ show, handleClose, student }) => {
     } else {
       setFormError(false)
 
-      if (formStudentId !== "" || formDepartment !== "" || formYearGroup !== "" ) {
+      if (formStudentId === "" || formDepartment === "" || formYearGroup === "" || formMajors === "" ) {
         setFormError(true)
       } else {
 

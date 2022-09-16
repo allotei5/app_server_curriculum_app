@@ -8,7 +8,8 @@ header("Content-Type:application/json");
 
 // TODO wrap around logged in user
 
-echo json_encode(get_user_details(166));
+echo json_encode(get_user_details(172));
+// echo json_encode(get_user_details(309));
 
 return;
 

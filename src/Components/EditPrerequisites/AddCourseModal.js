@@ -45,8 +45,9 @@ export const AddCourseModal = ({ show, handleClose, departments }) => {
             }
             const newCourse = await createNewCourse(course);
             if(newCourse.response == true) {
+                window.location.reload()
                 handleClose()
-                return <Navigate to="/edit-prerequisite" replace />
+                // return <Navigate to="/edit-prerequisite" replace />
             } else {
                 setFormError(true);
             }

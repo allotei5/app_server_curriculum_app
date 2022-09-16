@@ -20,7 +20,7 @@ function Home() {
                 (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 2) ? <HomeCourseTrackerHero /> : ""
             }
             {
-                (currentUser.user_role == 4 || currentUser.user_role == 3) ? <HomeCourseTrackerHero /> : ""
+                (currentUser.user_role == 4) ? <HomeCourseTrackerHero /> : ""
             }
         </div>
     )

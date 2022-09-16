@@ -22,7 +22,7 @@ export const CourseInTracker = ({ course }) => {
     setCompletedState(!completedState);
     if(completedState) {
       // this trigger means uncompleted
-      course.completed = "0";
+      course.completed = "3";
       course.grade_id = null;
       setCourses(courses.map(prevState => prevState.curriculum_tracker_id === course.curriculum_tracker_id ? course : prevState));
 

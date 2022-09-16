@@ -3,7 +3,8 @@ require_once(dirname(__FILE__)."/../settings/db_class.php");
 
 class tracker_class extends db_connection {
     public function insert_course_into_tracker($user_id, $curriculum_detail_id) {
-        $sql = "INSERT INTO `curriculum_tracker`(`user_id`, `curriculum_detail_id`, `completed`) VALUES ('$user_id', '$curriculum_detail_id', 0)";
+        $sql = "INSERT INTO `curriculum_tracker`(`user_id`, `curriculum_detail_id`, `completed`) VALUES ('$user_id', '$curriculum_detail_id', 3)";
+        // echo $sql;
         return $this->db_query($sql);
     }
 

@@ -1,6 +1,6 @@
 <?php
 //Database credentials
-define("DATABASE", "ashesi_apps_live");
+define("DATABASE", "ashesi_apps");
 define("SERVER", "localhost");
 define("USERNAME", "root");
 define("PASSWD", "");

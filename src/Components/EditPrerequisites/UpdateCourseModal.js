@@ -78,8 +78,8 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
 
             const update = await updateCourse(course);
             if(update.response == true) {
-                handleClose()
-                return <Navigate to="/edit-prerequisite" replace />
+                // handleClose()
+                window.location.reload()
             } else {
                 setFormError(true)
             }

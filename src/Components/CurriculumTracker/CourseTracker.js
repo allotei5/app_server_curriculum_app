@@ -23,8 +23,14 @@ const CourseTracker = () => {
         const getTrackerCourses = async () => {
             setUserPrompt(false);
             if (currentUser.student_details !== undefined) {
-                const courses = await fetchTrackerCourses((currentUser.user_role == 1) ? currentUser.student_details.user_id : currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major);
-                setCourses(courses);
+                try {
+                    const courses = await fetchTrackerCourses((currentUser.user_role == 1) ? currentUser.student_details.user_id : currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major);
+                    setCourses(courses);
+                    console.log(courses) 
+                } catch (error) {
+                    console.log(error)
+                }
+                
             }else {
                 setUserPrompt(true);
             }
@@ -73,7 +79,7 @@ const CourseTracker = () => {
     // if (Object.keys(params).length !== 0 && currentUser.user_role != 4) {
     //     return <Navigate to="/course-tracker" replace />
     // }
-
+    console.log('cccc', currentUser)
     return (
         <div className="course-tracker-page">
             {
@@ -82,7 +88,10 @@ const CourseTracker = () => {
                         <Container>
                             <Row>
                                 <Col md={9}>
-                                    <h3 className='cs-fs-3 fw-bold'>Your 4 year curriculum</h3>
+                                    {
+                                        (currentUser.user_role == 1 || currentUser.permissions?.user_permission_id == 1) ? <h3 className='cs-fs-3 fw-bold'>{currentUser?.student_details?.user_fname} {currentUser?.student_details?.user_lname}'s 4 year curriculum</h3>
+                                        : <h3 className='cs-fs-3 fw-bold'>Your 4 year curriculum</h3>
+                                    }
                                     <p className='cs-fs-2'>Welcome to the course tracking tool! Use this page to track the courses you need to take in order to graduate from Ashesi. All you need to do is check the courses you have taken and choose the grade you got in it</p>
                                     {
                                         (courses !== null) ? (courses.response !== undefined) ? <div className='cs-fs-2'>No curriculum available for this user</div> : "" : ""

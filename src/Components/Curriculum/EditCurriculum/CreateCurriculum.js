@@ -32,7 +32,13 @@ export const CreateCurriculum = ({ show, handleClose, currentYearGroup, addNewCu
             major_id: selectedMajor,
             user_id: 1
         }
-        await addNewCurriculum(newCurriculum);
+        try {
+            await addNewCurriculum(newCurriculum);
+            handleClose()
+        } catch (error) {
+            alert('something went wrong please try again later')
+        }
+        
     }
 
 

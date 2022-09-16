@@ -37,6 +37,7 @@ function App() {
         }
 
         setCurrentUser(currentUser);
+        console.log(currentUser)
       } catch (error) {
         console.log(error)
       }

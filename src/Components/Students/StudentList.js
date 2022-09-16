@@ -27,7 +27,8 @@ export const StudentList = () => {
 
     const countPages = async () => {
         const students = await getStudentCount();
-        const pages = Math.round(students/5) + 1;
+        const pages = Math.round(students/20) + 1;
+        console.log('count', students)
         const linksToRender = [];
         for (let i = 1; i < pages+1; i++) {
             linksToRender.push(i);

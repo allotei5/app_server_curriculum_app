@@ -20,11 +20,11 @@ export const CurriculumYearAccordion = ({year}) => {
     <>
         <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="1">
-                <Accordion.Header>{year.academic_year_name} Year</Accordion.Header>
+                <Accordion.Header>{year.student_level_name} Year</Accordion.Header>
                 <Accordion.Body>
                     {
                         semesters.map((semester, index) => (
-                            <CurriculumSemester key={index} academicYear={year.academic_year_id} semester={semester} />
+                            <CurriculumSemester key={index} academicYear={year.student_level_id} semester={semester} />
                         ))
                     }
                 </Accordion.Body>
