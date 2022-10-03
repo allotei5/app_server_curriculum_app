@@ -23,7 +23,7 @@ export const Courses = ({ courseType, completeFilter }) => {
       setFilteredCourses([]);
     }
 
-    console.log(courses)
+    // console.log(courses)
   }, [courses])
 
   return (

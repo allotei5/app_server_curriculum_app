@@ -14,6 +14,7 @@ export const EditCurriculumMajor = ({ show, handleClose, currentYearGroup, setCu
     const [ majors, setMajors ] = useState([]);
     const [ selectedMajor, setSelectedMajor ] = useState("");
     const [ selectedMajorName, setSelectedMajorName ] = useState("");
+    // console.log(currentCurriculum)
 
     useEffect(() => {
         const getMajors = async () => {
@@ -50,7 +51,7 @@ export const EditCurriculumMajor = ({ show, handleClose, currentYearGroup, setCu
     <>
         <Modal show={show} onHide={handleClose} animation={false}>
             <ModalHeader>
-                <ModalTitle>Edit Curriculum Detail</ModalTitle>
+                <ModalTitle>Edit Curriculum Major</ModalTitle>
             </ModalHeader>
             <ModalBody>
                 <form onSubmit={onSubmit}>
@@ -61,7 +62,7 @@ export const EditCurriculumMajor = ({ show, handleClose, currentYearGroup, setCu
                             majors.map((major, index) => (<option key={index} value={major.major_id}>{major.major_name}</option>))
                         }
                     </select>
-                    <button className="btn btn-primary" type="submit" style={{marginTop: "10px"}}>Create</button>
+                    <button className="btn btn-primary" type="submit" style={{marginTop: "10px"}}>Update</button>
                 </form>
             </ModalBody>
             <ModalFooter>

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/curriculum/static/css/main.1dd58a55.css",
-    "main.js": "/curriculum/static/js/main.f68a79c9.js",
+    "main.css": "/curriculum/static/css/main.4d69504d.css",
+    "main.js": "/curriculum/static/js/main.500b09e3.js",
     "static/js/787.d8f35705.chunk.js": "/curriculum/static/js/787.d8f35705.chunk.js",
     "static/media/hero_image.svg": "/curriculum/static/media/hero_image.6e4f5edc977e1f02e17c6253a4a23045.svg",
     "static/media/ashesi_logo.png": "/curriculum/static/media/ashesi_logo.06c743f3915737a5be0c.png",
@@ -10,12 +10,12 @@
     "static/media/search_image.svg": "/curriculum/static/media/search_image.654ddf13ca3cd385d49088f39eaac971.svg",
     "static/media/graduation.svg": "/curriculum/static/media/graduation.bd4d27704ea95c9b71113af56bd4d147.svg",
     "index.html": "/curriculum/index.html",
-    "main.1dd58a55.css.map": "/curriculum/static/css/main.1dd58a55.css.map",
-    "main.f68a79c9.js.map": "/curriculum/static/js/main.f68a79c9.js.map",
+    "main.4d69504d.css.map": "/curriculum/static/css/main.4d69504d.css.map",
+    "main.500b09e3.js.map": "/curriculum/static/js/main.500b09e3.js.map",
     "787.d8f35705.chunk.js.map": "/curriculum/static/js/787.d8f35705.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1dd58a55.css",
-    "static/js/main.f68a79c9.js"
+    "static/css/main.4d69504d.css",
+    "static/js/main.500b09e3.js"
   ]
 }

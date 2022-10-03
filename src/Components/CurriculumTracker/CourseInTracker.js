@@ -29,9 +29,9 @@ export const CourseInTracker = ({ course }) => {
       if(currentUser !== null && currentUser.student_details !== undefined) {
         const updateCourse = await updateCourseInTracker(course);
         if(updateCourse.response) {
-          console.log("worked");
+          // console.log("worked");
         } else {
-          console.log("something went wrong");
+          // console.log("something went wrong");
         }
       }
       
@@ -54,9 +54,9 @@ export const CourseInTracker = ({ course }) => {
     if(currentUser !== null && currentUser.student_details !== undefined) {
       const updateCourse = await updateCourseInTracker(course);
       if(updateCourse.response) {
-        console.log("worked");
+        // console.log("worked");
       } else {
-        console.log("something went wrong");
+        // console.log("something went wrong");
       }
     }
     

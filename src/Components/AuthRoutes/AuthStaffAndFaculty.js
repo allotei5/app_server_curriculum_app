@@ -11,6 +11,7 @@ import { EditPrerequisites } from '../EditPrerequisites/EditPrerequisites'
 import { EditCurriculumPage } from '../Curriculum/EditCurriculum/EditCurriculumPage'
 import { EditCurriculum } from '../Curriculum/EditCurriculum/EditCurriculum'
 import { StudentList } from '../Students/StudentList'
+import Tutorials from '../Tutorials'
 
 const AuthStaffAndFaculty = () => {
   return (
@@ -27,6 +28,8 @@ const AuthStaffAndFaculty = () => {
             <Route path="/edit-curriculum/:curriculum_id" element={ <EditCurriculum /> } />
             <Route path="/students" element={<StudentList />} />
             <Route path="/students/:page" element={<StudentList />} />
+            <Route path="/tutorials" element={<Tutorials />} />
+
         </Route>
     </Routes>
   )

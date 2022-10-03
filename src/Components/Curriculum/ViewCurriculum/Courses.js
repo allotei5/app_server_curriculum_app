@@ -12,7 +12,7 @@ export const Courses = ({curriculum, year, semester}) => {
     const getCourses = async () => {
       const courses = await fetchCoursesFromCurriculum(curriculum, semester, year);
       setCurriculumCourses(courses);
-      console.log(curriculumCourses);
+      // console.log(curriculumCourses);
     }
 
     getCourses();

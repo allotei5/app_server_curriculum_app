@@ -55,7 +55,7 @@ export const UpdateCourseModal = ({ show, handleClose, departments }) => {
             setFormGrade(course.course_min_grade)
             setFormUnit(course.course_unit)
             setFormDept(course.course_dept)
-            console.log(course);
+            // console.log(course);
         }
 
         getCourse(courseId)

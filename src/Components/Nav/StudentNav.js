@@ -33,17 +33,17 @@ const StudentNav = ({ currentUser }) => {
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text className='me-5'>
                         <Nav className="me-auto">
-                            <Nav.Link><NavLink className="link" activeclassname="active" to="/">Home</NavLink></Nav.Link>
-                            <Nav.Link><NavLink className="link" activeclassname="active" to="/view-curriculum">View Curriculum</NavLink></Nav.Link>
-                            <Nav.Link><NavLink className="link" activeclassname="active" to="/course-tracker">Course Tracker</NavLink></Nav.Link>
+                            <><NavLink className="link" activeclassname="active" to="/">Home</NavLink></>
+                            <><NavLink className="link" activeclassname="active" to="/view-curriculum">View Curriculum</NavLink></>
+                            <><NavLink className="link" activeclassname="active" to="/course-tracker">Course Tracker</NavLink></>
+                            <><NavLink className="link" activeclassname="active" to="/tutorials">Tutorial</NavLink></>
                         </Nav>
                     </Navbar.Text>
                     <Navbar.Text>
-                        <Nav className="me-auto">
-                            <Nav.Link style={{paddingTop: "10px"}}><ProfileModalButton /></Nav.Link>
-                            <Nav.Link style={{paddingTop: "10px"}} className='link' href="https://apps.ashesi.edu.gh/app_server/login/logout.php">Logout</Nav.Link>
-
-                            <Nav.Link href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", paddingTop: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</Nav.Link>
+                        <Nav className="me-auto" style={{marginTop: "-5px"}}>
+                            <div className="link"><ProfileModalButton /></div>
+                            <a  className='link' href="https://apps.ashesi.edu.gh/app_server/login/logout.php">Logout</a>
+                            <a href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", paddingLeft: "10px", paddingTop: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</a>
                         </Nav>
                     </Navbar.Text>
                 </Navbar.Collapse>

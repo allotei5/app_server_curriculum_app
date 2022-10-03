@@ -37,7 +37,7 @@ function App() {
         }
 
         setCurrentUser(currentUser);
-        console.log(currentUser)
+        // console.log(currentUser)
       } catch (error) {
         console.log(error)
       }
@@ -53,7 +53,7 @@ function App() {
       (!currentUser) ? <Loading />:
       <>
         <StudentRoutes />
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   } else if (currentUser != null && currentUser.user_role != 4 && currentUser.permissions?.user_permission_id == 1) {
@@ -62,7 +62,7 @@ function App() {
       (!currentUser) ? <Loading />:
       <>
         <AuthStaffAndFaculty />
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   } else {
@@ -71,7 +71,7 @@ function App() {
       (!currentUser) ? <Loading />:
       <>
         <UnAuth />
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   }

@@ -34,37 +34,38 @@ return (
             <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text className='me-5'>
                     <Nav className="me-auto">
-                        <Nav.Link><NavLink className="link" activeclassname="active" to="/">Home</NavLink></Nav.Link>
-                        <Nav.Link><NavLink className="link" activeclassname="active" to="/view-curriculum">View Curriculum</NavLink></Nav.Link>
+                        <><NavLink className="link" activeclassname="active" to="/">Home</NavLink></>
+                        <><NavLink className="link" activeclassname="active" to="/view-curriculum">View Curriculum</NavLink></>
                         {
                             (currentUser.permissions !== undefined && currentUser.permissions.user_permission_id == 1) ? 
                             <>
-                                <Nav.Link><NavLink className="link" activeclassname="active" to="/course-tracker">Course Tracker</NavLink></Nav.Link>
+                                <><NavLink className="link" activeclassname="active" to="/course-tracker">Course Tracker</NavLink></>
 
                                 <NavDropdown style={{fontSize: "14px", marginTop: "2px"}} title="Admin Pages" id="basic-nav-dropdown">
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item href="/curriculum/course-tracker">
                                         <Link className="link" to="/course-tracker">Course Tracker</Link>
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item href="/curriculum/edit-curriculum">
                                         <Link className="link" to="/edit-curriculum">Edit Curriculum</Link>
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item href="/curriculum/edit-prerequisite">
                                         <Link className="link" to="/edit-prerequisite">Edit Prerequisites</Link>
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item href="/curriculum/students">
                                         <Link className="link" to="/students">Students</Link>
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             </>
                         : ""
                         }
-                        
+                        <><NavLink className="link" activeclassname="active" to="/tutorials">Tutorial</NavLink></>
+
                     </Nav>
                 </Navbar.Text>
                 <Navbar.Text>
-                    <Nav className="me-auto">
-                        <Nav.Link style={{paddingTop: "10px"}} className='link' href="https://apps.ashesi.edu.gh/app_server/login/logout.php">Logout</Nav.Link>
-                        <Nav.Link href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</Nav.Link>
+                    <Nav className="me-auto" style={{marginTop: "-7px"}}>
+                        <a  className='link' href="https://apps.ashesi.edu.gh/app_server/login/logout.php">Logout</a>
+                        <a href="https://apps.ashesi.edu.gh/" style={{color: "#000", paddingRight: "10px", paddingLeft: "10px", paddingTop: "10px", fontWeight: "400", textDecoration: "none", fontSize: "14px"}}>Apps</a>
                     </Nav>
                 </Navbar.Text>
             </Navbar.Collapse>

@@ -26,9 +26,9 @@ const CourseTracker = () => {
                 try {
                     const courses = await fetchTrackerCourses((currentUser.user_role == 1) ? currentUser.student_details.user_id : currentUser.user_id, currentUser.student_details.student_year_group, currentUser.student_details.student_major);
                     setCourses(courses);
-                    console.log(courses) 
+                    // console.log(courses) 
                 } catch (error) {
-                    console.log(error)
+                    // console.log(error)
                 }
                 
             }else {
@@ -51,7 +51,7 @@ const CourseTracker = () => {
     useEffect(() => {
         const fetchStudentDetails = async (id) => {
             const student = await getOneStudentDetails(id);
-            console.log(student);
+            // console.log(student);
             const updatedUser = {
                 ...currentUser,
                 student_details: student
@@ -67,19 +67,7 @@ const CourseTracker = () => {
     
 
 
-    // only be available to students and admins and staff
-    // if (currentUser.user_role != 4 && currentUser.user_role != 1 && currentUser.user_role != 2) {
-    //     return <Navigate to="/" replace />
-    // } 
 
-    // if (currentUser.permissions == undefined) {
-    //     return <Navigate to="/" replace />
-    // }
-
-    // if (Object.keys(params).length !== 0 && currentUser.user_role != 4) {
-    //     return <Navigate to="/course-tracker" replace />
-    // }
-    console.log('cccc', currentUser)
     return (
         <div className="course-tracker-page">
             {

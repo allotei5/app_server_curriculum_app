@@ -27,7 +27,7 @@ const MyTabs = () => {
                 <CourseType completeFilter={1} />
               </TabPanel>
               <TabPanel>
-                <CourseType completeFilter={0} />
+                <CourseType completeFilter={3} />
               </TabPanel>
           
           

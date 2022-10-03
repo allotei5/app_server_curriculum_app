@@ -23,11 +23,15 @@ export const EditCurriculumPage = () => {
     const [ show, setShow ] = useState(false);
     const [ editShow, setEditShow ] = useState(false);
     const [ currentYearGroup, setCurrentYearGroup ] = useState("")
+    const [ currentCurriculum, setCurrentCurriculum ] = useState({})
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
-    const handleEditShow = () => setEditShow(true);
+    const handleEditShow = (currentCurriculum) => {
+        setEditShow(true)
+        setCurrentCurriculum(currentCurriculum)
+    }
     const handleEditClose = () => setEditShow(false);
 
     useEffect(() => {
@@ -41,7 +45,7 @@ export const EditCurriculumPage = () => {
 
     const getCurriculum = async (year_group_id) => {
         const curriculumsFromServer = await fetchCurriculumByYearGroup(year_group_id);
-        console.log(curriculumsFromServer);
+        // console.log(curriculumsFromServer);
         setCurriculums(curriculumsFromServer);
         setDisplayCurriculums(true);
         setCurrentYearGroup(year_group_id);
@@ -106,10 +110,9 @@ export const EditCurriculumPage = () => {
                                                     <FiEdit2 />
                                                 </button>
                                             </Link>
-                                            <button className='year-group-edit ms-3' style={{backgroundColor: "orange"}} onClick={handleEditShow}>
+                                            <button className='year-group-edit ms-3' style={{backgroundColor: "orange"}} onClick={() => handleEditShow(value)}>
                                                 <FiEdit />
                                             </button>
-                                            <EditCurriculumMajor show={editShow} handleClose={handleEditClose} currentYearGroup={currentYearGroup} currentCurriculum={value} setCurriculums={setCurriculums} curriculums={curriculums} />
                                         </Col>
                                     </Row>
                                     
@@ -129,7 +132,8 @@ export const EditCurriculumPage = () => {
                     </Container>
                 )
             }
-            
+            <EditCurriculumMajor show={editShow} handleClose={handleEditClose} currentYearGroup={currentYearGroup} currentCurriculum={currentCurriculum} setCurriculums={setCurriculums} curriculums={curriculums} />
+
         </div>
     </>
   )

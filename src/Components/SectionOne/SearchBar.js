@@ -31,7 +31,7 @@ const SearchBar = ({ getSearchResults, setIsLoading, setSearchResults, setIsEmpt
         setIsLoading(false)
         setClear(true)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
 

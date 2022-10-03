@@ -6,6 +6,7 @@ import Home from '../Home'
 import NotFound from '../404/NotFound'
 import CourseTracker from '../CurriculumTracker/CourseTracker'
 import { ViewCurriculum } from '../Curriculum/ViewCurriculum/ViewCurriculum'
+import Tutorials from '../Tutorials'
 
 const StudentRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const StudentRoutes = () => {
               <Route path="*" element={<NotFound />} />
               <Route path="/course-tracker" element={ <CourseTracker /> } />
               <Route path="/view-curriculum" element={<ViewCurriculum />} />
+              <Route path="/tutorials" element={<Tutorials />} />
         </Route>
     </Routes>
   )

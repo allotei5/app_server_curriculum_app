@@ -15,7 +15,7 @@ export const Prerequisites = ({course}) => {
     useEffect(() => {
         const getPrerequisites = async () => {
             const prerequisitesFromServer = await fetchPrerequisites(course.course_id);
-            console.log(prerequisitesFromServer.prerequisites)
+            // console.log(prerequisitesFromServer.prerequisites)
             setPrerequisites(prerequisitesFromServer.prerequisites);
         }
 
@@ -26,14 +26,12 @@ export const Prerequisites = ({course}) => {
         const data = await addNewPrerequisite(newPrerequisite);
         if(data.course_id) {
             setPrerequisites([...prerequisites, data]);
-        }else{
-            console.log("hmm");
         }
     }
 
     const removePrerequisite = async (pre_requisite_id) => {
         const data = await removePrerequisiteFromServer(pre_requisite_id)
-        console.log(data)
+        // console.log(data)
         if(data.response === true) {
             setPrerequisites(prerequisites.filter((value, index) => (value.pre_requisite_id !== pre_requisite_id)))
         }

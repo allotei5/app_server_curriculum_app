@@ -19,7 +19,7 @@ export const EditCurriculum = () => {
     useEffect(() => {
         const getAcademicYears = async () => {
             const academicYearsFromServer = await fetchLevels();
-            console.log(academicYearsFromServer)
+            // console.log(academicYearsFromServer)
             setAcademicYears(academicYearsFromServer);
         }
 

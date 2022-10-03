@@ -20,7 +20,7 @@ export const StudentList = () => {
     const getStudents = async () => {
         setIsLoading(true);
         const studentsFromServer = await getAllStudents((params.page !== undefined) ? params.page : 1);
-        console.log(studentsFromServer);
+        // console.log(studentsFromServer);
         setStudents(studentsFromServer);
         setIsLoading(false)
     }
@@ -28,7 +28,7 @@ export const StudentList = () => {
     const countPages = async () => {
         const students = await getStudentCount();
         const pages = Math.round(students/20) + 1;
-        console.log('count', students)
+        // console.log('count', students)
         const linksToRender = [];
         for (let i = 1; i < pages+1; i++) {
             linksToRender.push(i);
